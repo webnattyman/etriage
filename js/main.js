@@ -61,6 +61,7 @@ socket.on('join', function (room){
     console.log('Another peer made a request to join room ' + room);
     console.log('This peer is the initiator of room ' + room + '!');
     isChannelReady = true;
+    isInitiator = true;
 });
 
 socket.on('joined', function (room){
@@ -156,7 +157,7 @@ function createPeerConnection() {
         alert('Cannot create RTCPeerConnection object.');
         return;
     }
-    pc.onaddstream = handleRemoteStreamAdded;
+    pc.ontrack = handleRemoteStreamAdded;
     pc.onremovestream = handleRemoteStreamRemoved;
 
     if (isInitiator) {
@@ -291,6 +292,19 @@ function setLocalAndSendMessage(sessionDescription) {
     sendMessage(sessionDescription);
 }
 
+function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ( "withCredentials" in xhr ) {
+        xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
+    }
+    return xhr;
+}
+
 function requestTurn(turn_url) {
     var turnExists = false;
     for (var i in pc_config.iceServers) {
@@ -303,7 +317,7 @@ function requestTurn(turn_url) {
     if (!turnExists) {
         console.log('Getting TURN server from ', turn_url);
         // No TURN server. Get one from computeengineondemand.appspot.com:
-        var xhr = new XMLHttpRequest();
+        var xhr = createCORSRequest( 'GET', turn_url );
         xhr.onreadystatechange = function(){
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var turnServer = JSON.parse(xhr.responseText);
@@ -315,7 +329,6 @@ function requestTurn(turn_url) {
                 turnReady = true;
             }
         };
-        xhr.open('GET', turn_url, true);
         xhr.send();
     }
 }
