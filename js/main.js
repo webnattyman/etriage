@@ -22,7 +22,6 @@ var sdpConstraints = {'mandatory': {
 var room = location.pathname.substring(1);
 if (room === '') {
     room = 'videoChat';
-} else {
 }
 
 var socket = io.connect();
@@ -58,10 +57,10 @@ socket.on('log', function (array){
 
 function sendMessage(message){
     console.log('Client sending message: ', message);
-  // if (typeof message === 'object') {
-  //   message = JSON.stringify(message);
-  // }
-  socket.emit('message', message);
+    if (typeof message === 'object') {
+       message = JSON.stringify(message);
+    }
+    socket.emit('message', message);
 }
 
 socket.on('message', function (message){
@@ -70,7 +69,7 @@ socket.on('message', function (message){
         maybeStart();
     } else if (message.type === 'offer') {
         if (!isInitiator && !isStarted) {
-          maybeStart();
+            maybeStart();
         }
         pc.setRemoteDescription(new RTCSessionDescription(message));
         doAnswer();
@@ -78,8 +77,8 @@ socket.on('message', function (message){
         pc.setRemoteDescription(new RTCSessionDescription(message));
     } else if (message.type === 'candidate' && isStarted) {
         var candidate = new RTCIceCandidate({
-          sdpMLineIndex: message.label,
-          candidate: message.candidate
+            sdpMLineIndex: message.label,
+            candidate: message.candidate
         });
         pc.addIceCandidate(candidate);
     } else if (message === 'bye' && isStarted) {
@@ -132,7 +131,7 @@ function createPeerConnection() {
     try {
         pc = new RTCPeerConnection(null);
         pc.onicecandidate = handleIceCandidate;
-        pc.onaddstream = handleRemoteStreamAdded;
+        pc.ontrack = handleRemoteStreamAdded;
         pc.onremovestream = handleRemoteStreamRemoved;
         console.log('Created RTCPeerConnnection');
     } catch (e) {
