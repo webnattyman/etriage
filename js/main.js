@@ -38,6 +38,11 @@ if (room === '') {
 
 var socket = io.connect();
 
+socket.on('ipaddr', function (ipaddr) {
+    console.log('Server IP address is: ' + ipaddr);
+    updateRoomURL(ipaddr);
+});
+
 if (room !== '') {
     console.log('Create or join room', room);
     socket.emit('create or join', room);
