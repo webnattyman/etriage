@@ -259,53 +259,6 @@ function receiveDataFirefoxFactory() {
  * Aux functions, mostly UI-related
  ****************************************************************************/
 
-function snapPhoto() {
-    photoContext.drawImage(video, 0, 0, photoContextW, photoContextH);
-    show(photo, sendBtn);
-}
-
-function sendPhoto() {
-    // Split data channel message in chunks of this byte length.
-    var CHUNK_LEN = 64000;
-
-    var img = photoContext.getImageData(0, 0, photoContextW, photoContextH),
-        len = img.data.byteLength,
-        n = len / CHUNK_LEN | 0;
-
-    console.log('Sending a total of ' + len + ' byte(s)');
-    dataChannel.send(len);
-
-    // split the photo and send in chunks of about 64KB
-    for (var i = 0; i < n; i++) {
-        var start = i * CHUNK_LEN,
-            end = (i+1) * CHUNK_LEN;
-        console.log(start + ' - ' + (end-1));
-        dataChannel.send(img.data.subarray(start, end));
-    }
-
-    // send the reminder, if any
-    if (len % CHUNK_LEN) {
-        console.log('last ' + len % CHUNK_LEN + ' byte(s)');
-        dataChannel.send(img.data.subarray(n * CHUNK_LEN));
-    }
-}
-
-function snapAndSend() {
-    snapPhoto();
-    sendPhoto();
-}
-
-function renderPhoto(data) {
-    var canvas = document.createElement('canvas');
-    canvas.classList.add('photo');
-    trail.insertBefore(canvas, trail.firstChild);
-
-    var context = canvas.getContext('2d');
-    var img = context.createImageData(photoContextW, photoContextH);
-    img.data.set(data);
-    context.putImageData(img, 0, 0);
-}
-
 function setCanvasDimensions() {
     if (video.videoWidth == 0) {
         setTimeout(setCanvasDimensions, 200);
