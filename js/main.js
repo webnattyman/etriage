@@ -2,26 +2,14 @@
  * Initial setup
  ****************************************************************************/
 
-var configuration = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]},
+var configuration = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
 // {"url":"stun:stun.services.mozilla.com"}
 
-    roomURL = document.getElementById('url'),
-    video = document.getElementsByTagName('video')[0],
-    photo = document.getElementById('photo'),
-    photoContext = photo.getContext('2d'),
-    trail = document.getElementById('trail'),
-    snapBtn = document.getElementById('snap'),
-    sendBtn = document.getElementById('send'),
-    snapAndSendBtn = document.getElementById('snapAndSend'),
-    // Default values for width and height of the photoContext.
-    // Maybe redefined later based on user's webcam video stream.
-    photoContextW = 300, photoContextH = 150;
+var sendButton = document.getElementById("sendButton");
+var sendTextarea = document.getElementById("dataChannelSend");
+var receiveTextarea = document.getElementById("dataChannelReceive");
 
-// Attach even handlers
-video.addEventListener('play', setCanvasDimensions);
-snapBtn.addEventListener('click', snapPhoto);
-sendBtn.addEventListener('click', sendPhoto);
-snapAndSendBtn.addEventListener('click', snapAndSend);
+//sendButton.onclick = sendData;
 
 // Create a random room if not already present in the URL.
 var isInitiator;
@@ -63,7 +51,7 @@ socket.on('full', function (room) {
 
 socket.on('ready', function () {
     createPeerConnection(isInitiator, configuration);
-})
+});
 
 socket.on('log', function (array) {
   console.log.apply(console, array);
@@ -74,7 +62,9 @@ socket.on('message', function (message){
     signalingMessageCallback(message);
 });
 
-// Join a room
+var video = document.querySelector('#localVideo');
+var remoteVideo = document.querySelector('#remoteVideo');
+
 socket.emit('create or join', room);
 
 if (location.hostname.match(/localhost|127\.0\.0/)) {
@@ -99,7 +89,6 @@ function updateRoomURL(ipaddr) {
     } else {
         url = location.protocol + '//' + ipaddr + ':2013/#' + room
     }
-    roomURL.innerHTML = url;
 }
 
 
@@ -115,10 +104,7 @@ function grabWebCamVideo() {
 function getMediaSuccessCallback(stream) {
     var streamURL = window.URL.createObjectURL(stream);
     console.log('getUserMedia video stream URL:', streamURL);
-    window.stream = stream; // stream available to console
-
     video.src = streamURL;
-    show(snapBtn);
 }
 
 function getMediaErrorCallback(error){
