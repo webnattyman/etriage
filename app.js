@@ -26,6 +26,6 @@ io.on('connection', function(socket) {
   });
 });
 
-server.listen(2013, function() {  
+server.listen( process.env.PORT || 2013, function() {  
   console.log("Servidor corriendo en http://localhost:2013");
 });
