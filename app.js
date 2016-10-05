@@ -1,6 +1,6 @@
 var express = require('express');  
 var app = express();  
-var server = require('http').Server(app);  
+var server = require('https').Server(app);  
 var io = require('socket.io')(server);
 
 var messages = [{  
@@ -11,7 +11,7 @@ var messages = [{
 
 app.use(express.static('public'));
 
-app.get('/hello', function(req, res) {  
+app.get('/', function(req, res) {  
   res.status(200).send("Bienvenido!");
 });
 
