@@ -11,7 +11,7 @@ var messages = [{
 
 app.use(express.static('public'));
 
-app.get('/hello', function(req, res) {  
+app.get('/', function(req, res) {  
   res.status(200).send("Bienvenido!");
 });
 
