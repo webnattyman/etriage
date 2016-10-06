@@ -1,4 +1,4 @@
-var socket = io.connect('https://redmedix.herokuapp.com', { 'forceNew': true });
+var socket = io.connect('http://172.16.208.130:2013', { 'forceNew': true });
 
 socket.on('messages', function(data) {  
   console.log(data);
