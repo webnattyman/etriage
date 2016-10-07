@@ -221,10 +221,10 @@ if(roomid && roomid.length) {
     disableInputButtons();
 }
 
-socket.on('new-message', function(data) {  
+/*socket.on('new-message', function(data) {  
   console.log(data);
   render(data);
-});
+});*/
 
 
 function render (data) {  
