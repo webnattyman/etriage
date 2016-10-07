@@ -38,7 +38,7 @@ var socket = io.connect('https://redmedix.herokuapp.com', { 'forceNew': true });
 //var socket = io.connect('http://172.16.208.130:2013', { 'forceNew': true });
 socket.on('crear', function (room){
     console.log('Created room ' + room);
-    //isInitiator = true;
+    isInitiator = true;
 });
 
 socket.on('full', function (room){
