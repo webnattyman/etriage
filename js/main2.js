@@ -46,12 +46,13 @@ function appendDIV(event) {
 // ......................................................
 // ..................RTCMultiConnection Code.............
 // ......................................................
-var socket = io.connect('https://redmedix.herokuapp.com', { 'forceNew': true });
+var socket = io.connect('https://redmedix.herokuapp.com:2013', { 'forceNew': true });
 //var socket = io.connect('http://172.16.208.130:2013', { 'forceNew': true });
 var connection = new RTCMultiConnection();
 
 // by default, socket.io server is assumed to be deployed on your own URL
-connection.socketURL = '/';
+//connection.socketURL = '/';
+connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 
 // comment-out below line if you do not have your own socket.io server
 // connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';

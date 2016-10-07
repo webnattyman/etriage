@@ -26,10 +26,8 @@ io.on('connection', function(socket) {
     }else{
         console.log('Sala llena!');
     }
-    socket.emit('emit(): client ' + socket.id + ' joined room ' + sala);
-    socket.broadcast.emit('broadcast(): client ' + socket.id + ' joined room ' + sala);
     console.log('Usuarios Conectados: ' + socketId);
-    //socket.emit('messages', messages);
+    socket.emit('new-message', messages);
     socket.on('new-message', function(data) {
         messages.push(data);
         io.sockets.emit('new-message', messages);
