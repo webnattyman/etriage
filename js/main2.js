@@ -40,14 +40,11 @@ function appendDIV(event) {
 //var socket = io.connect('https://redmedix.herokuapp.com:443/', { 'forceNew': true });
 //var socket = io.connect('http://172.16.208.130:2013', { 'forceNew': true });
 var connection = new RTCMultiConnection();
+var socket = connection.connectSocket();
 
 // by default, socket.io server is assumed to be deployed on your own URL
 //connection.socketURL = '/';
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
-
-// comment-out below line if you do not have your own socket.io server
-// connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
-
 connection.socketMessageEvent = 'Video Chat';
 
 connection.session = {
@@ -208,10 +205,10 @@ if(roomid && roomid.length) {
     disableInputButtons();
 }
 
-/*socket.on('new-message', function(data) {  
+socket.on('new-message', function(data) {  
   console.log(data);
   render(data);
-});*/
+});
 
 
 function render (data) {  
