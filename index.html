@@ -8,25 +8,72 @@
         <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1'>
         <base target='_blank'>
         <title>Ciatel S.A.</title>
+        <style>
+            video {
+                object-fit: fill;
+                width: 30%;
+            }
+            button,
+            input,
+            select {
+                font-weight: normal;
+                padding: 2px 4px;
+                text-decoration: none;
+                display: inline-block;
+                text-shadow: none;
+                font-size: 16px;
+                outline: none;
+            }
+            .make-center {
+                text-align: center;
+                padding: 5px 10px;
+            }
+        </style>
     </head>  
     <body>  
         <h1>Video Chat</h1>
+        <section class="experiment">
+            <div class="make-center">
+                <input type="text" id="room-id" value="abcdef">
+                <button id="open-room">Open Room</button>
+                <button id="join-room">Join Room</button>
+                <button id="open-or-join-room">Auto Open Or Join Room</button>
+
+                <br><br>
+                <input type="text" id="input-text-chat" placeholder="Enter Text Chat" disabled>
+                <button id="share-file" disabled>Share File</button>
+                <br><br>
+                <button id="btn-leave-room" disabled>Leave /or close the room</button>
+
+                <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
+            </div>
+
+            <div id="chat-container">
+                <div id="file-container"></div>
+                <div class="chat-output"></div>
+            </div>
+
+            <div id="videos-container"></div>
+        </section>
+        <!--
         <video id="localVideo" autoplay></video>
         <video id="remoteVideo" autoplay></video>
         <div>
             <button id="startButton">Start</button>
             <button id="callButton">Call</button>
             <button id="hangupButton">Hang Up</button>
-        </div>
-        <div id="messages"></div>
+        </div>-->
         <br/>
+        <div id="messages"></div>
         <form onsubmit="return addMessage(this)">
             <input type="text" id="username" placeholder="Tu Nombre" >
             <input type="text" id="texto" placeholder="Cuéntanos algo...">
             <input type="submit" value="Enviar!">
         </form>
+        <script src="https://cdn.webrtc-experiment.com:443/rmc3.min.js"></script>
+        <script src="https://cdn.webrtc-experiment.com/getMediaElement.js"></script>
         <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/main2.js"></script>
         <script src="/js/adapter.js"></script>
-        <script src="/js/main.js"></script>
     </body>  
 </html>  
