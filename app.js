@@ -40,7 +40,7 @@ io.on('connection', function(socket) {
     
 });
 
-server.listen( process.env.PORT || 443, function() {  
+server.listen( process.env.PORT || 2013, function() {  
   //console.log("Servidor corriendo en local");
   console.log("Servidor corriendo en https://redmedix.herokuapp.com");
 });
