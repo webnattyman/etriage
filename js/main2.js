@@ -91,7 +91,7 @@ connection.onmessage = appendDIV;
 connection.filesContainer = document.getElementById('file-container');
 
 connection.onopen = function() {
-    document.getElementById('share-file').disabled = false;
+    document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
 
@@ -108,13 +108,11 @@ connection.onclose = function() {
 };
 
 connection.onEntireSessionClosed = function(event) {
-    document.getElementById('share-file').disabled = true;
+    document.getElementById('sendtxt').disabled = true;
     document.getElementById('input-text-chat').disabled = true;
     document.getElementById('btn-leave-room').disabled = true;
 
     document.getElementById('open-or-join-room').disabled = false;
-    document.getElementById('open-room').disabled = false;
-    document.getElementById('join-room').disabled = false;
     document.getElementById('room-id').disabled = false;
 
     connection.attachStreams.forEach(function(stream) {
@@ -133,8 +131,6 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
 
 function disableInputButtons() {
     document.getElementById('open-or-join-room').disabled = true;
-    document.getElementById('open-room').disabled = true;
-    document.getElementById('join-room').disabled = true;
     document.getElementById('room-id').disabled = true;
     document.getElementById('btn-leave-room').disabled = false;
 }
