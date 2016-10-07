@@ -36,16 +36,12 @@
         <section class="experiment">
             <div class="make-center">
                 <input type="text" id="room-id" value="abcdef">
-                <button id="open-room">Open Room</button>
-                <button id="join-room">Join Room</button>
-                <button id="open-or-join-room">Auto Open Or Join Room</button>
-
+                <button id="open-or-join-room">Abrir o Entrar en Sala</button>
                 <br><br>
                 <input type="text" id="input-text-chat" placeholder="Enter Text Chat" disabled>
-                <button id="share-file" disabled>Share File</button>
+                <button id="sendtxt" disabled>Enviar Mensaje</button>
                 <br><br>
-                <button id="btn-leave-room" disabled>Leave /or close the room</button>
-
+                <button id="btn-leave-room" disabled>Salir de la Sala</button>
                 <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
             </div>
 
@@ -56,21 +52,7 @@
 
             <div id="videos-container"></div>
         </section>
-        <!--
-        <video id="localVideo" autoplay></video>
-        <video id="remoteVideo" autoplay></video>
-        <div>
-            <button id="startButton">Start</button>
-            <button id="callButton">Call</button>
-            <button id="hangupButton">Hang Up</button>
-        </div>-->
         <br/>
-        <div id="messages"></div>
-        <form onsubmit="return addMessage(this)">
-            <input type="text" id="username" placeholder="Tu Nombre" >
-            <input type="text" id="texto" placeholder="Cuéntanos algo...">
-            <input type="submit" value="Enviar!">
-        </form>
         <script src="https://cdn.webrtc-experiment.com:443/rmc3.min.js"></script>
         <script src="https://cdn.webrtc-experiment.com/getMediaElement.js"></script>
         <!--<script src="/socket.io/socket.io.js"></script>-->

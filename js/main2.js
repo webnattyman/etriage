@@ -1,8 +1,7 @@
-document.getElementById('open-room').onclick = function() {
-    disableInputButtons();
-    connection.open(document.getElementById('room-id').value, function() {
-        showRoomURL(connection.sessionid);
-    });
+document.getElementById('sendtxt').onclick = function() {
+    connection.send(document.getElementById('input-text-chat').value);
+    appendDIV(document.getElementById('input-text-chat').value);
+    document.getElementById('input-text-chat').value = '';
 };
 
 document.getElementById('join-room').onclick = function() {
@@ -21,11 +20,8 @@ document.getElementById('open-or-join-room').onclick = function() {
 
 document.getElementById('input-text-chat').onkeyup = function(e) {
     if (e.keyCode != 13) return;
-
-    // removing trailing/leading whitespace
     this.value = this.value.replace(/^\s+|\s+$/g, '');
     if (!this.value.length) return;
-
     connection.send(this.value);
     appendDIV(this.value);
     this.value = '';
@@ -57,7 +53,7 @@ connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 // comment-out below line if you do not have your own socket.io server
 // connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 
-connection.socketMessageEvent = 'video-conference-demo';
+connection.socketMessageEvent = 'Video Chat';
 
 connection.session = {
     video: true,
