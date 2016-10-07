@@ -4,11 +4,6 @@ document.getElementById('sendtxt').onclick = function() {
     document.getElementById('input-text-chat').value = '';
 };
 
-document.getElementById('join-room').onclick = function() {
-    disableInputButtons();
-    connection.join(document.getElementById('room-id').value);
-};
-
 document.getElementById('open-or-join-room').onclick = function() {
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
