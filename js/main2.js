@@ -51,8 +51,8 @@ var socket = io.connect('https://redmedix.herokuapp.com/', { 'forceNew': true })
 var connection = new RTCMultiConnection();
 
 // by default, socket.io server is assumed to be deployed on your own URL
-//connection.socketURL = '/';
-connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+connection.socketURL = '/';
+//connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 
 // comment-out below line if you do not have your own socket.io server
 // connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
