@@ -139,8 +139,8 @@ function maybeStart() {
 function createPeerConnection() {
     try {
         pc = new RTCPeerConnection(pc_config);
-        pc.onicecandidate = handleIceCandidate;
         pc.onaddstream = handleRemoteStreamAdded;
+        pc.onicecandidate = handleIceCandidate;
         pc.onremovestream = handleRemoteStreamRemoved;
         console.log('Created RTCPeerConnnection');
     } catch (e) {
@@ -151,23 +151,23 @@ function createPeerConnection() {
 }
 
 function handleIceCandidate(event) {
-  console.log('handleIceCandidate event: ', event);
-  if (event.candidate) {
-    sendMessage({
-      type: 'candidate',
-      label: event.candidate.sdpMLineIndex,
-      id: event.candidate.sdpMid,
-      candidate: event.candidate.candidate});
-  } else {
-    console.log('End of candidates.');
-  }
+    console.log('handleIceCandidate event: ', event);
+    if (event.candidate) {
+        sendMessage({
+            type: 'candidate',
+            label: event.candidate.sdpMLineIndex,
+            id: event.candidate.sdpMid,
+            candidate: event.candidate.candidate});
+    } else {
+        console.log('End of candidates.');
+    }
 }
 
 function handleRemoteStreamAdded(event) {
-  console.log('Remote stream added.');
-  attachMediaStream(remoteVideo, event.stream);
-  //remoteVideo.src = window.URL.createObjectURL(event.stream);
-  remoteStream = event.stream;
+    console.log('Remote stream added.');
+    attachMediaStream(remoteVideo, event.stream);
+    remoteVideo.src = window.URL.createObjectURL(event.stream);
+    remoteStream = event.stream;
 }
 
 function handleCreateOfferError(event){
