@@ -37,7 +37,7 @@ function appendDIV(event) {
 }
 
 var onMessageCallbacks = {};
-var SIGNALING_SERVER = 'https://redmedix.herokuapp.com/';
+var SIGNALING_SERVER = 'https://redmedix.herokuapp.com:2013/';
 var defaultChannel = 'redmedix-channel';
 
 window.username = Math.random() * 9999 << 9999;
