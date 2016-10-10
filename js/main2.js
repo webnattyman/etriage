@@ -6,11 +6,13 @@ document.getElementById('sendtxt').onclick = function() {
 
 document.getElementById('open-or-join-room').onclick = function() {
     disableInputButtons();
-    connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
+    connection.interval = 1000;
+    connection.open();
+    /*connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
         }
-    });
+    });*/
 };
 
 document.getElementById('input-text-chat').onkeyup = function(e) {
@@ -52,11 +54,6 @@ connection.session = {
     video: true,
     audio: true,
     data: true
-};
-
-connection.sdpConstraints.mandatory = {
-    OfferToReceiveAudio: true,
-    OfferToReceiveVideo: true
 };
 
 connection.videosContainer = document.getElementById('videos-container');
