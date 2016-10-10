@@ -36,24 +36,46 @@ function appendDIV(event) {
     document.getElementById('input-text-chat').focus();
 }
 
-// ......................................................
-// ..................RTCMultiConnection Code.............
-// ......................................................
-var socket = io.connect('https://redmedix.herokuapp.com/', { 'forceNew': true });
-//var socket = io.connect('http://172.16.208.130:2013', { 'forceNew': true });
-var connection = new RTCMultiConnection();
-connection.enableLogs = true;
-//var socket = connection.connectSocket();
+var SIGNALING_SERVER = 'https://redmedix.herokuapp.com:2013/';
+var defaultChannel = 'redmedix-channel';
 
-// by default, socket.io server is assumed to be deployed on your own URL
-connection.socketURL = '/';
-//connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
-connection.socketMessageEvent = 'Video Chat';
+window.username = Math.random() * 9999 << 9999;
+var connection = new RTCMultiConnection(defaultChannel);
+connection.openSignalingChannel = function(config) {
+    var channel = config.channel || defaultChannel;
+    onMessageCallbacks[channel] = config.onmessage;
+    var sender = Math.round(Math.random() * 60535) + 5000;
 
-connection.session = {
-    video: true,
-    audio: true,
-    data: true
+    io.connect(SIGNALING_SERVER).emit('new-channel', {
+        channel: channel,
+        sender: sender
+    });
+
+    var socket = io.connect(SIGNALING_SERVER + channel);
+    socket.channel = channel;
+    socket.on('connect', function() {
+        if (config.callback) config.callback(socket);
+    });
+
+    socket.on('new-message', function(data) {  
+        console.log(data);
+        render(data);
+    });
+
+    socket.send = function(message) {
+        socket.emit('message', {
+            sender: sender,
+            data: message
+        });
+    };
+
+    socket.on('message', function(data) {
+        if(data.sender == connection.userid) return;
+
+        if (onMessageCallbacks[data.channel]) {
+            onMessageCallbacks[data.channel](data.message);
+        };
+    });
 };
 
 connection.videosContainer = document.getElementById('videos-container');
