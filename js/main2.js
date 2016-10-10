@@ -37,7 +37,7 @@ function appendDIV(event) {
 }
 
 var onMessageCallbacks = {};
-var SIGNALING_SERVER = 'https://redmedix.herokuapp.com:2013/';
+var SIGNALING_SERVER = 'https://redmedix.herokuapp.com/';
 var defaultChannel = 'redmedix-channel';
 
 window.username = Math.random() * 9999 << 9999;
@@ -107,6 +107,12 @@ connection.onstreamended = function(event) {
 
 connection.onmessage = appendDIV;
 connection.filesContainer = document.getElementById('file-container');
+
+connection.extra = {
+    username: window.username
+};
+
+connection.connect();
 
 connection.onopen = function() {
     document.getElementById('sendtxt').disabled = false;
