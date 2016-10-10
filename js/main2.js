@@ -38,7 +38,7 @@ function appendDIV(event) {
 // ..................RTCMultiConnection Code.............
 // ......................................................
 //var socket = io.connect('https://redmedix.herokuapp.com:443/', { 'forceNew': true });
-var socket = io.connect('http://172.16.208.130:2013', { 'forceNew': true });
+var socket = io.connect('https://redmedix.herokuapp.com:2013', { 'forceNew': true });
 var connection = new RTCMultiConnection();
 connection.enableLogs = true;
 //var socket = connection.connectSocket();
