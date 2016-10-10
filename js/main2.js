@@ -1,6 +1,6 @@
 var onMessageCallbacks = {};
 //var SIGNALING_SERVER = 'https://172.16.208.130:2013/';
-var SIGNALING_SERVER = 'https://redmedix.herokuapp.com:2013/';
+var SIGNALING_SERVER = 'https://redmedix.herokuapp.com/';
 var defaultChannel = 'redmedix-channel';
 
 window.username = Math.random() * 9999 << 9999;
