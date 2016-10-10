@@ -1,45 +1,62 @@
-var onMessageCallbacks = {};
-//var SIGNALING_SERVER = 'https://172.16.208.130:2013/';
-var SIGNALING_SERVER = 'https://redmedix.herokuapp.com/';
-var defaultChannel = 'redmedix-channel';
+document.getElementById('sendtxt').onclick = function() {
+    connection.send(document.getElementById('input-text-chat').value);
+    appendDIV(document.getElementById('input-text-chat').value);
+    document.getElementById('input-text-chat').value = '';
+};
 
-window.username = Math.random() * 9999 << 9999;
-var connection = new RTCMultiConnection(defaultChannel);
-connection.openSignalingChannel = function(config) {
-    var channel = config.channel || defaultChannel;
-    onMessageCallbacks[channel] = config.onmessage;
-    var sender = Math.round(Math.random() * 60535) + 5000;
-
-    io.connect(SIGNALING_SERVER).emit('new-channel', {
-        channel: channel,
-        sender: sender
+document.getElementById('open-or-join-room').onclick = function() {
+    disableInputButtons();
+    connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
+        if(!isRoomExists) {
+            showRoomURL(roomid);
+        }
     });
+};
 
-    var socket = io.connect(SIGNALING_SERVER + channel);
-    socket.channel = channel;
-    socket.on('connect', function() {
-        if (config.callback) config.callback(socket);
-    });
+document.getElementById('input-text-chat').onkeyup = function(e) {
+    if (e.keyCode != 13) return;
+    this.value = this.value.replace(/^\s+|\s+$/g, '');
+    if (!this.value.length) return;
+    connection.send(this.value);
+    appendDIV(this.value);
+    this.value = '';
+};
 
-    socket.on('new-message', function(data) {  
-        console.log(data);
-        render(data);
-    });
+var chatContainer = document.querySelector('.chat-output');
 
-    socket.send = function(message) {
-        socket.emit('message', {
-            sender: sender,
-            data: message
-        });
-    };
+function appendDIV(event) {
+    var div = document.createElement('div');
+    div.innerHTML = event.data || event;
+    chatContainer.insertBefore(div, chatContainer.firstChild);
+    div.tabIndex = 0;
+    div.focus();
 
-    socket.on('message', function(data) {
-        if(data.sender == connection.userid) return;
+    document.getElementById('input-text-chat').focus();
+}
 
-        if (onMessageCallbacks[data.channel]) {
-            onMessageCallbacks[data.channel](data.message);
-        };
-    });
+// ......................................................
+// ..................RTCMultiConnection Code.............
+// ......................................................
+//var socket = io.connect('https://redmedix.herokuapp.com:443/', { 'forceNew': true });
+var socket = io.connect('/', { 'forceNew': true });
+var connection = new RTCMultiConnection();
+connection.enableLogs = true;
+//var socket = connection.connectSocket();
+
+// by default, socket.io server is assumed to be deployed on your own URL
+connection.socketURL = '/';
+//connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+connection.socketMessageEvent = 'Video Chat';
+
+connection.session = {
+    video: true,
+    audio: true,
+    data: true
+};
+
+connection.sdpConstraints.mandatory = {
+    OfferToReceiveAudio: true,
+    OfferToReceiveVideo: true
 };
 
 connection.videosContainer = document.getElementById('videos-container');
@@ -68,46 +85,8 @@ connection.onstreamended = function(event) {
     }
 };
 
-connection.onleave = function(userid, extra) {
-    if (extra) console.log(extra.username + ' left you!');
-
-    var video = document.getElementById(userid);
-    if (video) video.parentNode.removeChild(video);
-};
-
-function getVideo(e, extra) {
-    var div = document.createElement('div');
-    div.className = 'video-container';
-    div.id = e.userid || 'self';
-
-    if (e.type === 'remote') {
-        if (connection.isInitiator) {
-            var eject = document.createElement('button');
-            eject.className = 'eject';
-            eject.title = 'Eject this User';
-
-            eject.onclick = function() {
-                connection.eject(this.parentNode.id);
-                this.parentNode.style.display = 'none';
-            };
-            div.appendChild(eject);
-        }
-    }
-    div.appendChild(e.mediaElement);
-
-    if (extra) {
-        var h2 = document.createElement('h2');
-        h2.innerHTML = 'username: ' + extra.username;
-        div.appendChild(h2);
-    }
-    return div;
-}
-
-connection.extra = {
-    username: window.username
-};
-
-connection.connect();
+connection.onmessage = appendDIV;
+connection.filesContainer = document.getElementById('file-container');
 
 connection.onopen = function() {
     document.getElementById('sendtxt').disabled = false;
@@ -126,7 +105,6 @@ connection.onclose = function() {
     }
 };
 
-/*
 connection.onEntireSessionClosed = function(event) {
     document.getElementById('sendtxt').disabled = true;
     document.getElementById('input-text-chat').disabled = true;
@@ -148,51 +126,16 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
     // seems room is already opened
     connection.join(useridAlreadyTaken);
 };
-*/
-
-document.getElementById('sendtxt').onclick = function() {
-    connection.send(document.getElementById('input-text-chat').value);
-    appendDIV(document.getElementById('input-text-chat').value);
-    document.getElementById('input-text-chat').value = '';
-};
-
-document.getElementById('open-or-join-room').onclick = function() {
-    disableInputButtons();
-    connection.interval = 1000;
-    connection.open();
-    /*connection.join(document.getElementById('room-id').value, function(isRoomExists, roomid) {
-        if(!isRoomExists) {
-            showRoomURL(roomid);
-        }
-    });*/
-};
-
-document.getElementById('input-text-chat').onkeyup = function(e) {
-    if (e.keyCode != 13) return;
-    this.value = this.value.replace(/^\s+|\s+$/g, '');
-    if (!this.value.length) return;
-    connection.send(this.value);
-    appendDIV(this.value);
-    this.value = '';
-};
-
-var chatContainer = document.querySelector('.chat-output');
-
-function appendDIV(event) {
-    var div = document.createElement('div');
-    div.innerHTML = event.data || event;
-    chatContainer.insertBefore(div, chatContainer.firstChild);
-    div.tabIndex = 0;
-    div.focus();
-
-    document.getElementById('input-text-chat').focus();
-}
 
 function disableInputButtons() {
     document.getElementById('open-or-join-room').disabled = true;
     document.getElementById('room-id').disabled = true;
     document.getElementById('btn-leave-room').disabled = false;
 }
+
+// ......................................................
+// ......................Handling Room-ID................
+// ......................................................
 
 function showRoomURL(roomid) {
     var roomHashURL = '#' + roomid;
@@ -263,12 +206,18 @@ if(roomid && roomid.length) {
     disableInputButtons();
 }
 
+socket.on('new-message', function(data) {  
+  console.log(data);
+  render(data);
+});
+
+
 function render (data) {  
     var html = data.map(function(elem, index) {
         return('<div><strong>'+elem.author+'</strong>:<em>'+elem.text+'</em></div>');
     }).join(" ");
 
-    document.getElementById('chat-output').innerHTML = html;
+    document.getElementById('messages').innerHTML = html;
 }
 
 function addMessage(e) {  
