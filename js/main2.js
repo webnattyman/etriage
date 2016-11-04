@@ -128,7 +128,7 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
 };
 
 function disableInputButtons() {
-    document.getElementById('open-or-join-room').disabled = true;
+    document.getElementById('join').disabled = true;
     document.getElementById('room-id').disabled = true;
     document.getElementById('btn-leave-room').disabled = false;
 }
