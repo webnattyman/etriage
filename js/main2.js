@@ -45,7 +45,7 @@ connection.enableLogs = true;
 
 // by default, socket.io server is assumed to be deployed on your own URL
 //connection.socketURL = '/';
-//connection.socketURL = 'https://redmedix.herokuapp.com:443/';
+connection.socketURL = 'https://redmedix.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
 
 connection.session = {
