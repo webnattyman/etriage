@@ -91,11 +91,11 @@ connection.onmessage = appendDIV;
 connection.filesContainer = document.getElementById('file-container');
 
 connection.onopen = function() {
-    document.getElementById('txtdiv').disabled = false;
+    document.getElementById('txtdiv').style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
-    document.querySelector('h1').innerHTML = 'Finalizo la comunicacion con: ' + connection.getAllParticipants().join(', ');
+    document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + connection.getAllParticipants().join(', ');
 };
 
 connection.onclose = function() {
