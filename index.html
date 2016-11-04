@@ -7,6 +7,13 @@
         <meta name='keywords' content='redmedix, salud, videomedicina' />
         <meta name='description' content='Video Chat' />
         <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1'>
+        <script src="//code.jquery.com/jquery-1.12.3.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.0.0.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="print, projection, screen" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <base target='_blank'>
         <title>Ciatel S.A.</title>
         <style>
@@ -32,7 +39,23 @@
         </style>
     </head>  
     <body>  
-        <h1>Video Chat</h1>
+        <nav class="navbar menu_home2 navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header" id="navbarmenu">
+                    <button type="button" id="btn_mobile" class="navbar-toggle float-right" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                        <span class="sr-only">Menu</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="padding-top: 0px;"><img src="images/logo.png" width="100%" alt="logo" /></a>
+                </div>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="nav navbar-nav navbar-right">
+                    </ul>
+                </div>
+            </div> 
+        </nav>
         <section class="experiment">
             <div class="make-center">
                 <input type="hidden" id="room-id" >

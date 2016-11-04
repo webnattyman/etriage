@@ -1,0 +1,4543 @@
+body{
+    position: relative;
+}
+
+.ui-helper-hidden-accessible{
+    display: none;
+}
+
+@font-face
+{
+ font-family: 'bigRedmedix';
+ src: url('Alternate Gothic BT2.ttf');
+}
+
+@font-face
+{
+ font-family: 'smallRedmedix';
+ src: url('MyriadPro-Regular.otf');
+}
+
+.btn-default:hover {
+    background-position: 0 0;
+}
+
+.btn_qstn, .help{
+    width:170px;
+}
+
+tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+    font-size: 60%;
+}
+
+.tit_qst {
+    text-align: center;
+    font-family: bigRedmedix;
+    font-size: 200%;
+    color: rgb(247, 147, 30);
+    padding-bottom: 3%;
+}
+
+.tit_labl {
+    background-color: rgb(247, 147, 30);
+    color: white;
+    font-family: bigRedmedix;
+}
+
+#loader{
+    margin: auto auto;
+}
+
+#ce {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background: radial-gradient(#00b0e7,#68a574) repeat scroll 0% 0%;
+    position: relative;
+    margin: 20px auto 0px;
+    animation: 0.9s ease-in 0s alternate none infinite running load;
+    transition: all .35s ease-in-out;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+}
+
+#cm {
+    width: 70px;
+    height: 70px;
+    top: 50%;
+    left: 50%;
+    margin-top: -35px; 
+    margin-left: -35px;
+    border-radius: 70px;
+    background: radial-gradient(#20BDCF, #00B0E7) repeat scroll 0% 0%;
+    position: absolute;
+    animation: 0.8s ease-out 0s alternate none infinite running load;
+    transition: all .35s ease-in-out;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+}
+
+#ci {
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -25px;
+    border-radius: 50px;
+    background: #FFF none repeat scroll 0% 0%;
+    position: absolute;
+    animation: 1.2s ease-in 0s alternate none infinite running load;
+    transition: all .35s ease-in-out;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+}
+
+#filtro{
+    text-align: center;
+}
+
+#filtro span{
+    margin-right: 5px;
+}
+
+#filtro a{
+    display: inline;
+    cursor: pointer;
+    color: #BFBFBF;
+    font-family: bigRedmedix;
+    font-size: 220%;
+}
+
+.border_directorio {
+    border-right: 2px solid #14A9B9;
+    border-left: 2px solid #14A9B9;
+}
+
+.data_row{
+    width:90%;
+    vertical-align:middle;
+    text-align:left;
+    line-height:1.2em;
+    padding-bottom:1em;
+    padding-top: 1em;
+}
+
+.dir_med {
+    background: url('../images/boton_med.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 12px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.dir_med:hover {
+    background: url('../images/boton_med_on.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 12px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.dir_centro {
+    background: url('../images/boton_cnt.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 12px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.dir_centro:hover {
+    background: url('../images/boton_cnt_on.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 12px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.data_row2{
+    width:90%;
+    vertical-align:middle;
+    text-align:left;
+    line-height:1.2em;
+    padding-bottom: 1.2em;
+    padding-top: 2.2em;
+}
+
+.top_titulo2 .popover-title{
+    background-color: #14A9B9;
+    color: white;
+    font-family: bigRedmedix;
+    font-size: 160%;
+    text-align: center;
+}
+
+.blk .popover-title{
+    background-color: #14A9B9;
+    color: white;
+    font-family: bigRedmedix;
+    font-size: 160%;
+    text-align: center;
+}
+
+.form-group .popover-title{
+    background-color: #14A9B9;
+    color: white;
+    font-family: bigRedmedix;
+    font-size: 160%;
+    text-align: center;
+}
+
+.popover-title{
+    background-color: rgb(98, 81, 164);
+    color: white;
+    font-family: bigRedmedix;
+    font-size: 160%;
+    text-align: center;
+}
+
+.popover-content {
+    padding: 8px 7px;
+    font-family: smallRedmedix;
+    color: black;
+}
+
+li.active{
+    background: linear-gradient(rgba(255, 255, 255, 0), white, rgba(255, 255, 255, 0));
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0), white, rgba(255, 255, 255, 0));
+    background: -o-linear-gradient(rgba(255, 255, 255, 0), white, rgba(255, 255, 255, 0));
+    background: -moz-linear-gradient(rgba(255, 255, 255, 0), white, rgba(255, 255, 255, 0));
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+li.active a{
+    color: #9860C9;
+    font-weight: bold;
+}
+
+#regis, #auth_tarifas{
+    margin: 0px;
+    padding: 0px;
+}
+
+#whoweare_divs{
+    width:90%;
+    margin:0 auto;
+    padding-top:2%;
+}
+
+#btns_prncp{
+    width: 45%;
+    margin: 0px auto; 
+    height: 20%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#t_1{
+    width:40%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#rowspn{
+    padding-top: 4%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#home_body{
+    overflow-x: hidden;
+}
+
+.error{
+    color: red;
+    font-size: 150%;
+    background-color: white;
+}
+
+.table_paciente .glyphicon {
+    color: #14a9b9;
+}
+
+/* tables */
+/* Estilos tablas de Formularios*/
+/*
+table.tablesorter {
+	font: 80% Verdana, Arial, Helvetica, sans-serif;
+	background-color: #CCCCCC;
+	margin:10px 0pt 15px;
+	font-size: 10px;
+	text-align: left;
+	border:1px solid #666666;
+	width:80%;
+}
+
+table.tablesorter caption{
+	height: 40px;
+	line-height: 44px;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-align: center;
+	background-color: #002854;
+	background-position:center;
+	border: 1px solid #666666;
+	font-size:18px;
+}
+
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #4fb8e7;
+	border: 1px dotted #FFF;
+	font-size: 8pt;
+	padding: 4px;
+	color:#FFFFFF;
+}
+table.tablesorter thead tr .header {
+	
+	background-color: #016703;
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #000033;
+	background-color: #FFF;
+	border-collapse:collapse;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#EAEAEA;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(img/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(img/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #003B19;
+}
+table.tablesorter a{
+text-decoration:underline;
+}
+table.tablesorter tbody tr td:hover{
+	background-color: #FFFF99;
+	color: #000000;
+}
+*/
+/*para quitar  el subrayado a los enlaces*/
+A {text-decoration: none;}
+
+/* Para el estilo  que se usa para el  listado de navegacion por letras  */
+
+/* 
+	STYLE SHEET FOR IHWY JQUERY LISTNAV PLUGIN V 2.0, 3/2/2009
+	
+	For more information, visit http://www.ihwy.com/Labs/jquery-listnav-plugin.aspx
+*/
+
+
+/* default styling example
+----------------------------------------------------------------- */
+
+.listNav { margin:0 0 10px; }
+
+.ln-letters { overflow:hidden; }
+.ln-letters a { font-size:0.9em; display:block; float:left; padding:2px 6px; border:1px solid silver; border-right:none; text-decoration:none; }
+.ln-letters a.ln-last { border-right:1px solid silver; }
+.ln-letters a:hover,
+.ln-letters a.ln-selected { background-color:#eaeaea; }
+.ln-letters a.ln-disabled { color:#ccc; }
+.ln-letter-count { text-align:center; font-size:0.8em; line-height:1; margin-bottom:3px; color:#336699; }
+
+
+/* demo-specific
+----------------------------------------------------------------- */
+
+#myList-nav .ln-letters a { border:none; border-top:2px solid pink; color:red; }
+#myList-nav .ln-letters a.ln-last { border-right:none; }
+#myList-nav .ln-letters a:hover,
+#myList-nav .ln-letters a.ln-selected { border-top:2px solid red; background-color:pink; color:White !important; }
+#myList-nav .ln-letters a.ln-disabled { color:pink; }
+#myList-nav .ln-letters a.ln-disabled:hover { color:white; }
+#myList-nav .ln-letter-count { color:red; }
+
+#myList li { color:pink; }
+#myList li a { color:red; text-decoration:none; }
+#myList li a:hover { text-decoration:underline; }
+
+.blk{
+    height: 100%;
+}
+
+#logo_redmedix{
+    width: 200px;
+}
+
+#btn_app{
+    text-decoration: none;
+    background-color: rgba(238, 238, 238, 0);
+}
+
+span.head_pagos {
+    position: relative;
+    right: 10%;
+}
+
+#btn_app:hover{
+    text-decoration: none;
+    background-color: rgba(238, 238, 238, 0);
+}
+
+select option:checked{
+    background-color: blue;
+    color: white;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.p1{
+    background-image: url('../images/paso1.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 70%;
+    height: 100%;
+    max-height: 126px;
+    min-height: 40px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.p1:hover{
+    background-image: url('../images/paso1_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.p2{
+    background-image: url('../images/paso2.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 70%;
+    height: 100%;
+    max-height: 126px;
+    min-height: 40px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.p2:hover{
+    background-image: url('../images/paso2_on.png');
+    background-size: 101%;
+    background-repeat: no-repeat;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.p3{
+    background-image: url('../images/paso3.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 70%;
+    height: 100%;
+    max-height: 126px;
+    min-height: 40px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.p3:hover{
+    background-image: url('../images/paso3_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#msj{
+    margin: 0px auto;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    position: absolute;
+    bottom: 33px;
+    font-size: 170%;
+}
+
+#msj h1{
+    color: white;
+    font-weight: bolder;
+    font-size: 17px;
+    text-shadow: 1px 1px 1px black;
+}
+
+.btn_edit.on{
+    background-image:url(../admin/images/edit_1.png);
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size: 100%;
+    height: 35px;
+    width: 35px;
+    margin-right: 8%;
+    border: none;
+    border-radius: 3px;
+    cursor: default;
+	-webkit-transition: all .35s ease-in-out;
+	transition: all .35s ease-in-out;
+}
+
+.btn_edit{
+    background-image:url(../admin/images/edit_2.png);
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size: 100%;
+    height: 35px;
+    width: 35px;
+    margin-right: 8%;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn_delete{
+    background-image:url(../admin/images/delete_1.png);
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size: 100%;
+    height: 35px;
+    width: 35px;
+    border: none;
+    border-radius: 3px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn_delete:hover{
+    background-image:url(../admin/images/delete_2.png);
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size: 100%;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.titulo_principal{
+    color: #E6E6E6;
+    font-family: bigRedmedix;
+    vertical-align: baseline;
+    text-transform: uppercase;
+    margin-bottom: 1%;
+    font-size: 620%;
+}
+
+.titulo{
+    color: rgb(255, 255, 255);
+    background: transparent linear-gradient(to bottom, #9860C9, #453787) repeat scroll 0% 0%;
+    font-size: 1em;
+    padding: 7px;
+    font-family: smallRedmedix;
+    vertical-align: baseline;
+    text-transform: uppercase;
+    margin-bottom: 2%;
+}
+
+.titulo2{
+    width: 100%;
+    background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align: center;
+    line-height: 2em;
+    margin-top: 2%;
+}
+
+.titulo3{
+    color: rgb(255, 255, 255);
+    background: transparent linear-gradient(to bottom, #316C99, #2D4771) repeat scroll 0% 0%;
+    font-size: 1em;
+    padding: 7px;
+    font-family: smallRedmedix;
+    vertical-align: baseline;
+    text-transform: uppercase;
+    margin-bottom: 2%;
+}
+
+.exp_table{
+    width: 99%;
+    border: 1px solid rgb(135, 182, 217);
+    margin-left: 5px;
+}
+
+.desc .exp_table input{
+    width: 94%
+}
+
+.exp_table th, .exp_table td{
+    border: 1px solid rgb(135, 182, 217);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ui-autocomplete-category {
+    color: gray;
+    border-bottom: none;
+    clear: both;
+    border-top: 1px solid grey;
+    text-align:right;
+}
+
+.navbar-fixed-top {
+    top: -15px;
+    border-width: 0 0 1px;
+}
+
+.menu_home2{
+    background-image: url("../images/header_bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 130px;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.menu_home {
+    background-image: url("../images/header_bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 140px;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.menu_principal{
+    background-image: url("../images/header2_bg.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 140px;
+    padding-top: 20px;
+}
+
+.navbar-right {
+    float: right !important;
+    margin-right: 3%;
+    height: 10px;
+    position: relative;
+	margin-top: -5px;
+}
+
+.intro-section {
+    height: 100%;
+    padding-top: 150px;
+    text-align: center;
+    background: #fff;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#home {
+    padding-top:8%;
+    min-height:500px;
+    color: #fff; 
+    background-image: url("../images/home_bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#itwedo {
+    min-height: 500px;
+    color: #fff;
+    padding-top: 0;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#itwedo_bg {
+    padding-top: 5%;
+    min-height: 100%;
+    color: #fff;
+    background-image: url("../images/itwedo_bg.png");
+    background-color: #FFF;
+    background-repeat: no-repeat;
+    background-size: contain;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#paciente {
+    padding-top: 4%;
+    min-height: 70%;
+    color: #fff;
+    width: 100%;
+    background-image: url("../images/bg_pac.png");
+    background-color: #FFF;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#paciente ul{
+    font-family: "smallRedmedix";
+    font-size: 13px;
+    padding-top: 15%;
+    color: black;
+    margin: 0px 2%;
+    line-height: 1.5em;
+}
+
+#paciente h1{
+    text-align:center;
+    font-family: "bigRedmedix";
+    font-size: 180%;
+}
+
+#paciente p{
+    font-family: "smallRedmedix";
+    font-size: 13px;
+    padding-top: 15%;
+    color: black;
+    margin: 0px 1px;
+    line-height: 1.2em;
+}
+
+#centros {
+    padding-top: 3%;
+    min-height: 70%;
+    color: #fff;
+    width: 100%;
+    background-image: url("../images/bg_centro.png");
+    background-color: #FFF;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#centros ul{
+    font-family: "smallRedmedix";
+    font-size: 13px;
+    padding-top: 15%;
+    color: black;
+    margin: 0px 2%;
+    line-height: 1.5em;
+}
+
+#centros h1{
+    text-align:center;
+    font-family: "bigRedmedix";
+    font-size: 29px;
+}
+
+#centros p{
+    font-family: "smallRedmedix";
+    font-size: 13px;
+    padding-top: 15%;
+    color: black;
+    margin: 0px 2%;
+    line-height: 1.2em;
+}
+
+#medicos {
+    padding-top: 3%;
+    min-height: 70%;
+    color: #fff;
+    width: 100%;
+    background-image: url("../images/bg_med.png");
+    background-color: #FFF;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#medicos ul{
+    font-family: "smallRedmedix";
+    font-size: 13px;
+    padding-top: 22%;
+    color: black;
+    margin: 0px 2%;
+    line-height: 1.5em;
+    overflow: hidden;
+}
+
+#medicos h1{
+    text-align:center;
+    font-family: "bigRedmedix";
+    font-size: 29px;
+}
+
+#medicos p{
+    font-family: "smallRedmedix";
+    font-size: 13px;
+    padding-top: 22%;
+    color: black;
+    margin: 0px 2%;
+    line-height: 1.2em;
+}
+
+#app {
+    display:none;
+    padding-top:3%;
+    min-height:500px;
+    color: #fff; 
+    background-color: #fff;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#app h1{
+    padding-top:6%;
+    color: #14A9B9;
+    text-shadow: 1px 1px 0px black;
+    font-family: "bigRedmedix";
+    font-size: 40px;
+    line-height: 0.9em;
+}
+
+#whoweare {
+    padding-top: 0%;
+    padding-left: 0;
+    padding-right: 0;
+    color: #fff;
+    background-color: #ffffff;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#whoweare p{
+    font-size: 14px;
+    line-height: 1em;
+    color: #000;
+    font-family: "smallRedmedix";
+    padding-top: 1%;
+    padding-bottom: 2%;
+    text-align: justify;
+    margin-right: 4%;
+    margin-left: 4%;
+}
+#whoweare span{
+    font-family: "smallRedmedix";
+    color: black;
+    font-size: 11px;
+}
+
+#whoweare h1{
+    color: #14A9B9;
+    font-family: "bigRedmedix";
+    font-size: 30px;
+    font-weight: bolder;
+    line-height: 0.9em;
+}
+
+#blog {
+    padding-top:5%;
+    height:500px;
+    color: #fff; 
+    background-color: #1E88E5;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#contacto {
+    color: #000; 
+    background-color: #fff;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#login {
+    color: #000; 
+    background-color: #fff;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#login input{
+    border-radius: 1px;
+}
+
+#navbarmenu{
+    margin-right: 70px;
+    margin-left: 16px;
+    width: 15%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#btn_mobile .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    color: white;
+    background-color: white;
+}
+
+#btn_mobile{
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: #474444;
+    background-image: initial;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+#menu{
+    background-color: rgb(241, 242, 242);
+    width: 100%;
+    margin: 0px auto;
+    padding-top: 10px;
+    font-family: "smallRedmedix";
+    font-size: 100%;
+}
+
+.btn_ing{
+    background-image: url("../images/btn_ing.png");
+    background-size: cover;
+    background-position: 0px;
+    padding-top: 0px;
+    background-repeat: no-repeat;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+    font-family: "bigRedmedix";
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn_reg{
+    font-family: "bigRedmedix";
+    font-size: 30px;
+    color: #F7931E;
+    cursor: pointer;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.right-to-left-p { 
+    border-width: 0px 5px 0px 0;
+    border-style: solid;
+    -webkit-border-image: -webkit-gradient(linear, 0 0, 100% 0, from(#14a9b9), to(rgba(0, 0, 0, 0))) 1 100%;
+    -webkit-border-image: -webkit-linear-gradient(bottom, #14a9b9, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image: -moz-linear-gradient(bottom, #14a9b9, rgba(0, 0, 0, 0)) 1 100%;
+    -o-border-image: -o-linear-gradient(bottom, #14a9b9, rgba(0, 0, 0, 0)) 1 100%;
+    border-image: linear-gradient(to bottom, #14a9b9, rgba(0, 0, 0, 0)) 1 100%; 
+}
+
+.right-to-left-m { 
+    border-width: 0px 5px 0px 0;
+    border-style: solid;
+    -webkit-border-image: -webkit-gradient(linear, 0 0, 100% 0, from(#453787), to(rgba(0, 0, 0, 0))) 1 100%;
+    -webkit-border-image: -webkit-linear-gradient(bottom, #453787, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image: -moz-linear-gradient(bottom, #453787, rgba(0, 0, 0, 0)) 1 100%;
+    -o-border-image: -o-linear-gradient(bottom, #453787, rgba(0, 0, 0, 0)) 1 100%;
+    border-image: linear-gradient(to bottom, #453787, rgba(0, 0, 0, 0)) 1 100%; 
+}
+
+.right-to-left-c { 
+    border-width: 0px 5px 0px 0;
+    border-style: solid;
+    -webkit-border-image: -webkit-gradient(linear, 0 0, 100% 0, from(#316C99), to(rgba(0, 0, 0, 0))) 1 100%;
+    -webkit-border-image: -webkit-linear-gradient(bottom, #316C99, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image: -moz-linear-gradient(bottom, #316C99, rgba(0, 0, 0, 0)) 1 100%;
+    -o-border-image: -o-linear-gradient(bottom, #316C99, rgba(0, 0, 0, 0)) 1 100%;
+    border-image: linear-gradient(to bottom, #316C99, rgba(0, 0, 0, 0)) 1 100%; 
+}
+
+.nav > li > a.btn_reg:hover{
+    background-color: rgba(255, 255, 255, 0);
+    color: #14A9B9;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.nav > li > a.btn_ing:hover{
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url("../images/btn_ing_visited.png");
+    background-size: 101%;
+    background-position: 0px;
+    padding-top: 0px;
+    background-repeat: no-repeat;
+    color: white;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#arrow{
+    left: 349px;
+    position: absolute;
+    z-index: -1;
+    top: 79px;
+}
+
+.help-block {
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    color: #453787;
+    font-size: 26px;
+    font-family: "smallRedmedix";
+    font-weight: bold;
+}
+
+#buscador {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-search{
+    display: block;
+    width: 80px;
+    background-color: #F7931E;
+    cursor: pointer;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 44px;
+    padding-top: 8%;
+    text-align: center;
+}
+
+.ui-widget-content li.ui-autocomplete-category {
+    color: gray;
+    border-bottom: none;
+    clear: both;
+    border-top: 1px solid grey;
+    text-align:right;
+}
+
+#foot_home p{
+    font-size: 159%;
+    line-height: 1em;
+    color: #594DAF;
+    font-family: "bigRedmedix";
+    padding-bottom: 3%;
+}
+
+#foot_home h1{
+    color: #594DAF;
+    font-family: "bigRedmedix";
+    font-size: 309%;
+    line-height: 0.9em;
+}
+
+#foot_iwd{
+    display: block;
+    margin: 0 auto;
+    height: 30%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#foot_body{
+    background-image: url("../images/foot_body.png");
+    background-size: cover;
+    color:white;
+    background-repeat: no-repeat;
+    display: block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#foot_iwd p{
+    font-family: "smallRedmedix";
+    margin: 0px 103px 0 137px;
+    vertical-align: middle;
+    font-size: 19px;
+    padding-top: 5%;
+    text-align: center;
+}
+
+.btn_pac{
+    background-image: url("../images/paciente_btn_out.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    cursor: pointer;
+    display: block;
+    height: 151px;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn_pac:hover{
+    background-image: url("../images/paciente_btn_in.png");
+    background-size: 85%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn_centro{
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+    background-image: url("../images/centro_btn_out.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    cursor: pointer;
+    display: block;
+    height: 151px;
+    margin: 0 auto;
+}
+
+.btn_centro:hover{
+    background-image: url("../images/centro_btn_in.png");
+    background-size: 84%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn_med{
+    background-image: url("../images/medico_btn_out.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    cursor: pointer;
+    display: block;
+    height: 151px;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn_med:hover{
+    background-image: url("../images/medico_btn_in.png");
+    background-size: 82%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.list-group-item {
+    color:black;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: 0;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    font-family: "smallRedmedix";
+    text-align: left;
+    list-style-image: url('../images/item_list_pac.png');
+}
+
+.firsts:first-child:before {
+    content: '';
+    position: absolute;
+    width: 97%;
+    height: 3px;
+    background: linear-gradient(to left, #14a9b9, white);
+    left: 14px;
+}
+
+.second:first-child:before {
+    content: '';
+    position: absolute;
+    width: 97%;
+    height: 3px;
+    background: linear-gradient(to left, #316C99, white);
+    left: 14px;
+}
+
+.third:first-child:before {
+    content: '';
+    position: absolute;
+    width: 97%;
+    height: 3px;
+    background: linear-gradient(to left, #453787, white);
+    left: 14px;
+}
+
+ul#list_paciente{
+    font-size: 11px;
+    height: 190px;
+    overflow: hidden;
+    text-align: justify;
+    color: black;
+    list-style-position: outside;
+    background-color: rgba(233, 233, 233, 0.04);
+    border: 1px solid rgba(234, 234, 234, 0.23);
+    box-shadow: 1px 1px 6px rgba(234, 234, 234, 0.23);
+}
+
+ul#list_centros{
+    font-size: 11px;
+    height: 190px;
+    overflow: hidden;
+    text-align: justify;
+    color: black;
+    list-style-position: outside;
+    background-color: rgba(233, 233, 233, 0.04);
+    border: 1px solid rgba(234, 234, 234, 0.23);
+    box-shadow: 1px 1px 6px rgba(234, 234, 234, 0.23);
+}
+
+ul#list_medicos{
+    font-size: 11px;
+    height: 190px;
+    overflow: hidden;
+    text-align: justify;
+    color: black;
+    list-style-position: outside;
+    background-color: rgba(233, 233, 233, 0.04);
+    border: 1px solid rgba(234, 234, 234, 0.23);
+    box-shadow: 1px 1px 6px rgba(234, 234, 234, 0.23);
+}
+
+.pac{
+    color:#14a9b9;
+    background-color: rgba(255, 255, 255, 0.33);
+    font-weight: bold;
+}
+
+.cnt{
+    color:#316C99;
+    background-color: rgba(255, 255, 255, 0.33);
+    font-weight: bold;
+}
+
+.med{
+    color:#453787;
+    background-color: rgba(255, 255, 255, 0.33);
+    font-weight: bold;
+}
+
+.head_contacto{
+    position: relative;
+    right: 4%;
+}
+
+.head_medico{
+    position: relative;
+    right: 12%;
+}
+
+.head_paciente{
+    position: relative;
+    right: 5%;
+}
+
+.head_centro{
+    position: relative;
+    right: 4%;
+}
+
+.head_contacto h1{
+    position: relative;
+    color: white;
+    z-index: 2147483647;
+    left: 6%;
+    font-family: "bigRedmedix";
+    top: 41px;
+    font-size: 26px;
+}
+
+.head_paciente h1{
+    position: relative;
+    color: white;
+    z-index: 2147483647;
+    left: 6%;
+    font-family: "bigRedmedix";
+    top: 38px;
+    font-size: 26px;
+}
+
+.head_medico h1{
+    position: relative;
+    color: white;
+    z-index: 2147483647;
+    left: 6%;
+    font-family: "bigRedmedix";
+    top: 41px;
+    font-size: 26px;
+}
+
+.head_centro h1{
+    position: relative;
+    color: white;
+    z-index: 2147483647;
+    left: 3%;
+    font-family: "bigRedmedix";
+    top: 41px;
+    font-size: 20px;
+    width: 60%;
+}
+
+.foot_contacto{
+    position: relative;
+    left: 72%;
+    display: block;
+}
+
+.foot_centro{
+    position: absolute;
+    left: 73%;
+    display: block;
+    top: 84%;
+    width: 30%;
+}
+
+.foot_paciente{
+    position: absolute;
+    left: 73%;
+    display: block;
+    top: 84%;
+    width: 30%;
+}
+
+.foot_medico{
+    position: absolute;
+    left: 80%;
+    display: block;
+    top: 88%;
+    width: 22%;
+}
+
+.foot_medico2 {
+    position: absolute;
+    left: 80%;
+    display: block;
+    top: 80%;
+    width: 22%;
+}
+
+.foot_contacto a{
+    text-decoration: none;
+    cursor:pointer;
+}
+
+.foot_contacto h1{
+    position: relative;
+    color: white;
+    left: 12%;
+    font-family: "bigRedmedix";
+    top: 30px;
+    font-size: 22px;
+    width: 20px;
+}
+
+.foot_centro a{
+    text-decoration: none;
+    cursor:pointer;
+}
+
+.foot_centro h1{
+    position: relative;
+    color: white;
+    left: 38%;
+    font-family: "bigRedmedix";
+    top: 44px;
+    font-size: 32px;
+    width: 100%;
+}
+
+.foot_user h1{
+    position: relative;
+    color: white;
+    left: 3%;
+    font-family: "bigRedmedix";
+    top: 30px;
+    font-size: 22px;
+    width: 420px;
+}
+
+.foot_paciente h1{
+    position: relative;
+    color: white;
+    left: 38%;
+    font-family: "bigRedmedix";
+    top: 44px;
+    font-size: 32px;
+    width: 100%;
+}
+
+.foot_medico h1, .foot_medico2 h1{
+    position: relative;
+    color: white;
+    left: 38%;
+    font-family: "bigRedmedix";
+    top: 44px;
+    font-size: 32px;
+    width: 100%;
+}
+
+a.env_cnt, a.env_mdcos, a.env_pcnt{
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.btn-ini{
+    background-color: #453787;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+}
+
+.reg_pac{
+    background: url('../images/b_pct_on.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.boton_pac{
+    background: url('../images/boton_pac.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    color: white;
+    font-family: bigRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.boton_pac:hover{
+    background: url('../images/boton_pac_on.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: bigRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn-pct{
+    background: url('../images/b_pct_on.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.reg_cnt{
+    background: url('../images/b_cnt_on.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.boton_cnt{
+    background: url('../images/boton_cnt.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.boton_cnt:hover{
+    background: url('../images/boton_cnt_on.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn-cnt{
+    background: url('../images/b_cnt_on.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn-mdc{
+    background: url('../images/b_med_on.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.reg_med{
+    background: url('../images/b_med_on.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.boton_med{
+    background: url('../images/boton_med.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.boton_med:hover{
+    background: url('../images/boton_med_on.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn-pct:hover{
+    background: url('../images/b_pct_off.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.reg_pac:hover{
+    background: url('../images/b_pct_off.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn-cnt:hover{
+    background: url('../images/b_cnt_off.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.reg_cnt:hover{
+    background: url('../images/b_cnt_off.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.btn-mdc:hover{
+    background: url('../images/b_med_off.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.reg_med:hover{
+    background: url('../images/b_med_off.png');
+    background-size: cover;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#vermas{
+    border: 14px solid #f2f2f2;
+    background-color: #f2f2f2;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.td-titulo{
+    background-color: rgb(242, 242, 242);
+    border: medium none;
+    font-size: 78%;
+    text-align: left;
+}
+
+.verm{
+    padding: 6px 12px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+.btn-gr{
+    color: #453787;
+    font-family: smallRedmedix;
+    font-size: 20px;
+}
+
+.btn-pq{
+    font-family: smallRedmedix;
+    font-size: 12px;
+}
+
+.menu_side{
+    line-height: 1.5em;
+}
+
+.menu_side li{
+    text-align: center;
+}
+
+.menu_side a{
+    text-decoration: none;
+}
+
+/* botones dentro de la aplicacion rightbar*/
+#publicidad_paciente{
+    background: url('../images/pb_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#publicidad_paciente:hover{
+    background: url('../images/pb_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#noticias_paciente{
+    background: url('../images/nt_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#noticias_paciente:hover{
+    background: url('../images/nt_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#foro_paciente{
+    background: url('../images/fr_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#foro_paciente:hover{
+    background: url('../images/fr_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#tutoriales_paciente{
+    background: url('../images/tt_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#tutoriales_paciente:hover{
+    background: url('../images/tt_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#publicidad_medico{
+    background: url('../images/pb_med_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#publicidad_medico:hover{
+    background: url('../images/pb_med_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#noticias_medico{
+    background: url('../images/nt_med_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#noticias_medico:hover{
+    background: url('../images/nt_med_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#foro_medico{
+    background: url('../images/fr_med_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#foro_medico:hover{
+    background: url('../images/fr_med_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#tutoriales_medico{
+    background: url('../images/tt_med_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#tutoriales_medico:hover{
+    background: url('../images/tt_med_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#publicidad_empresa{
+    background: url('../images/pb_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#publicidad_empresa:hover{
+    background: url('../images/pb_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#noticias_empresa{
+    background: url('../images/nt_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#noticias_empresa:hover{
+    background: url('../images/nt_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#foro_empresa{
+    background: url('../images/fr_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#foro_empresa:hover{
+    background: url('../images/fr_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#tutoriales_empresa{
+    background: url('../images/tt_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#tutoriales_empresa:hover{
+    background: url('../images/tt_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+/*botones dentro de la aplicacion leftbar*/
+#ct_nueva{
+    background: url('../images/cn_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#ct_nueva:hover{
+    background: url('../images/cn_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#ag_nueva{
+    background: url('../images/na_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+#ag_nueva:hover{
+    background: url('../images/na_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#ag_listar{
+    background: url('../images/la_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+#ag_listar:hover{
+    background: url('../images/la_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#ag_historial{
+    background: url('../images/ha_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+#ag_historial:hover{
+    background: url('../images/ha_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#parametros{
+    background: url('../images/pa_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+#parametros:hover{
+    background: url('../images/pa_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#sd_mdc{
+    background: url('../images/sede_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+#sd_mdc:hover{
+    background: url('../images/sede_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#cons_mdc{
+    background: url('../images/cons_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+#cons_mdc:hover{
+    background: url('../images/cons_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#trf_mdc{
+    background: url('../images/tarifa_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+#trf_mdc:hover{
+    background: url('../images/tarifa_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#sd_cnt{
+    background: url('../images/sede_off_cnt.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+#sd_cnt:hover{
+    background: url('../images/sede_on_cnt.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#cons_cnt{
+    background: url('../images/cons_off_cnt.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+#cons_cnt:hover{
+    background: url('../images/cons_on_cnt.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#trf_cnt{
+    background: url('../images/tar_off_cnt.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+
+#trf_cnt:hover{
+    background: url('../images/tar_on_cnt.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 49%;
+    height: 100px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#ct_rapida{
+    background: url('../images/cr_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#ct_rapida:hover{
+    background: url('../images/cr_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#ct_agendada{
+    background: url('../images/cp_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#ct_agendada:hover{
+    background: url('../images/cp_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#ct_historial{
+    background: url('../images/hc_off.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+#ct_historial:hover{
+    background: url('../images/hc_on.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 55%;
+    height: 112px;
+    display:block;
+    margin: 0 auto;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+/*estilos de las tablas*/
+
+.table_paciente{
+    width: 100%;
+}
+
+.table_paciente thead th{
+    background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+	vertical-align:middle;
+}
+
+.table_paciente tbody td{
+    border: 1px solid #14A9B9;
+    color: black;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+	vertical-align:middle;
+}
+
+.table_medico{
+    width: 100%;
+}
+
+.table_medico thead th{
+    background: transparent linear-gradient(to bottom, #453787, #9860C9) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+	vertical-align:middle;
+}
+
+.table_medico tbody td{
+    border: 1px solid #453787;
+    color: black;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+    vertical-align:middle;
+}
+
+.table_centro{
+    width: 100%;
+}
+
+.table_centro thead th{
+    background: transparent linear-gradient(to bottom, #316C99, #2D4771) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+	vertical-align:middle;
+}
+
+.table_centro tbody td{
+    border: 1px solid #316C99;
+    color: black;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+    vertical-align:middle;
+}
+
+.table-question{
+    width: 100%;
+}
+
+.table-question tr th, .table-question tr td{
+    text-align:center;
+    vertical-align:middle;
+}
+
+/*estilo de paginador*/
+
+.pagedisplay{
+    text-align:center;
+}
+
+/*estilos para filtros*/
+.page_paciente .form-group {
+    margin-bottom: 15px;
+    width: 24%;
+    display: inline-table;
+    padding-right: 2%;
+}
+
+.page_paciente .buttons #submit {
+    margin-bottom: 15px;
+    width: 24%;
+    display: inline-block;
+    padding-right: 2%;
+}
+
+.page_paciente .buttons #borrar {
+    margin-bottom: 15px;
+    width: 24%;
+    display: inline-block;
+    padding-right: 2%;
+}
+
+.page_paciente .form-group label {
+    width: 100%;
+    background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+    font-size: 100%;
+}
+
+.page_paciente .form-group2 label {
+    width: 100%;
+    background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+    font-size: 100%;
+}
+
+.page_paciente .form-group select {
+    width: 100%;
+    border: 2px solid #14A9B9;
+    background: #fff url("../images/arrow_paciente.png") no-repeat right;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-size: 5%;  
+}
+
+.page_medico .form-group {
+    margin-bottom: 15px;
+    width: 24%;
+    display: inline-table;
+    padding-right: 2%;
+}
+
+.page_medico .form-group2 {
+    margin-bottom: 15px;
+    width: 100%;
+    display: inline-table;
+    padding-right: 2%;
+}
+
+.page_medico .form-group3 {
+    margin-bottom: 15px;
+    width: 100%;
+    display: inline-table;
+    padding-right: 2%;
+}
+
+.page_medico .form-group4 {
+    margin-bottom: 15px;
+    display: inline-table;
+    padding-right: 2%;
+}
+
+.page_paciente .form-group3 {
+    margin-bottom: 15px;
+    width: 100%;
+    display: inline-table;
+    padding-right: 2%;
+}
+
+.page_centro .form-group3 {
+    margin-bottom: 15px;
+    width: 100%;
+    display: inline-table;
+    padding-right: 2%;
+}
+
+.page_medico .form-group2 label {
+    width: 100%;
+    background: transparent linear-gradient(to bottom, #9860C9, #453787) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+}
+
+.page_medico .form-group3 label {
+    width: 40%;
+    background: transparent linear-gradient(to bottom, #9860C9, #453787) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+}
+
+.page_medico .form-group4 label {
+    width: 100%;
+    background: transparent linear-gradient(to bottom, #9860C9, #453787) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+}
+
+.page_paciente .form-group3 label {
+    width: 40%;
+    background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+}
+
+.page_centro .form-group3 label {
+    width: 40%;
+    background: transparent linear-gradient(to bottom, #316C99, #2D4771) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+}
+
+.page_paciente .form-group2 select {
+    width: 100%;
+    border: 2px solid #14A9B9;
+}
+
+.page_medico .form-group2 select {
+    width: 100%;
+    border: 2px solid #453787;
+}
+
+.page_medico .form-group3 input {
+    width: 55%;
+    border: 2px solid #453787;
+    display: inline;
+    height: 30px;
+}
+
+.page_medico .form-group4 input {
+    width: 100%;
+    border: 2px solid #453787;
+    display: block;
+    height: 30px;
+}
+
+.page_centro .form-group3 input {
+    width: 55%;
+    border: 2px solid #316C99;
+    display: inline;
+    height: 30px;
+}
+
+.page_paciente .form-group3 input {
+    width: 55%;
+    border: 2px solid #0F6F7F;
+    display: inline;
+    height: 30px;
+}
+
+.page_medico .form-group label {
+    width: 100%;
+    background: transparent linear-gradient(to bottom, #9860C9, #453787) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+}
+
+.page_medico .form-group select {
+    width: 100%;
+    border: 2px solid #453787;
+}
+
+.top_titulo2{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 4%;
+    font-family: bigRedmedix;
+    font-size: 32px;
+    color: #14A9B9;
+}
+
+.tt_perfil{ 
+    width: 100%;
+    text-align: center;
+    padding-bottom: 4%;
+    font-family: smallRedmedix;
+    font-size: 22px;
+    color: #9860C9;
+}
+
+.tt_perfil2{ 
+    font-family: bigRedmedix;
+    font-size: 22px;
+    color: #9860C9;
+}
+
+.tt_perfil3{ 
+    font-family: bigRedmedix;
+    font-size: 22px;
+    color: #316C99;
+}
+
+.esp_perfil{ 
+    font-family: smallRedmedix;
+    font-size: 18px;
+    color: #9860C9;
+    text-align:center;
+}
+
+.esp_perfil2{ 
+    width: 100%;
+    font-family: smallRedmedix;
+    font-size: 18px;
+    color: #9860C9;
+    text-align:center;
+    padding-bottom: 2%;
+}
+
+.top_titulo{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 4%;
+    font-family: bigRedmedix;
+    font-size: 32px;
+    color: #9860C9;
+}
+
+.top_titulo4{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 4%;
+    font-family: bigRedmedix;
+    font-size: 32px;
+    color: #316C99;
+}
+
+.sedes, .consultorios{
+    font-size: 80%;
+}
+
+.citas2{
+    background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+    color: white;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.citas2:hover{
+    background: transparent linear-gradient(to bottom, #0F6F7F, #14A9B9) repeat scroll 0% 0%;
+    color: white;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.citas_btn{
+    background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+    color: white;
+    display: inline;
+    margin: 0 2px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.citas_btn:hover{
+    background: transparent linear-gradient(to bottom, #0F6F7F, #14A9B9) repeat scroll 0% 0%;
+    color: white;
+    display: inline;
+    margin: 0 2px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.citas_btn span{
+    margin-right: 5%;
+}
+
+.citas2 span{
+    margin-right: 5%;
+}
+
+.hastable h2{
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    font-family: bigRedmedix;
+    font-size: 32px;
+    color: #14A9B9;
+}
+/*--------------------------*/
+
+.menu_parametros{
+    display: none;
+    line-height: 2.5em;
+}
+
+.menu_parametros li{
+    text-align:center;
+}
+
+/*Estilo para el buscador*/
+
+#ui-id-1{
+    background-color: rgba(255, 255, 255, 0.84);
+    line-height: 1em;
+    z-index: 999999999;
+    width: 59%;
+    border: 1px solid gray;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 1px 1px 1px gray;
+}
+
+#ui-id-1 li{
+    line-height: 2em;
+    min-height: 70px;
+    vertical-align: middle;
+}
+
+/*Estilos perfil medico en directorio*/
+
+.listas_medico{
+    list-style-image: url("../images/list_med.png");
+    padding-top: 3%;
+    list-style-position: inside;
+    overflow: auto;
+    height: 128px;
+    font-size: 80%;
+}
+
+.listas_medico li{
+    line-height: 1.8em;
+    margin: 1px 24px;
+    font-size: 100%;
+}
+
+.listas_paciente{
+    list-style-image: url("../images/list_pac.png");
+    padding-top: 3%;
+    list-style-position: inside;
+    overflow: auto;
+    height: 120px;
+}
+
+.listas_paciente li{
+    line-height: 1.8em;
+    margin: 1px 24px;
+    font-size: 100%;
+}
+
+.listas_centro{
+    list-style-image: url("../images/list_cnt.png");
+    padding-top: 3%;
+    list-style-position: inside;
+    overflow: auto;
+    height: 120px;
+}
+
+.listas_centro li{
+    line-height: 1.8em;
+    margin: 1px 24px;
+    font-size: 100%;
+}
+
+.listas_medico2{
+    list-style-image: url("../images/list_med.png");
+    padding-top: 3%;
+    list-style-position: inside;
+    overflow: auto; 
+    height: 520px;
+}
+
+.listas_medico2 li{
+    line-height: 1.8em;
+    margin: 1px 0px;
+    font-size: 88%;
+}
+
+#medicos #p_med{
+    font-family: "smallRedmedix";
+    font-size: 13px;
+    padding-top: 0px;
+    color: black;
+    margin: 0px 2%;
+    line-height: 1.2em;
+}
+
+.listas_paciente2{
+    list-style-image: url("../images/list_pac.png");
+    padding-top: 3%;
+    list-style-position: inside;
+    overflow: auto; 
+    height: 520px;
+}
+
+.listas_paciente2 li{
+    line-height: 1.8em;
+    margin: 1px 0px;
+    font-size: 88%;
+}
+
+.listas_centro2{
+    list-style-image: url("../images/list_cnt.png");
+    padding-top: 3%;
+    list-style-position: inside;
+    overflow: auto; 
+    height: 520px;
+}
+
+.listas_centro2 li{
+    line-height: 1.8em;
+    margin: 1px 0px;
+    font-size: 88%;
+}
+
+.page_medico_perfil p{
+    line-height: 1.3em;
+}
+
+.page_medico_perfil .form-group{
+    padding-top: 10%;
+}
+
+.page_medico_perfil .form-group select {
+    width: 100%;
+    border: 2px solid #453787;
+}
+
+.page_medico_perfil .form-group label{
+    color: #6251a4;
+}
+
+.badge_med{
+    font-family: bigRedmedix;
+    font-size: 27px;
+    color: #9860C9;
+}
+
+.divmap{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.block_bordered{
+    vertical-align: middle;
+    padding: 0px 1%;
+    border-right: 2px dashed rgb(152, 96, 201);
+}
+
+.block_wo_bordered{
+    vertical-align: middle;
+    padding: 0px 1%;
+}
+
+.block_id{
+    background-color:rgb(255, 255, 255);
+    color:white;
+    text-align:center;
+}
+
+.pin_mapa_id{
+    font-size: 30px;
+    background: transparent url("../images/pin_maps.png") no-repeat scroll 0% 0%;
+    background-position: 0px 0px;
+    width: 100%;
+    height: 50px;
+    font-family: bigRedmedix;
+    background-size: 100%;
+}
+
+.pin_mapa_id2{
+    font-size: 30px;
+    background: transparent url("../images/pin_maps.png") no-repeat scroll 0% 0%;
+    background-position: center;
+    width: 100%;
+    height: 50px;
+    font-family: bigRedmedix;
+    background-size: 32%;
+}
+
+.faceb_btn_med{
+    width: 100%;
+    height: 49px;
+    background: url('../images/fb_off.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.faceb_btn_med:hover{
+    width: 100%;
+    height: 49px;
+    background: url('../images/fb_on.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.twit_btn_med{
+    width: 36%;
+    height: 49px;
+    background: url('../images/tw_off.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.twit_btn_med:hover{
+    width: 36%;
+    height: 49px;
+    background: url('../images/tw_on.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.eps_btn_med{
+    width: 100%;
+    height: 142px;
+    background: url('../images/eps_off.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.eps_btn_med:hover{
+    width: 100%;
+    height: 142px;
+    background: url('../images/eps_on.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.prep_btn_med{
+    width: 100%;
+    height: 142px;
+    background: url('../images/prep_off.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.prep_btn_med:hover{
+    width: 100%;
+    height: 142px;
+    background: url('../images/prep_on.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.part_btn_med{
+    width: 100%;
+    height: 142px;
+    background: url('../images/part_off.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.part_btn_med:hover{
+    width: 100%;
+    height: 142px;
+    background: url('../images/part_on.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.fam_btn_med{
+    width: 100%;
+    height: 142px;
+    background: url('../images/fam_off.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.fam_btn_med:hover{
+    width: 100%;
+    height: 142px;
+    background: url('../images/fam_on.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.vrtl_btn_med{
+    width: 100%;
+    height: 142px;
+    background: url('../images/vrtl_off.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.vrtl_btn_med:hover{
+    width: 100%;
+    height: 142px;
+    background: url('../images/vrtl_on.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.eps_btn_pac{
+    width: 100%;
+    height: 142px;
+    background: url('../images/epsp_off.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.eps_btn_pac:hover{
+    width: 100%;
+    height: 142px;
+    background: url('../images/epsp_on.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.prep_btn_pac{
+    width: 100%;
+    height: 142px;
+    background: url('../images/prepap_off.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.prep_btn_pac:hover{
+    width: 100%;
+    height: 142px;
+    background: url('../images/prepap_on.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.part_btn_pac{
+    width: 100%;
+    height: 142px;
+    background: url('../images/partp_off.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.part_btn_pac:hover{
+    width: 100%;
+    height: 142px;
+    background: url('../images/partp_on.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.fam_btn_pac{
+    width: 100%;
+    height: 142px;
+    background: url('../images/famip_off.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.fam_btn_pac:hover{
+    width: 100%;
+    height: 142px;
+    background: url('../images/famip_on.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.vrtl_btn_pac{
+    width: 100%;
+    height: 142px;
+    background: url('../images/vrtl_p_off.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.vrtl_btn_pac:hover{
+    width: 100%;
+    height: 142px;
+    background: url('../images/vrtl_p_on.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: smallRedmedix;
+    font-size: 20px;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.box-comment{
+    border: 1px solid rgb(152, 96, 201);
+    box-shadow: 0px 1px 1px rgb(152, 96, 201);
+    padding: 3%;
+}
+
+.head_medico_drt {
+    position: relative;
+    left: 86%;
+    display: block;
+    bottom: 48px;
+    width: 21%;
+    height: 29px;
+}
+
+.head_medico_drt h1{
+    position: relative;
+    color: white;
+    text-align: center;
+    font-family: "bigRedmedix";
+    top: 33px;
+    font-size: 22px;
+    width: 94%;
+    display: block;
+}
+
+.info_data{
+    width: 100%;
+    display: table;
+    padding: 4px;
+}
+
+.info_data label{
+    width: 30%;
+    display: table-cell;
+    font-family: smallRedmedix;
+    background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+    color: white;
+    border-radius: 0px;
+}
+
+.info_data span{
+    width: 70%;
+    display: table-cell;
+}
+
+#contacto #msj_clt {
+    margin-bottom: 20%;
+}
+
+#contacto .head_contacto {
+    position: relative;
+    right: 8%;
+}
+
+#contacto .head_contacto h1 {
+    position: relative;
+    color: white;
+    z-index: 2147483647;
+    left: 12%;
+    font-family: "bigRedmedix";
+    top: 51px;
+    font-size: 31px;
+}
+
+#contacto .foot_contacto {
+    position: absolute;
+    left: 73%;
+    display: block;
+    top: 75%;
+    width: 32%;
+}
+
+#contacto .foot_contacto h1 {
+    position: relative;
+    color: white;
+    left: 33%;
+    font-family: "bigRedmedix";
+    top: 45px;
+    font-size: 32px;
+    width: 20px;
+}
+
+/*Estilos Perfil Site */
+
+.page_medico input[type="file" i]::-webkit-file-upload-button{
+    background: transparent linear-gradient(to bottom, #453787, #9860C9) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+    cursor:pointer;
+    width: 57%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.page_medico .form-control input[type="file"]::-moz-file-upload-button{
+    background: transparent linear-gradient(to bottom, #453787, #9860C9) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+    cursor:pointer;
+    width: 57%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.page_medico input[type="file" i]::-webkit-file-upload-button:hover{
+    background: transparent linear-gradient(to bottom, #9860C9, #453787) repeat scroll 0% 0%;
+    color: white;
+    cursor:pointer;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.page_medico .form-control input[type="file"]::-moz-file-upload-button:hover{
+    background: transparent linear-gradient(to bottom, #9860C9, #453787) repeat scroll 0% 0%;
+    color: white;
+    cursor:pointer;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.page_paciente input[type="file" i]::-webkit-file-upload-button{
+    background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+    cursor:pointer;
+    width: 57%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.page_paciente input[type="file" i]::-webkit-file-upload-button:hover{
+    background: transparent linear-gradient(to bottom, #0F6F7F, #14A9B9) repeat scroll 0% 0%;
+    color: white;
+    cursor:pointer;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.page_paciente input[type="file"]::-moz-file-upload-button{
+    background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+    color: white;
+    font-family: smallRedmedix;
+    text-align:center;
+    line-height: 2em;
+    cursor:pointer;
+    width: 57%;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.page_paciente input[type="file"]::-moz-file-upload-button:hover{
+    background: transparent linear-gradient(to bottom, #0F6F7F, #14A9B9) repeat scroll 0% 0%;
+    color: white;
+    cursor:pointer;
+    -webkit-transition: all .35s ease-in-out;
+    -moz-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    display: inline-block;
+}
+
+.page_paciente .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+    border: 2px solid #0F6F7F;
+    width: 220px;
+}
+
+.page_medico .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+    border: 2px solid #453787;
+    width: 170px;
+}
+
+button[title="Nothing selected"]{
+    background-image: linear-gradient(to bottom,#f00 0,#9b0303 100%);
+    color: white;
+}
+
+button[title="Nothing selected"]:hover{
+    color: white;
+}
+
+/*CLASES DE RESPONSIVE DISPOSITIVOS*/
+
+@media screen and (min-width: 111px) and (max-width: 767px) {
+    #whoweare_divs{
+        width:100%;
+        margin:0 auto;
+        padding-top: 17%;
+    }
+    
+    #navbarmenu {
+        margin-left: 0px;
+        width: 100%;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #btns_prncp {
+        width: 100%;
+        margin: 0px auto;
+        height: 15%;
+    }
+    
+    #rowspn{
+        padding-top: 0;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    .blk{
+        height: 70%;
+    }
+    
+    .p1 {
+        background-image: url('../images/paso1.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        max-height: 190px;
+        min-height: 40px;
+        display: block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    .p2 {
+        background-image: url('../images/paso2.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        max-height: 190px;
+        min-height: 40px;
+        display: block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    .p3 {
+        background-image: url('../images/paso3.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        max-height: 190px;
+        min-height: 40px;
+        display: block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #home {
+        padding-top: 38%;
+        min-height: 500px;
+        color: #fff;
+        background-image: url("../images/home_bg.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #btns_prncp{
+        width: 100%;
+        margin: 0px auto; 
+        height: 20%;
+    }
+    
+    #t_1{
+        width:100%;
+    }
+    
+    #itwedo_bg {
+        padding-top: 5%;
+        min-height: 70%;
+        color: #fff;
+        background-image: none;
+        background-color: #FFF;
+        background-repeat: no-repeat;
+        background-size: 100% 121%;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #logo_redmedix{
+        width: 150px;
+        margin: 3px 0px;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+}
+
+@media screen and (min-width: 953px) and (max-width: 1200px) {
+    #menu {
+        font-size: 70%;
+    }
+}
+
+@media screen and (min-width: 764px) and (max-width: 1030px) {
+    #ct_nueva{
+        background: url('../images/cn_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #ct_nueva:hover{
+        background: url('../images/cn_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #ct_rapida{
+        background: url('../images/cr_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #ct_rapida:hover{
+        background: url('../images/cr_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #ct_agendada{
+        background: url('../images/cp_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #ct_agendada:hover{
+        background: url('../images/cp_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #ct_historial{
+        background: url('../images/hc_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #ct_historial:hover{
+        background: url('../images/hc_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #publicidad_paciente{
+        background: url('../images/pb_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #publicidad_paciente:hover{
+        background: url('../images/pb_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #noticias_paciente{
+        background: url('../images/nt_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #noticias_paciente:hover{
+        background: url('../images/nt_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #foro_paciente{
+        background: url('../images/fr_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #foro_paciente:hover{
+        background: url('../images/fr_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #tutoriales_paciente{
+        background: url('../images/tt_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #tutoriales_paciente:hover{
+        background: url('../images/tt_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 85%;
+        height: 112px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #publicidad_medico{
+        background: url('../images/pb_med_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #publicidad_medico:hover{
+        background: url('../images/pb_med_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #noticias_medico{
+        background: url('../images/nt_med_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #noticias_medico:hover{
+        background: url('../images/nt_med_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #foro_medico{
+        background: url('../images/fr_med_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #foro_medico:hover{
+        background: url('../images/fr_med_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #tutoriales_medico{
+        background: url('../images/tt_med_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #tutoriales_medico:hover{
+        background: url('../images/tt_med_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #publicidad_empresa{
+        background: url('../images/pb_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #publicidad_empresa:hover{
+        background: url('../images/pb_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #noticias_empresa{
+        background: url('../images/nt_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #noticias_empresa:hover{
+        background: url('../images/nt_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #foro_empresa{
+        background: url('../images/fr_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #foro_empresa:hover{
+        background: url('../images/fr_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #tutoriales_empresa{
+        background: url('../images/tt_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #tutoriales_empresa:hover{
+        background: url('../images/tt_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #ag_nueva{
+        background: url('../images/na_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #ag_nueva:hover{
+        background: url('../images/na_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #ag_listar{
+        background: url('../images/la_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+
+    #ag_listar:hover{
+        background: url('../images/la_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #ag_historial{
+        background: url('../images/ha_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+
+    #ag_historial:hover{
+        background: url('../images/ha_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #parametros{
+        background: url('../images/pa_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+
+    #parametros:hover{
+        background: url('../images/pa_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #sd_mdc{
+        background: url('../images/sede_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+
+    #sd_mdc:hover{
+        background: url('../images/sede_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #cons_mdc{
+        background: url('../images/cons_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+
+    #cons_mdc:hover{
+        background: url('../images/cons_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #trf_mdc{
+        background: url('../images/tarifa_off.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+
+    #trf_mdc:hover{
+        background: url('../images/tarifa_on.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #sd_cnt{
+        background: url('../images/sede_off_cnt.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+
+    #sd_cnt:hover{
+        background: url('../images/sede_on_cnt.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #cons_cnt{
+        background: url('../images/cons_off_cnt.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+
+    #cons_cnt:hover{
+        background: url('../images/cons_on_cnt.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+    #trf_cnt{
+        background: url('../images/tar_off_cnt.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+
+
+    #trf_cnt:hover{
+        background: url('../images/tar_on_cnt.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 49%;
+        height: 100px;
+        display:block;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    .page_paciente .form-group label {
+        width: 100%;
+        background: transparent linear-gradient(to bottom, #14A9B9, #0F6F7F) repeat scroll 0% 0%;
+        color: white;
+        font-family: smallRedmedix;
+        text-align:center;
+        line-height: 2em;
+        font-size: 80%;
+    }
+    
+}
+
+@media screen and (min-width: 367px) and (max-width: 450px) {
+    #home {
+        padding-top: 28%;
+        min-height: 500px;
+        color: #fff;
+        background-image: url("../images/home_bg.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #btns_prncp{
+        width: 100%;
+        margin: 0px auto; 
+        height: 30%;
+    }
+}
+
+@media screen and (min-width: 451px) and (max-width: 551px) {
+    #home {
+        padding-top: 21%;
+        min-height: 500px;
+        color: #fff;
+        background-image: url("../images/home_bg.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #btns_prncp{
+        width: 100%;
+        margin: 0px auto; 
+        height: 40%;
+    }
+}
+
+@media screen and (min-width: 552px) and (max-width: 764px) {
+    
+    .btn_pac {
+        background-image: url("../images/paciente_btn_out.png");
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 30%;
+        display: block;
+        height: 151px;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    .btn_centro {
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+        background-image: url("../images/centro_btn_out.png");
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 30%;
+        display: block;
+        height: 151px;
+        margin: 0 auto;
+    }
+    
+    .btn_med {
+        background-image: url("../images/medico_btn_out.png");
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 30%;
+        display: block;
+        height: 151px;
+        margin: 0 auto;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #home {
+        padding-top: 18%;
+        min-height: 500px;
+        color: #fff;
+        background-image: url("../images/home_bg.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #btns_prncp{
+        width: 100%;
+        margin: 0px auto; 
+        height: 51%;
+    }
+    
+    #foot_home h1 {
+        color: #594DAF;
+        font-family: "bigRedmedix";
+        font-size: 229%;
+        line-height: 0.9em;
+    }
+    
+    #foot_home p {
+        font-size: 116%;
+        line-height: 1em;
+        color: #594DAF;
+        font-family: "bigRedmedix";
+        padding-bottom: 3%;
+    }
+    
+}
+
+@media screen and (min-width: 768px) and (max-width: 952px) {
+    #menu {
+        font-size: 50%;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #home {
+        padding-top: 13%;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #logo_redmedix{
+        width: 100px;
+        margin: 18px 0px;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    .navbar-right {
+        float: right !important;
+        margin-right: -1%;
+        height: 10px;
+        position: relative;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+    
+    #navbarmenu {
+        margin-right: 0px;
+        margin-left: 16px;
+        width: 15%;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        transition: all .35s ease-in-out;
+    }
+}
+
+/*ANIMACIONES CSS*/
+@keyframes load{
+  from { transform : scale(0.8); }
+  transform : scale(1.1);
+}
