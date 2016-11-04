@@ -11,7 +11,6 @@ document.getElementById('join').onclick = function() {
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
-            socket = io.connect('/', { 'forceNew': true });
         }
     });
 };
