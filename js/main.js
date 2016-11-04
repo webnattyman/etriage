@@ -35,12 +35,12 @@ var sdpConstraints = {'mandatory': {
 
 /////////////////////////////////////////////
 //var socket = io.connect('https://redmedix.herokuapp.com', { 'forceNew': true });
-var socket = io.connect('https://redmedix.herokuapp.com:443/', { 'forceNew': true });
+var socket = io.connect('https://redmedix.herokuapp.com/', { 'forceNew': true });
 
 var connection = new RTCMultiConnection();
 
 // this line is VERY_important
-connection.socketURL = 'https://redmedix.herokuapp.com:443/';
+connection.socketURL = 'https://redmedix.herokuapp.com/';
 
 // all below lines are optional; however recommended.
 
