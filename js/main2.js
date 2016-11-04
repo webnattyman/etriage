@@ -205,7 +205,7 @@ if(roomid && roomid.length) {
     disableInputButtons();
 }
 
-var socket = io.connect('https://redmedix.herokuapp.com/', { 'forceNew': true });
+var socket = io.connect('https://redmedix.herokuapp.com:443/', { 'forceNew': true });
 
 socket.on('new-message', function(data) {  
   console.log(data);
