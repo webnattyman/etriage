@@ -1,3 +1,5 @@
+var socket;
+
 document.getElementById('sendtxt').onclick = function() {
     connection.send(document.getElementById('input-text-chat').value);
     appendDIV(document.getElementById('input-text-chat').value);
@@ -9,6 +11,7 @@ document.getElementById('join').onclick = function() {
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
+            socket = io.connect('/', { 'forceNew': true });
         }
     });
 };
@@ -37,8 +40,8 @@ function appendDIV(event) {
 // ......................................................
 // ..................RTCMultiConnection Code.............
 // ......................................................
-var socket = io.connect();
-//var socket = io.connect('/', { 'forceNew': true });
+//var socket = io.connect();
+
 var connection = new RTCMultiConnection();
 connection.enableLogs = true;
 //var socket = connection.connectSocket();
@@ -92,7 +95,6 @@ connection.onopen = function() {
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
-
     document.querySelector('h1').innerHTML = 'You are connected with: ' + connection.getAllParticipants().join(', ');
 };
 
