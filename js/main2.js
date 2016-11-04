@@ -208,10 +208,12 @@ if(roomid && roomid.length) {
     disableInputButtons();
 }
 
-socket.on('new-message', function(data) {  
-  console.log(data);
-  render(data);
-});
+connection.openSignalingChannel = function(callback) {
+    return io.connect().on('new-message', function(data) {  
+        console.log(data);
+        render(data);
+    });
+};
 
 
 function render (data) {  
