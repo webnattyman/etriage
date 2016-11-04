@@ -1,6 +1,6 @@
 var express = require('express');  
 var app = express();  
-var server = require('http').Server(app);  
+var server = require('https').Server(app);  
 var io = require('socket.io')(server);
 var sala = "chat983143145454";
 var namespace = '/';
@@ -40,7 +40,7 @@ io.on('connection', function(socket) {
     
 });
 
-server.listen( process.env.PORT || 2013, function() {  
+server.listen( process.env.PORT || 443, function() {  
   //console.log("Servidor corriendo en local");
   console.log("Servidor corriendo en https://redmedix.herokuapp.com");
 });
