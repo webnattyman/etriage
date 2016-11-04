@@ -91,6 +91,7 @@ connection.onmessage = appendDIV;
 connection.filesContainer = document.getElementById('file-container');
 
 connection.onopen = function() {
+    document.getElementById('txtdiv').disabled = false;
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
