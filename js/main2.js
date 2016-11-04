@@ -94,15 +94,15 @@ connection.onopen = function() {
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
-    document.querySelector('h1').innerHTML = 'You are connected with: ' + connection.getAllParticipants().join(', ');
+    document.querySelector('h1').innerHTML = 'Finalizo la comunicacion con: ' + connection.getAllParticipants().join(', ');
 };
 
 connection.onclose = function() {
     if(connection.getAllParticipants().length) {
-        document.querySelector('h1').innerHTML = 'You are still connected with: ' + connection.getAllParticipants().join(', ');
+        document.querySelector('h1').innerHTML = 'Estas conectado con: ' + connection.getAllParticipants().join(', ');
     }
     else {
-        document.querySelector('h1').innerHTML = 'Seems session has been closed or all participants left.';
+        document.querySelector('h1').innerHTML = 'La session termino, todos los participantes han abandonado!.';
     }
 };
 
@@ -142,11 +142,8 @@ function showRoomURL(roomid) {
     var roomHashURL = '#' + roomid;
     var roomQueryStringURL = '?roomid=' + roomid;
 
-    var html = '<h2>Unique URL for your room:</h2><br>';
-
-    html += 'Hash URL: <a href="' + roomHashURL + '" target="_blank">' + roomHashURL + '</a>';
-    html += '<br>';
-    html += 'QueryString URL: <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
+    var html = '<h2>Estos son los datos de tu sala:</h2><br>';
+    html += 'Enlace de la sala : <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
 
     var roomURLsDiv = document.getElementById('room-urls');
     roomURLsDiv.innerHTML = html;
