@@ -34,8 +34,8 @@ function appendDIV(event) {
     document.getElementById('input-text-chat').focus();
 }
 
-var SIGNALING_SERVER = 'http://webrtc-signaling.jit.su:80/',
-    defaultChannel = 'default-channel';
+var SIGNALING_SERVER = 'https://rtcmulticonnection.herokuapp.com:443/',
+    defaultChannel = 'redmedix';
 
 window.username = Math.random() * 9999 << 9999;
 
