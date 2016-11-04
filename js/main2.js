@@ -4,7 +4,7 @@ document.getElementById('sendtxt').onclick = function() {
     document.getElementById('input-text-chat').value = '';
 };
 
-document.getElementById('open-or-join-room').onclick = function() {
+document.getElementById('join').onclick = function() {
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
@@ -37,8 +37,8 @@ function appendDIV(event) {
 // ......................................................
 // ..................RTCMultiConnection Code.............
 // ......................................................
-//var socket = io.connect('https://redmedix.herokuapp.com:443/', { 'forceNew': true });
-var socket = io.connect('/', { 'forceNew': true });
+var socket = io.connect('https://redmedix.herokuapp.com/', { 'forceNew': true });
+//var socket = io.connect('/', { 'forceNew': true });
 var connection = new RTCMultiConnection();
 connection.enableLogs = true;
 //var socket = connection.connectSocket();
@@ -179,7 +179,7 @@ document.getElementById('room-id').onkeyup = function() {
 
 var hashString = location.hash.replace('#', '');
 if(hashString.length && hashString.indexOf('comment-') == 0) {
-  hashString = '';
+    hashString = '';
 }
 
 var roomid = params.roomid;
