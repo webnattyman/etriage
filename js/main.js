@@ -35,11 +35,30 @@ var sdpConstraints = {'mandatory': {
 
 /////////////////////////////////////////////
 //var socket = io.connect('https://redmedix.herokuapp.com', { 'forceNew': true });
-var socket = io.connect('https://redmedix.herokuapp.com:443', { 'forceNew': true });
+var socket = io.connect('https://redmedix.herokuapp.com:443/', { 'forceNew': true });
+
+var connection = new RTCMultiConnection();
+
+// this line is VERY_important
+connection.socketURL = 'https://redmedix.herokuapp.com:443/';
+
+// all below lines are optional; however recommended.
+
+connection.session = {
+    audio: true,
+    video: true
+};
+
+connection.sdpConstraints.mandatory = {
+    OfferToReceiveAudio: true,
+    OfferToReceiveVideo: true
+};
+
 socket.on('crear', function (room){
     console.log('Created room ' + room);
     isInitiator = true;
 });
+
 
 socket.on('full', function (room){
     console.log('Room ' + room + ' is full');
