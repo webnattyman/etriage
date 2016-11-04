@@ -144,6 +144,12 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
     connection.join(useridAlreadyTaken);
 };
 
+connection.extra = {
+    username: window.username
+};
+
+connection.connect();
+
 function disableInputButtons() {
     document.getElementById('join').disabled = true;
     document.getElementById('room-id').disabled = true;
