@@ -34,37 +34,20 @@ function appendDIV(event) {
     document.getElementById('input-text-chat').focus();
 }
 
-var SIGNALING_SERVER = '/',
-    defaultChannel = 'redmedix';
+// ......................................................
+// ..................RTCMultiConnection Code.............
+// ......................................................
+var socket = io.connect();
+//var socket = io.connect('/', { 'forceNew': true });
+var connection = new RTCMultiConnection();
+connection.enableLogs = true;
+//var socket = connection.connectSocket();
 
-window.username = Math.random() * 9999 << 9999;
+// by default, socket.io server is assumed to be deployed on your own URL
+//connection.socketURL = '/';
+connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+connection.socketMessageEvent = 'Video Chat';
 
-var connection = new RTCMultiConnection(defaultChannel);
-
-connection.openSignalingChannel = function(config) {
-    var channel = config.channel || defaultChannel;
-    var sender = Math.round(Math.random() * 60535) + 5000;
-
-    io.connect(SIGNALING_SERVER).emit('new-channel', {
-        channel: channel,
-        sender: sender
-    });
-
-    var socket = io.connect(SIGNALING_SERVER + channel);
-    socket.channel = channel;
-    socket.on('connect', function() {
-        if (config.callback) config.callback(socket);
-    });
-
-    socket.send = function(message) {
-        socket.emit('message', {
-            sender: sender,
-            data: message
-        });
-    };
-
-    socket.on('message', config.onmessage);
-};
 connection.session = {
     video: true,
     audio: true,
@@ -143,12 +126,6 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
     // seems room is already opened
     connection.join(useridAlreadyTaken);
 };
-
-connection.extra = {
-    username: window.username
-};
-
-connection.connect();
 
 function disableInputButtons() {
     document.getElementById('join').disabled = true;
@@ -229,14 +206,11 @@ if(roomid && roomid.length) {
     disableInputButtons();
 }
 
-/*
-var socket = io.connect('https://redmedix.herokuapp.com:443/', { 'forceNew': true });
-
 socket.on('new-message', function(data) {  
   console.log(data);
   render(data);
 });
-*/
+
 
 function render (data) {  
     var html = data.map(function(elem, index) {
