@@ -40,11 +40,12 @@ function appendDIV(event) {
 //var socket = io.connect('https://redmedix.herokuapp.com:443/', { 'forceNew': true });
 var socket = io.connect('/', { 'forceNew': true });
 var connection = new RTCMultiConnection();
-connection.socketURL = '/';
 connection.enableLogs = true;
 //var socket = connection.connectSocket();
 
-//connection.socketURL = 'https://redmedix.herokuapp.com:443/';
+// by default, socket.io server is assumed to be deployed on your own URL
+connection.socketURL = '/';
+//connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
 
 connection.session = {
@@ -165,8 +166,6 @@ function showRoomURL(roomid) {
     window.params = params;
 })();
 
-//INSTANCIA INICIAL DONDE SE GENERAN LOS EVENTOS DE CONEXION CON EL SOCKET
-
 var roomid = '';
 if (localStorage.getItem(connection.socketMessageEvent)) {
     roomid = localStorage.getItem(connection.socketMessageEvent);
@@ -210,15 +209,6 @@ if(roomid && roomid.length) {
 socket.on('new-message', function(data) {  
   console.log(data);
   render(data);
-});
-
-socket.on('crear', function(data, data1) {  
-  console.log(data);
-  console.log(data1);
-});
-
-socket.on('connected', function(data) {  
-  console.log(data);
 });
 
 
