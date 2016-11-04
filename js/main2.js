@@ -213,8 +213,9 @@ socket.on('new-message', function(data) {
   render(data);
 });
 
-socket.on('crear', function(data) {  
+socket.on('crear', function(data, data1) {  
   console.log(data);
+  console.log(data1);
 });
 
 socket.on('connected', function(data) {  
