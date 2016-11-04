@@ -205,7 +205,7 @@ if(roomid && roomid.length) {
     disableInputButtons();
 }
 
-var socket = io.connect('/', { 'forceNew': true });
+var socket = io.connect('/', { 'forceNew': false });
 
 socket.on('new-message', function(data) {  
   console.log(data);
