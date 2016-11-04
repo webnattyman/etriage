@@ -166,6 +166,8 @@ function showRoomURL(roomid) {
     window.params = params;
 })();
 
+//INSTANCIA INICIAL DONDE SE GENERAN LOS EVENTOS DE CONEXION CON EL SOCKET
+
 var roomid = '';
 if (localStorage.getItem(connection.socketMessageEvent)) {
     roomid = localStorage.getItem(connection.socketMessageEvent);
@@ -209,6 +211,14 @@ if(roomid && roomid.length) {
 socket.on('new-message', function(data) {  
   console.log(data);
   render(data);
+});
+
+socket.on('crear', function(data) {  
+  console.log(data);
+});
+
+socket.on('connected', function(data) {  
+  console.log(data);
 });
 
 

@@ -27,6 +27,7 @@ io.on('connection', function(socket) {
         console.log('Sala llena!');
     }
     console.log('Usuarios Conectados: ' + socketId);
+    socket.emit('connected', socketId);
     socket.emit('new-message', messages);
     socket.on('new-message', function(data) {
         messages.push(data);
