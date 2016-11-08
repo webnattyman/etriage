@@ -1,7 +1,6 @@
 var chatContainer = document.querySelector('.chat-output');
 
 //Enviando mensajes
-/*
 document.getElementById('sendtxt').onclick = function() {
     var customMessage = prompt('Enter test message.');
     socket.emit(connection.socketCustomEvent, {
@@ -10,8 +9,8 @@ document.getElementById('sendtxt').onclick = function() {
     });/*
     connection.send(document.getElementById('input-text-chat').value);
     appendDIV(document.getElementById('input-text-chat').value);
-    document.getElementById('input-text-chat').value = '';
-};*/
+    document.getElementById('input-text-chat').value = '';*/
+};
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
@@ -232,21 +231,32 @@ connection.openSignalingChannel = function(config) {
       sender : sender
    });
 
-   var socket = io.connect(connection.socketURL + channel);
+   var socket = io.connect(connection.socketURL);
    socket.channel = channel;
 
    socket.on('connect', function () {
       if (config.callback) config.callback(socket);
    });
 
-   socket.send = function (message) {
+    document.getElementById('sendtxt').onclick = function() {
+        var customMessage = prompt('Enter test message.');
+        socket.emit('message', {
+            sender: connection.userid,
+            customMessage: customMessage
+        });/*
+        connection.send(document.getElementById('input-text-chat').value);
+        appendDIV(document.getElementById('input-text-chat').value);
+        document.getElementById('input-text-chat').value = '';*/
+    };
+    
+    socket.send = function (message) {
         socket.emit('message', {
             sender: sender,
             data  : message
         });
     };
 
-   socket.on('message', config.onmessage);
+    socket.on('message', config.onmessage);
 };
 
 /*
