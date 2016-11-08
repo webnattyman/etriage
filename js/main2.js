@@ -199,6 +199,8 @@ if(hashString.length && hashString.indexOf('comment-') == 0) {
     hashString = '';
 }
 
+alert(hashString);
+
 var roomid = params.roomid;
 if(!roomid && hashString.length) {
     roomid = hashString;
