@@ -1,6 +1,7 @@
 var chatContainer = document.querySelector('.chat-output');
 
 //Enviando mensajes
+/*
 document.getElementById('sendtxt').onclick = function() {
     var customMessage = prompt('Enter test message.');
     socket.emit(connection.socketCustomEvent, {
@@ -9,8 +10,8 @@ document.getElementById('sendtxt').onclick = function() {
     });/*
     connection.send(document.getElementById('input-text-chat').value);
     appendDIV(document.getElementById('input-text-chat').value);
-    document.getElementById('input-text-chat').value = '';*/
-};
+    document.getElementById('input-text-chat').value = '';
+};*/
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
