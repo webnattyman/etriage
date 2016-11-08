@@ -57,7 +57,7 @@ function appendDIV(event) {
 }
 
 //Conexion de la session
-var connection = new RTCMultiConnection();
+var connection = new RTCMultiConnection('https://redmedix.herokuapp.com:8888/');
 //connection.enableLogs = true;
 connection.socketURL = 'https://redmedix.herokuapp.com:8888/';
 //connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
