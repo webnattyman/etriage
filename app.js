@@ -1,5 +1,4 @@
 var express = require('express');  
-//var cors = require('cors');
 var app = express(); 
 var server = require('http').Server(app);  
 var io = require('socket.io')(server);
@@ -12,7 +11,6 @@ var messages = [{
     author: "Redmedix"
 }];
 
-//app.use(cors());
 app.use(express.static('.'));
 /*app.get('/', function(req, res){
     res.sendFile(dir_url + '/index.html');
