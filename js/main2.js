@@ -1,9 +1,8 @@
-var socket;
 var chatContainer = document.querySelector('.chat-output');
 
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function() {
-        var customMessage = prompt('Enter test message.');
+    var customMessage = prompt('Enter test message.');
     socket.emit(connection.socketCustomEvent, {
         sender: connection.userid,
         customMessage: customMessage
@@ -216,6 +215,16 @@ connection.connectSocket(function(socket) {
     socket.on(connection.socketCustomEvent, function(message) {
         alert(message.sender + ' shared custom message:\n\n' + message.customMessage);
     });
+    document.getElementById('sendtxt').onclick = function() {
+        var customMessage = prompt('Enter test message.');
+        socket.emit(connection.socketCustomEvent, {
+            sender: connection.userid,
+            customMessage: customMessage
+        });/*
+        connection.send(document.getElementById('input-text-chat').value);
+        appendDIV(document.getElementById('input-text-chat').value);
+        document.getElementById('input-text-chat').value = '';*/
+    };
     socket.on('new-message', function(message) {
         console.log(message);
         render(message);
