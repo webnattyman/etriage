@@ -12,11 +12,11 @@ var messages = [{
     author: "Redmedix"
 }];
 
+app.use(cors());
 app.use(express.static('.'));
 /*app.get('/', function(req, res){
     res.sendFile(dir_url + '/index.html');
 });*/
-app.use(cors());
 
 io.on('connection', function(socket) {
     socket.join(sala);
