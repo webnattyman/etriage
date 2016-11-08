@@ -194,7 +194,7 @@ document.getElementById('room-id').onkeyup = function() {
     localStorage.setItem(connection.socketMessageEvent, this.value);
 };
 
-var hashString = location.hash.replace('#', '');
+var hashString = location.hash.replace('?', '');
 if(hashString.length && hashString.indexOf('comment-') == 0) {
     hashString = '';
 }
