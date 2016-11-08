@@ -199,7 +199,7 @@ if(hashString.length && hashString.indexOf('comment-') == 0) {
     hashString = '';
 }
 
-alert(location.hash);
+alert(window.params.roomid);
 
 var roomid = params.roomid;
 if(!roomid && hashString.length) {
