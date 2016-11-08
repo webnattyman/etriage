@@ -180,6 +180,7 @@ function showRoomURL(roomid) {
     while (match = r.exec(search.substring(1)))
         params[d(match[1])] = d(match[2]);
     window.params = params;
+    alert(window.params);
 })();
 
 //****** Paramentrizacion de la sala ***************
@@ -199,7 +200,7 @@ if(hashString.length && hashString.indexOf('comment-') == 0) {
     hashString = '';
 }
 
-alert(hashString);
+alert(location.hash);
 
 var roomid = params.roomid;
 if(!roomid && hashString.length) {
