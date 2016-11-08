@@ -1,11 +1,14 @@
 var socket;
+var chatContainer = document.querySelector('.chat-output');
 
+//Enviando mensajes
 document.getElementById('sendtxt').onclick = function() {
     connection.send(document.getElementById('input-text-chat').value);
     appendDIV(document.getElementById('input-text-chat').value);
     document.getElementById('input-text-chat').value = '';
 };
 
+//Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
@@ -15,6 +18,7 @@ document.getElementById('join').onclick = function() {
     });
 };
 
+//Verifica los datos ingresados en el campo
 document.getElementById('input-text-chat').onkeyup = function(e) {
     if (e.keyCode != 13) return;
     this.value = this.value.replace(/^\s+|\s+$/g, '');
@@ -24,8 +28,7 @@ document.getElementById('input-text-chat').onkeyup = function(e) {
     this.value = '';
 };
 
-var chatContainer = document.querySelector('.chat-output');
-
+//Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
     var div = document.createElement('div');
     div.innerHTML = event.data || event;
@@ -36,32 +39,29 @@ function appendDIV(event) {
     document.getElementById('input-text-chat').focus();
 }
 
-// ......................................................
-// ..................RTCMultiConnection Code.............
-// ......................................................
-//var socket = io.connect();
-
+//Conexion de la session
 var connection = new RTCMultiConnection();
 connection.enableLogs = true;
-//var socket = connection.connectSocket();
-
-// by default, socket.io server is assumed to be deployed on your own URL
-//connection.socketURL = '/';
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
 
+//Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
     video: true,
     audio: true,
     data: true
 };
 
+//Configuracion de objeto mandatory
 connection.sdpConstraints.mandatory = {
     OfferToReceiveAudio: true,
     OfferToReceiveVideo: true
 };
 
+//Crear el contenedor de video.
 connection.videosContainer = document.getElementById('videos-container');
+
+//Agrega un evento a la conexion cuando transmite.
 connection.onstream = function(event) {
     var width = parseInt(connection.videosContainer.clientWidth / 2) - 20;
     var mediaElement = getMediaElement(event.mediaElement, {
@@ -80,6 +80,7 @@ connection.onstream = function(event) {
     mediaElement.id = event.streamid;
 };
 
+//Agrega funcion cuando termina de transmitir
 connection.onstreamended = function(event) {
     var mediaElement = document.getElementById(event.streamid);
     if(mediaElement) {
@@ -87,9 +88,13 @@ connection.onstreamended = function(event) {
     }
 };
 
+//Agrega funcion cuando llega un mensaje.
 connection.onmessage = appendDIV;
+
+//Agrega el contenedor de archivos
 connection.filesContainer = document.getElementById('file-container');
 
+//Agrega funcion cuando abre la conexion.
 connection.onopen = function() {
     document.getElementById('txtdiv').style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
@@ -98,60 +103,54 @@ connection.onopen = function() {
     document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + connection.getAllParticipants().join(', ');
 };
 
+//Agrega funcion cuando un usuario cierra la conexion.
 connection.onclose = function() {
     if(connection.getAllParticipants().length) {
-        document.querySelector('h1').innerHTML = 'Estas conectado con: ' + connection.getAllParticipants().join(', ');
+        document.querySelector('h1').innerHTML = 'Ha finalizado la comunicacion, recuerda que estabas en conexion con: ' + connection.getAllParticipants().join(', ');
     }
     else {
         document.querySelector('h1').innerHTML = 'La session termino, todos los participantes han abandonado!.';
     }
 };
 
+//Agrega funcion cuando la sesion entera es cerrada.
 connection.onEntireSessionClosed = function(event) {
     document.getElementById('sendtxt').disabled = true;
     document.getElementById('input-text-chat').disabled = true;
     document.getElementById('btn-leave-room').disabled = true;
-
     document.getElementById('open-or-join-room').disabled = false;
     document.getElementById('room-id').disabled = false;
-
     connection.attachStreams.forEach(function(stream) {
         stream.stop();
     });
-
     // don't display alert for moderator
     if(connection.userid === event.userid) return;
     document.querySelector('h1').innerHTML = 'Entire session has been closed by the moderator: ' + event.userid;
 };
 
+//Funcion que verifica si el nombre del usuario esta disponible.
 connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
-    // seems room is already opened
     connection.join(useridAlreadyTaken);
 };
 
+//Funcion que muestra los botones
 function disableInputButtons() {
     document.getElementById('join').disabled = true;
     document.getElementById('room-id').disabled = true;
     document.getElementById('btn-leave-room').disabled = false;
 }
 
-// ......................................................
-// ......................Handling Room-ID................
-// ......................................................
-
+//Funcion que abre los parametros del chat, despues de iniciar session.
 function showRoomURL(roomid) {
-    var roomHashURL = '#' + roomid;
     var roomQueryStringURL = '?roomid=' + roomid;
-
     var html = '<h2>Estos son los datos de tu sala:</h2><br>';
     html += 'Enlace de la sala : <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
-
     var roomURLsDiv = document.getElementById('room-urls');
     roomURLsDiv.innerHTML = html;
-
     roomURLsDiv.style.display = 'block';
 }
 
+//Funcion que extrae los parametros pasados por url
 (function() {
     var params = {},
         r = /([^&=]+)=?([^&]*)/g;
@@ -165,6 +164,7 @@ function showRoomURL(roomid) {
     window.params = params;
 })();
 
+//****** Paramentrizacion de la sala ***************
 var roomid = '';
 if (localStorage.getItem(connection.socketMessageEvent)) {
     roomid = localStorage.getItem(connection.socketMessageEvent);
@@ -204,6 +204,16 @@ if(roomid && roomid.length) {
 
     disableInputButtons();
 }
+//****** FIN Paramentrizacion de la sala ***************
+
+connection.socketCustomEvent = connection.channel;
+connection.connectSocket(function(socket) {
+    socket.on('new-message', function(message) {
+        console.log(data);
+        render(data);
+    });
+});
+
 
 connection.openSignalingChannel = function(callback) {
     return io.connect().on('new-message', function(data) {  
