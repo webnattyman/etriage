@@ -232,14 +232,14 @@ connection.connectSocket(function(socket) {
     });
 });
 
-
+/*
 connection.openSignalingChannel = function(callback) {
     return io.connect().on('new-message', function(data) {  
         console.log(data);
         render(data);
     });
 };
-
+*/
 
 function render (data) {  
     var html = data.map(function(elem, index) {
