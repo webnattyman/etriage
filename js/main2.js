@@ -33,6 +33,19 @@ document.getElementById('input-text-chat').onkeyup = function(e) {
     this.value = '';
 };
 
+//Funcion que cierra la session
+document.getElementById('btn-leave-room').onclick = function() {
+    this.disabled = true;
+    if(connection.isInitiator) {
+        connection.closeEntireSession(function() {
+            document.querySelector('h1').innerHTML = 'La session termino, todos los participantes han abandonado!.';
+        });
+    }
+    else {
+        connection.leave();
+    }
+};
+
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
     var div = document.createElement('div');
@@ -210,27 +223,31 @@ if(roomid && roomid.length) {
     disableInputButtons();
 }
 //****** FIN Paramentrizacion de la sala ***************
+connection.openSignalingChannel = function(config) {
+   var channel = config.channel || this.channel || connection.channel;
+   var sender = Math.round(Math.random() * 9999999999) + 9999999999;
 
-connection.socketCustomEvent = connection.channel;
-connection.connectSocket(function(socket) {
-    socket.on(connection.socketCustomEvent, function(message) {
-        alert(message.sender + ' shared custom message:\n\n' + message.customMessage);
-    });
-    document.getElementById('sendtxt').onclick = function() {
-        var customMessage = prompt('Enter test message.');
-        socket.emit(connection.socketCustomEvent, {
-            sender: connection.userid,
-            customMessage: customMessage
-        });/*
-        connection.send(document.getElementById('input-text-chat').value);
-        appendDIV(document.getElementById('input-text-chat').value);
-        document.getElementById('input-text-chat').value = '';*/
+   io.connect(connection.socketURL).emit('new-channel', {
+      channel: channel,
+      sender : sender
+   });
+
+   var socket = io.connect(connection.socketURL + channel);
+   socket.channel = channel;
+
+   socket.on('connect', function () {
+      if (config.callback) config.callback(socket);
+   });
+
+   socket.send = function (message) {
+        socket.emit('message', {
+            sender: sender,
+            data  : message
+        });
     };
-    socket.on('new-message', function(message) {
-        console.log(message);
-        render(message);
-    });
-});
+
+   socket.on('message', config.onmessage);
+};
 
 /*
 connection.openSignalingChannel = function(callback) {
