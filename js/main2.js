@@ -208,9 +208,12 @@ if(roomid && roomid.length) {
 
 connection.socketCustomEvent = connection.channel;
 connection.connectSocket(function(socket) {
+    socket.on(connection.socketCustomEvent, function(message) {
+        alert(message.sender + ' shared custom message:\n\n' + message.customMessage);
+    });
     socket.on('new-message', function(message) {
-        console.log(data);
-        render(data);
+        console.log(message);
+        render(message);
     });
 });
 
