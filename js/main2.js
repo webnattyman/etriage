@@ -201,7 +201,7 @@ if(hashString.length && hashString.indexOf('comment-') == 0) {
 
 var roomid = window.params.roomid;
 
-alert(roomid);
+alert(window.params.roomid);
 
 if(roomid && roomid.length) {
     document.getElementById('room-id').value = roomid;
