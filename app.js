@@ -1,5 +1,6 @@
 var express = require('express');  
-var app = express();  
+var cors = require('cors');
+var app = express(); 
 var server = require('http').Server(app);  
 var io = require('socket.io')(server);
 var sala = "chat983143145454";
@@ -15,6 +16,7 @@ app.use(express.static('.'));
 /*app.get('/', function(req, res){
     res.sendFile(dir_url + '/index.html');
 });*/
+app.use(cors());
 
 io.on('connection', function(socket) {
     socket.join(sala);
