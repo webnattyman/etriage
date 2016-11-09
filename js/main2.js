@@ -40,7 +40,7 @@ document.getElementById('sendtxt').onclick = function() {
 document.getElementById('join').onclick = function() {
     connection.userid = get.uid;
     disableInputButtons();
-    connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
+    connection.openOrJoin(get.uid, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
         }
