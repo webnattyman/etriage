@@ -13,7 +13,6 @@ function getGET(){
 }
 var get = getGET();
 var chatContainer = document.querySelector('.chat-output');
-connection.extra.user = array();
 
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function() {
@@ -73,6 +72,7 @@ var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
 connection.userid = get.uid;
+connection.extra.user = array();
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
     video: true,
