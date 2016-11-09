@@ -132,11 +132,12 @@ connection.onmessage = appendDIV;
 connection.filesContainer = document.getElementById('file-container');
 
 //Agrega funcion cuando abre la conexion.
-connection.onopen = function() {
+connection.onopen = function(event) {
     document.getElementById('txtdiv').style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
+    console.log(connection.getAllParticipants());
     document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + connection.getAllParticipants().join(', ');
 };
 
