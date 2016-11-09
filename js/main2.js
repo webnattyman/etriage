@@ -1,19 +1,4 @@
 //Funcion que extrae los parametros pasados por url
-(function() {
-    var params = {},
-        r = /([^&=]+)=?([^&]*)/g;
-
-    function d(s) {
-        return decodeURIComponent(s.replace(/\+/g, ' '));
-    }
-    var match, search = window.location.search;
-    while (match = r.exec(search.substring(1))){
-        params[d(match[1])] = d(match[2]);
-        console.log(params);
-    }
-    window.params = params;
-})();
-
 function getGET(){
    var loc = document.location.href;
    var getString = loc.split('#')[1];
@@ -212,43 +197,6 @@ if(roomid && roomid.length) {
     localStorage.setItem(connection.socketMessageEvent, roomid);
 }
 //****** FIN Paramentrizacion de la sala ***************
-connection.openSignalingChannel = function(config) {
-   var channel = config.channel || this.channel || connection.channel;
-   var sender = Math.round(Math.random() * 9999999999) + 9999999999;
-
-   io.connect("/").emit('new-channel', {
-      channel: channel,
-      sender : sender
-   });
-
-   var socket = io.connect("/");
-   socket.channel = channel;
-
-   socket.on('connect', function () {
-      if (config.callback) config.callback(socket);
-   });
-
-    document.getElementById('sendtxt').onclick = function() {
-        var customMessage = prompt('Enter test message.');
-        socket.emit('message', {
-            sender: connection.userid,
-            customMessage: customMessage
-        });/*
-        connection.send(document.getElementById('input-text-chat').value);
-        appendDIV(document.getElementById('input-text-chat').value);
-        document.getElementById('input-text-chat').value = '';*/
-    };
-    
-    socket.send = function (message) {
-        socket.emit('message', {
-            sender: sender,
-            data  : message
-        });
-    };
-
-    socket.on('message', config.onmessage);
-};
-
 /*
 connection.openSignalingChannel = function(callback) {
     return io.connect().on('new-message', function(data) {  
