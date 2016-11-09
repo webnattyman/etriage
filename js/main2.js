@@ -23,7 +23,7 @@ document.getElementById('sendtxt').onclick = function() {
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
-    connection.userid = get.uid;
+    connection.userid = String(get.uid);
     console.log(connection);
     console.log(get.uid);
     disableInputButtons();
@@ -72,7 +72,7 @@ function appendDIV(event) {
 var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
-connection.userid = get.uid;
+connection.userid = String(get.uid);
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
     video: true,
