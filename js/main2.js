@@ -1,3 +1,19 @@
+//Funcion que extrae los parametros pasados por url
+(function() {
+    var params = {},
+        r = /([^&=]+)=?([^&]*)/g;
+
+    function d(s) {
+        return decodeURIComponent(s.replace(/\+/g, ' '));
+    }
+    var match, search = window.location.search;
+    while (match = r.exec(search.substring(1))){
+        params[d(match[1])] = d(match[2]);
+        console.log(params);
+    }
+    window.params = params;
+})();
+
 var chatContainer = document.querySelector('.chat-output');
 
 //Enviando mensajes
@@ -9,7 +25,6 @@ document.getElementById('sendtxt').onclick = function() {
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
-    console.log(window.params);
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
@@ -163,20 +178,6 @@ function showRoomURL(roomid) {
     roomURLsDiv.innerHTML = html;
     roomURLsDiv.style.display = 'block';
 }
-
-//Funcion que extrae los parametros pasados por url
-(function() {
-    var params = {},
-        r = /([^&=]+)=?([^&]*)/g;
-
-    function d(s) {
-        return decodeURIComponent(s.replace(/\+/g, ' '));
-    }
-    var match, search = window.location.search;
-    while (match = r.exec(search.substring(1)))
-        params[d(match[1])] = d(match[2]);
-    window.params = params;
-})();
 
 //****** Paramentrizacion de la sala ***************
 var roomid = '';
