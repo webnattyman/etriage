@@ -16,7 +16,7 @@
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\#&]" + name + "=([^&#]*)"),
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
     results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
@@ -32,10 +32,11 @@ document.getElementById('sendtxt').onclick = function() {
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
+    connection.userid = getParameterByName('uid');
     disableInputButtons();
-    connection.openOrJoin(getParameterByName('uid'), function(isRoomExists, roomid) {
+    connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
-            showRoomURL(document.getElementById('room-id').value);
+            showRoomURL(roomid);
         }
     });
 };
@@ -168,6 +169,11 @@ connection.onEntireSessionClosed = function(event) {
 connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
     connection.join(useridAlreadyTaken);
 };
+
+connection.connectSocket( function() {
+    alert('Successfully connected to socket.io server.');
+    connection.socket.emit('howdy', 'hello');
+});
 
 //Funcion que muestra los botones
 function disableInputButtons() {
