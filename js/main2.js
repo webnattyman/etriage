@@ -38,8 +38,6 @@ document.getElementById('sendtxt').onclick = function() {
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
-    connection.userid = get.uid;
-    connection.sessionid = get.uid;
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
@@ -84,10 +82,10 @@ function appendDIV(event) {
 
 //Conexion de la session
 var connection = new RTCMultiConnection();
-//connection.enableLogs = true;
-//connection.socketURL = 'https://redmedix.herokuapp.com:443/';
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
+connection.userid = get.uid;
+connection.sessionid = get.roomid;
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
@@ -139,12 +137,11 @@ connection.onmessage = appendDIV;
 connection.filesContainer = document.getElementById('file-container');
 
 //Agrega funcion cuando abre la conexion.
-connection.onopen = function(e) {
+connection.onopen = function() {
     document.getElementById('txtdiv').style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
-    console.log(e);
     document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + connection.getAllParticipants().join(', ');
 };
 
