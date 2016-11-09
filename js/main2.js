@@ -23,7 +23,7 @@ document.getElementById('sendtxt').onclick = function() {
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
-    connection.extra.user = get.uid;
+    connection.extra.user.push(get.uid);
     console.log(connection);
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
