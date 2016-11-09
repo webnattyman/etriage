@@ -14,13 +14,20 @@
     window.params = params;
 })();
 
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+function getGET(){
+   var loc = document.location.href;
+   var getString = loc.split('?')[1];
+   var GET = getString.split('&');
+   var get = {};//this object will be filled with the key-value pairs and returned.
 
+   for(var i = 0, l = GET.length; i < l; i++){
+      var tmp = GET[i].split('=');
+      get[tmp[0]] = unescape(decodeURI(tmp[1]));
+   }
+   return get;
+}
+var get = getGET();
+console.log(get);
 var chatContainer = document.querySelector('.chat-output');
 
 //Enviando mensajes
@@ -32,7 +39,7 @@ document.getElementById('sendtxt').onclick = function() {
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
-    connection.userid = getParameterByName('uid');
+    connection.userid = get.uid;
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
@@ -212,7 +219,7 @@ if(hashString.length && hashString.indexOf('comment-') == 0) {
     hashString = '';
 }
 
-var roomid = getParameterByName('roomid').replace("#",'?');
+var roomid = get.roomid;
 
 if(roomid && roomid.length) {
     document.getElementById('room-id').value = roomid;
