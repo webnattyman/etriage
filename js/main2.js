@@ -13,6 +13,7 @@ function getGET(){
 }
 var get = getGET();
 var chatContainer = document.querySelector('.chat-output');
+connection.extra.user = array();
 
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function() {
