@@ -1,19 +1,15 @@
 var chatContainer = document.querySelector('.chat-output');
 
-/*Enviando mensajes
+//Enviando mensajes
 document.getElementById('sendtxt').onclick = function() {
-    var customMessage = prompt('Enter test message.');
-    socket.emit(connection.socketCustomEvent, {
-        sender: connection.userid,
-        customMessage: customMessage
-    });/*
     connection.send(document.getElementById('input-text-chat').value);
     appendDIV(document.getElementById('input-text-chat').value);
     document.getElementById('input-text-chat').value = '';
-};*/
+};
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
+    console.log(window.params.uid);
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
@@ -136,7 +132,7 @@ connection.onEntireSessionClosed = function(event) {
     document.getElementById('sendtxt').disabled = true;
     document.getElementById('input-text-chat').disabled = true;
     document.getElementById('btn-leave-room').disabled = true;
-    document.getElementById('open-or-join-room').disabled = false;
+    document.getElementById('join').disabled = false;
     document.getElementById('room-id').disabled = false;
     connection.attachStreams.forEach(function(stream) {
         stream.stop();
