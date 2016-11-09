@@ -16,7 +16,7 @@
 
 function getGET(){
    var loc = document.location.href;
-   var getString = loc.split('?')[1];
+   var getString = loc.split('#')[1];
    var GET = getString.split('&');
    var get = {};//this object will be filled with the key-value pairs and returned.
 
