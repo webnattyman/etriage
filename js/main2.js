@@ -23,11 +23,10 @@ document.getElementById('sendtxt').onclick = function() {
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
-    connection.userid = String(get.uid);
+    connection.userid = get.uid;
     console.log(connection);
-    console.log(get.uid);
     disableInputButtons();
-    connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
+    connection.openOrJoin(get.uid, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
         }
@@ -72,7 +71,7 @@ function appendDIV(event) {
 var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
-connection.userid = String(get.uid);
+connection.userid = get.uid;
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
     video: true,
