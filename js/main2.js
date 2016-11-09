@@ -16,7 +16,7 @@
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    var regex = new RegExp("[\\#&]" + name + "=([^&#]*)"),
     results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
@@ -35,7 +35,7 @@ document.getElementById('join').onclick = function() {
     disableInputButtons();
     connection.openOrJoin(getParameterByName('uid'), function(isRoomExists, roomid) {
         if(!isRoomExists) {
-            showRoomURL(roomid);
+            showRoomURL(document.getElementById('room-id').value);
         }
     });
 };
