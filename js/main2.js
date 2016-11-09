@@ -1,7 +1,7 @@
 //Funcion que extrae los parametros pasados por url
 function getGET(){
    var loc = document.location.href;
-   var getString = loc.split('#')[1];
+   var getString = loc.split('?')[1];
    var GET = getString.split('&');
    var get = {};//this object will be filled with the key-value pairs and returned.
 
@@ -24,6 +24,7 @@ document.getElementById('sendtxt').onclick = function() {
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
     connection.userid = get.uid;
+    console.log(connection);
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
@@ -175,7 +176,7 @@ function disableInputButtons() {
 
 //Funcion que abre los parametros del chat, despues de iniciar session.
 function showRoomURL(roomid) {
-    var roomQueryStringURL = "#roomid="+roomid;
+    var roomQueryStringURL = "?roomid="+roomid;
     var html = '<h2>Estos son los datos de tu sala:</h2><br>';
     html += 'Enlace de la sala : <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
     var roomURLsDiv = document.getElementById('room-urls');
