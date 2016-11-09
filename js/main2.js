@@ -212,7 +212,7 @@ document.getElementById('room-id').onkeyup = function() {
 };
 
 if(roomid && roomid.length) {
-    document.getElementById('room-id').value = '#'+roomid;
+    document.getElementById('room-id').value = roomid;
     localStorage.setItem(connection.socketMessageEvent, roomid);
 }
 //****** FIN Paramentrizacion de la sala ***************
