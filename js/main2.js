@@ -14,6 +14,13 @@
     window.params = params;
 })();
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 var chatContainer = document.querySelector('.chat-output');
 
 //Enviando mensajes
@@ -26,7 +33,7 @@ document.getElementById('sendtxt').onclick = function() {
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
     disableInputButtons();
-    connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
+    connection.openOrJoin(getParameterByName('uid'), function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
         }
@@ -196,7 +203,7 @@ if(hashString.length && hashString.indexOf('comment-') == 0) {
     hashString = '';
 }
 
-var roomid = window.params.roomid;
+var roomid = getParameterByName('roomid');
 
 if(roomid && roomid.length) {
     document.getElementById('room-id').value = roomid;
