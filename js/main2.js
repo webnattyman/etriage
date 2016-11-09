@@ -25,6 +25,7 @@ document.getElementById('sendtxt').onclick = function() {
 document.getElementById('join').onclick = function() {
     connection.userid = get.uid;
     console.log(connection);
+    console.log(get.uid);
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
