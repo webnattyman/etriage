@@ -170,10 +170,12 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
     connection.join(useridAlreadyTaken);
 };
 
+/*
 connection.connectSocket( function() {
     alert('Successfully connected to socket.io server.');
     connection.socket.emit('howdy', 'hello');
 });
+*/
 
 //Funcion que muestra los botones
 function disableInputButtons() {
