@@ -23,7 +23,7 @@ document.getElementById('sendtxt').onclick = function() {
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
-    connection.userid = get.uid;
+    connection.extra.user = get.uid;
     console.log(connection);
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
@@ -127,6 +127,7 @@ connection.onopen = function() {
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
+    console.log(connection.extra);
     document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + connection.getAllParticipants().join(', ');
 };
 
