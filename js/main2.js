@@ -213,24 +213,6 @@ document.getElementById('room-id').onkeyup = function() {
 if(roomid && roomid.length) {
     document.getElementById('room-id').value = '#'+roomid;
     localStorage.setItem(connection.socketMessageEvent, roomid);
-
-    // auto-join-room
-    (function reCheckRoomPresence() {
-        connection.checkPresence(roomid, function(isRoomExists) {
-            if(isRoomExists) {
-                connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
-                    if(!isRoomExists) {
-                        showRoomURL(roomid);
-                    }
-                });
-                return;
-            }
-
-            setTimeout(reCheckRoomPresence, 5000);
-        });
-    })();
-
-    disableInputButtons();
 }
 //****** FIN Paramentrizacion de la sala ***************
 connection.openSignalingChannel = function(config) {
