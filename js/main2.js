@@ -218,7 +218,11 @@ if(roomid && roomid.length) {
     (function reCheckRoomPresence() {
         connection.checkPresence(roomid, function(isRoomExists) {
             if(isRoomExists) {
-                connection.join(roomid);
+                connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
+                    if(!isRoomExists) {
+                        showRoomURL(roomid);
+                    }
+                });
                 return;
             }
 
