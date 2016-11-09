@@ -27,7 +27,6 @@ function getGET(){
    return get;
 }
 var get = getGET();
-console.log(get);
 var chatContainer = document.querySelector('.chat-output');
 
 //Enviando mensajes
@@ -203,26 +202,16 @@ function showRoomURL(roomid) {
 }
 
 //****** Paramentrizacion de la sala ***************
-var roomid = '';
-if (localStorage.getItem(connection.socketMessageEvent)) {
-    roomid = localStorage.getItem(connection.socketMessageEvent);
-} else {
-    roomid = connection.token();
-}
+
+var roomid = get.roomid;
+
 document.getElementById('room-id').value = roomid;
 document.getElementById('room-id').onkeyup = function() {
     localStorage.setItem(connection.socketMessageEvent, this.value);
 };
 
-var hashString = location.hash.replace('#', '');
-if(hashString.length && hashString.indexOf('comment-') == 0) {
-    hashString = '';
-}
-
-var roomid = get.roomid;
-
 if(roomid && roomid.length) {
-    document.getElementById('room-id').value = roomid;
+    document.getElementById('room-id').value = '#'+roomid;
     localStorage.setItem(connection.socketMessageEvent, roomid);
 
     // auto-join-room
