@@ -40,7 +40,7 @@ document.getElementById('sendtxt').onclick = function() {
 document.getElementById('join').onclick = function() {
     connection.userid = get.uid;
     disableInputButtons();
-    connection.openOrJoin(get.uid, function(isRoomExists, roomid) {
+    connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
         }
@@ -144,6 +144,7 @@ connection.onopen = function(event) {
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
     console.log(connection.getAllParticipants());
+    console.log(event.userid);
     document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + connection.getAllParticipants().join(', ');
 };
 
@@ -193,7 +194,7 @@ function disableInputButtons() {
 
 //Funcion que abre los parametros del chat, despues de iniciar session.
 function showRoomURL(roomid) {
-    var roomQueryStringURL = roomid;
+    var roomQueryStringURL = "#roomid="+roomid;
     var html = '<h2>Estos son los datos de tu sala:</h2><br>';
     html += 'Enlace de la sala : <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
     var roomURLsDiv = document.getElementById('room-urls');
