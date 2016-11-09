@@ -39,6 +39,7 @@ document.getElementById('sendtxt').onclick = function() {
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
     connection.userid = get.uid;
+    connection.sessionid = get.uid;
     disableInputButtons();
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
@@ -138,12 +139,12 @@ connection.onmessage = appendDIV;
 connection.filesContainer = document.getElementById('file-container');
 
 //Agrega funcion cuando abre la conexion.
-connection.onopen = function() {
+connection.onopen = function(e) {
     document.getElementById('txtdiv').style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
-    console.log(connection.getAllParticipants());
+    console.log(e.userid);
     document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + connection.getAllParticipants().join(', ');
 };
 
@@ -219,12 +220,12 @@ connection.openSignalingChannel = function(config) {
    var channel = config.channel || this.channel || connection.channel;
    var sender = Math.round(Math.random() * 9999999999) + 9999999999;
 
-   io.connect(connection.socketURL).emit('new-channel', {
+   io.connect("/").emit('new-channel', {
       channel: channel,
       sender : sender
    });
 
-   var socket = io.connect(connection.socketURL);
+   var socket = io.connect("/");
    socket.channel = channel;
 
    socket.on('connect', function () {
