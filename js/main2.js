@@ -16,6 +16,7 @@ var chatContainer = document.querySelector('.chat-output');
 
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function() {
+    console.log(connection);
     connection.send(document.getElementById('input-text-chat').value);
     appendDIV(document.getElementById('input-text-chat').value);
     document.getElementById('input-text-chat').value = '';
@@ -27,7 +28,7 @@ document.getElementById('join').onclick = function() {
     connection.extra = {
         fullname: get.uid
     };
-    connection.userid = get.uid;
+    //connection.userid = get.uid;
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
@@ -61,10 +62,10 @@ document.getElementById('btn-leave-room').onclick = function() {
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
     var div = document.createElement('div');
-    if( !event.userid ){
+    if( event.userid === undefined ){
         event.userid = get.uid;
     }
-    if( !event.data ){
+    if( event.data === undefined ){
         event.data = event;
     }
     div.innerHTML = "<table style='width:100%;border:1px solid black;'><tr><td style='text-align:center;'>"+event.userid+"</td><td style='text-align:center;'>"+event.data+"</td></tr></table>" || event;
