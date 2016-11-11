@@ -41,7 +41,7 @@ document.getElementById('input-text-chat').onkeyup = function(e) {
     this.value = this.value.replace(/^\s+|\s+$/g, '');
     if (!this.value.length) return;
     connection.send(this.value);
-    appendDIV(this.value);
+    appendDIV( this.value );
     this.value = '';
 };
 
@@ -61,6 +61,12 @@ document.getElementById('btn-leave-room').onclick = function() {
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
     var div = document.createElement('div');
+    if( !event.userid ){
+        event.userid = get.uid;
+    }
+    if( !event.data ){
+        event.data = event;
+    }
     div.innerHTML = "<table style='width:100%;border:1px solid black;'><tr><td style='text-align:center;'>"+event.userid+"</td><td style='text-align:center;'>"+event.data+"</td></tr></table>" || event;
     chatContainer.insertBefore(div, chatContainer.firstChild);
     div.tabIndex = 0;
