@@ -61,10 +61,9 @@ document.getElementById('btn-leave-room').onclick = function() {
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
-    console.log(typeof event);
     var div = document.createElement('div');
     var msj, usr;
-    if( typeof event === 'undefined' ){
+    if( typeof event === 'string' ){
         msj = event;
         usr = get.uid;
     }else{
