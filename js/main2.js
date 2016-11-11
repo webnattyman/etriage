@@ -30,9 +30,8 @@ document.getElementById('join').onclick = function() {
             connection.userid = get.uid;
             connection.join(roomid);
         }else {
-            connection.userid = get.uid;
-            showRoomURL(roomid);
             connection.open(roomid);
+            showRoomURL(roomid);
         }
     });
     /*
@@ -81,7 +80,7 @@ function appendDIV(event) {
 var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
-//connection.getAllParticipants().splice(0,1,get.uid);
+connection.getAllParticipants().splice(0,1,get.uid);
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
