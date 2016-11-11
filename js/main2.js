@@ -17,8 +17,8 @@ var chatContainer = document.querySelector('.chat-output');
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function() {
     console.log(connection);
-    connection.send(document.getElementById('input-text-chat').value);
     appendDIV(document.getElementById('input-text-chat').value);
+    connection.send(document.getElementById('input-text-chat').value);
     document.getElementById('input-text-chat').value = '';
 };
 
@@ -62,13 +62,15 @@ document.getElementById('btn-leave-room').onclick = function() {
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
     var div = document.createElement('div');
-    if( event.userid === undefined ){
-        event.userid = get.uid;
+    var msj, usr;
+    if( typeof event === 'undefined' ){
+        msj = event;
+        usr = get.uid;
+    }else{
+        msj = event.data;
+        usr = event.userid;
     }
-    if( event.data === undefined ){
-        event.data = event;
-    }
-    div.innerHTML = "<table style='width:100%;border:1px solid black;'><tr><td style='text-align:center;'>"+event.userid+"</td><td style='text-align:center;'>"+event.data+"</td></tr></table>" || event;
+    div.innerHTML = "<table style='width:100%;border:1px solid black;'><tr><td style='text-align:center;'>"+usr+"</td><td style='text-align:center;'>"+msj+"</td></tr></table>" || event;
     chatContainer.insertBefore(div, chatContainer.firstChild);
     div.tabIndex = 0;
     div.focus();
