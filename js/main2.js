@@ -28,7 +28,7 @@ document.getElementById('join').onclick = function() {
     connection.extra = {
         fullname: get.uid
     };
-    //connection.userid = get.uid;
+    connection.userid = get.uid;
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
@@ -41,8 +41,8 @@ document.getElementById('input-text-chat').onkeyup = function(e) {
     if (e.keyCode != 13) return;
     this.value = this.value.replace(/^\s+|\s+$/g, '');
     if (!this.value.length) return;
-    connection.send(this.value);
     appendDIV( this.value );
+    connection.send(this.value);
     this.value = '';
 };
 
@@ -61,6 +61,7 @@ document.getElementById('btn-leave-room').onclick = function() {
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
+    console.log(event);
     var div = document.createElement('div');
     var msj, usr;
     if( typeof event === 'undefined' ){
@@ -83,7 +84,7 @@ var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
 connection.userid = get.uid;
-//connection.getAllParticipants().splice(0,1,get.uid);
+connection.getAllParticipants().splice(0,1,get.uid);
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
