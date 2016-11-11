@@ -24,6 +24,10 @@ document.getElementById('sendtxt').onclick = function() {
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
     disableInputButtons();
+    connection.extra = {
+        fullname: get.uid
+    };
+    connection.updateExtraData();
     connection.userid = get.uid;
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
@@ -127,13 +131,17 @@ connection.onopen = function() {
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
-    document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + connection.getAllParticipants().join(', ');
+    
+};
+
+connection.onExtraDataUpdated = function(event) {
+    document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 };
 
 //Agrega funcion cuando un usuario cierra la conexion.
-connection.onclose = function() {
+connection.onclose = function(e) {
     if(connection.getAllParticipants().length) {
-        document.querySelector('h1').innerHTML = 'Ha finalizado la comunicacion, recuerda que estabas en conexion con: ' + connection.getAllParticipants().join(', ');
+        document.querySelector('h1').innerHTML = 'Ha finalizado la comunicacion, recuerda que estabas en conexion con: ' + e.userid;
     }
     else {
         document.querySelector('h1').innerHTML = 'La session termino, todos los participantes han abandonado!.';
