@@ -30,6 +30,7 @@ document.getElementById('join').onclick = function() {
             connection.join(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
         }else {
             connection.userid = get.uid;
+            showRoomURL(roomid);
             connection.open(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
         }
     });
