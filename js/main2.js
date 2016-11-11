@@ -26,7 +26,7 @@ document.getElementById('join').onclick = function() {
     disableInputButtons();
     if( connection.numberOfConnectedUsers > 1 ) {
         connection.userid = get.uid;
-        connection.join(document.getElementById('room-id').value, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
+        connection.join(document.getElementById('room-id').value);
     }else {
         connection.userid = get.uid;
         showRoomURL(roomid);
