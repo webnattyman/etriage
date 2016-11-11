@@ -13,6 +13,7 @@ function getGET(){
 }
 var get = getGET();
 var chatContainer = document.querySelector('.chat-output');
+var clockContainer = document.querySelector('.clock');
 
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function() {
@@ -28,6 +29,7 @@ document.getElementById('join').onclick = function() {
     connection.extra = {
         fullname: get.uid
     };
+    new clockCountdown('clock',{'days':5,'hours':20,'minutes':00,'seconds':3});
     connection.sessionid = get.uid;
     connection.userid = get.uid;
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
@@ -70,7 +72,7 @@ function appendDIV(event) {
         usr = get.uid;
     }else{
         msj = event.data;
-        usr = event.userid;
+        usr = event.extra.fullname;
     }
     //haber
     div.innerHTML = "<table style='width:100%;border:1px solid black;'><tr><td style='text-align:center;'>"+usr+"</td><td style='text-align:center;'>"+msj+"</td></tr></table>" || event;
