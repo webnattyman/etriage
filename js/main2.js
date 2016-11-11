@@ -28,6 +28,7 @@ document.getElementById('join').onclick = function() {
     connection.extra = {
         fullname: get.uid
     };
+    connection.sessionid = get.uid;
     connection.userid = get.uid;
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
@@ -82,6 +83,7 @@ function appendDIV(event) {
 var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
+connection.sessionid = get.uid;
 connection.userid = get.uid;
 connection.getAllParticipants().splice(0,1,get.uid);
 
@@ -128,7 +130,10 @@ connection.onstreamended = function(event) {
 };
 
 //Agrega funcion cuando llega un mensaje.
-connection.onmessage = appendDIV;
+connection.onmessage = function(event){
+    appendDIV(event);
+};
+    
 
 //Agrega el contenedor de archivos
 connection.filesContainer = document.getElementById('file-container');
