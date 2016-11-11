@@ -80,8 +80,8 @@ function appendDIV(event) {
 var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
-connection.userid = get.uid;
-connection.getAllParticipants().splice(0,1,get.uid);
+//connection.userid = get.uid;
+//connection.getAllParticipants().splice(0,1,get.uid);
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
@@ -141,6 +141,7 @@ connection.onopen = function() {
 };
 
 connection.onExtraDataUpdated = function(event) {
+    connection.userid = event.extra.fullname;
     document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 };
 
