@@ -27,7 +27,6 @@ document.getElementById('join').onclick = function() {
     connection.extra = {
         fullname: get.uid
     };
-    connection.updateExtraData();
     connection.userid = get.uid;
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
