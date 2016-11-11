@@ -24,22 +24,11 @@ document.getElementById('sendtxt').onclick = function() {
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
     disableInputButtons();
-    
-    connection.checkPresence( document.getElementById('room-id').value , function(isRoomExists, roomid) {
-        if(isRoomExists) {
-            connection.userid = get.uid;
-            connection.join(roomid);
-        }else {
-            connection.open(roomid);
-            showRoomURL(roomid);
-        }
-    });
-    /*
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
         }
-    });*/
+    });
 };
 
 //Verifica los datos ingresados en el campo
