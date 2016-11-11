@@ -24,11 +24,19 @@ document.getElementById('sendtxt').onclick = function() {
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
     disableInputButtons();
+    connection.checkPresence( document.getElementById('room-id').value , function(isRoomExists, roomid) {
+        if(isRoomExists) {
+            connection.join(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
+        }else {
+            connection.open(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
+        }
+    });
+    /*
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             showRoomURL(roomid);
         }
-    });
+    });*/
 };
 
 //Verifica los datos ingresados en el campo
@@ -69,7 +77,6 @@ function appendDIV(event) {
 var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
-connection.userid = get.uid;
 connection.getAllParticipants().splice(0,1,get.uid);
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
