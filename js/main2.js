@@ -26,8 +26,10 @@ document.getElementById('join').onclick = function() {
     disableInputButtons();
     connection.checkPresence( document.getElementById('room-id').value , function(isRoomExists, roomid) {
         if(isRoomExists) {
+            connection.userid = get.uid;
             connection.join(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
         }else {
+            connection.userid = get.uid;
             connection.open(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
         }
     });
@@ -77,7 +79,7 @@ function appendDIV(event) {
 var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
-connection.getAllParticipants().splice(0,1,get.uid);
+//connection.getAllParticipants().splice(0,1,get.uid);
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
