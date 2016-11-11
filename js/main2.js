@@ -29,7 +29,7 @@ document.getElementById('join').onclick = function() {
     connection.extra = {
         fullname: get.uid
     };
-    new clockCountdown('clock',{'days':5,'hours':20,'minutes':00,'seconds':3});
+    new clockCountdown('clock',{'days':0,'hours':0,'minutes':20,'seconds':0});
     connection.sessionid = get.uid;
     connection.userid = get.uid;
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
