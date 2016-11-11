@@ -32,7 +32,7 @@ document.getElementById('join').onclick = function() {
         }else {
             connection.userid = get.uid;
             showRoomURL(roomid);
-            connection.open(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
+            connection.open(roomid);
         }
     });
     /*
