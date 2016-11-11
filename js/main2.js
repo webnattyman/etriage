@@ -24,8 +24,9 @@ document.getElementById('sendtxt').onclick = function() {
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
     disableInputButtons();
+    
     connection.checkPresence( document.getElementById('room-id').value , function(isRoomExists, roomid) {
-        if(isRoomExists) {
+        if( connection.numberOfConnectedUsers > 1 ) {
             connection.userid = get.uid;
             connection.join(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
         }else {
