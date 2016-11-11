@@ -133,6 +133,7 @@ connection.onstreamended = function(event) {
 
 //Agrega funcion cuando llega un mensaje.
 connection.onmessage = function(event){
+    console.log(event);
     appendDIV(event);
 };
     
