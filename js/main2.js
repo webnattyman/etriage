@@ -71,6 +71,7 @@ function appendDIV(event) {
         msj = event.data;
         usr = event.userid;
     }
+    //haber
     div.innerHTML = "<table style='width:100%;border:1px solid black;'><tr><td style='text-align:center;'>"+usr+"</td><td style='text-align:center;'>"+msj+"</td></tr></table>" || event;
     chatContainer.insertBefore(div, chatContainer.firstChild);
     div.tabIndex = 0;
