@@ -61,7 +61,7 @@ document.getElementById('btn-leave-room').onclick = function() {
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
     var div = document.createElement('div');
-    div.innerHTML = event.data || event;
+    div.innerHTML = "<table style='width:100%;border:1px solid black;'><tr><td style='text-align:center;'>"+event.userid+"</td><td style='text-align:center;'>"+event.data+"</td></tr></table>" || event;
     chatContainer.insertBefore(div, chatContainer.firstChild);
     div.tabIndex = 0;
     div.focus();
@@ -138,9 +138,9 @@ connection.onExtraDataUpdated = function(event) {
 };
 
 //Agrega funcion cuando un usuario cierra la conexion.
-connection.onclose = function(e) {
+connection.onclose = function() {
     if(connection.getAllParticipants().length) {
-        document.querySelector('h1').innerHTML = 'Ha finalizado la comunicacion, recuerda que estabas en conexion con: ' + e.userid;
+        document.querySelector('h1').innerHTML = 'Ha finalizado la comunicacion, recuerda que estabas en conexion con: ' + connection.getAllParticipants().join(', ');
     }
     else {
         document.querySelector('h1').innerHTML = 'La session termino, todos los participantes han abandonado!.';
