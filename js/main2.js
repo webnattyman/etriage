@@ -24,17 +24,14 @@ document.getElementById('sendtxt').onclick = function() {
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
     disableInputButtons();
-    
-    connection.checkPresence( document.getElementById('room-id').value , function(isRoomExists, roomid) {
-        if( connection.numberOfConnectedUsers > 1 ) {
-            connection.userid = get.uid;
-            connection.join(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
-        }else {
-            connection.userid = get.uid;
-            showRoomURL(roomid);
-            connection.open(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
-        }
-    });
+    if( connection.numberOfConnectedUsers > 1 ) {
+        connection.userid = get.uid;
+        connection.join(document.getElementById('room-id').value, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
+    }else {
+        connection.userid = get.uid;
+        showRoomURL(roomid);
+        connection.open(document.getElementById('room-id').value, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
+    }
     /*
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
