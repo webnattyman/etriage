@@ -141,7 +141,7 @@ connection.onopen = function() {
 };
 
 connection.onExtraDataUpdated = function(event) {
-    connection.userid = event.extra.fullname;
+    event.userid = event.extra.fullname;
     document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 };
 
