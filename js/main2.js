@@ -28,7 +28,7 @@ document.getElementById('join').onclick = function() {
     connection.checkPresence( document.getElementById('room-id').value , function(isRoomExists, roomid) {
         if(isRoomExists) {
             connection.userid = get.uid;
-            connection.join(roomid, {dontTransmit: true,sessionid: get.uid,transmitRoomOnce: true});
+            connection.join(roomid);
         }else {
             connection.userid = get.uid;
             showRoomURL(roomid);
