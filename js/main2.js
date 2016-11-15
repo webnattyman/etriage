@@ -73,7 +73,7 @@ function appendDIV(event) {
     if( typeof event === 'string' ){
         msj = event;
         usr = get.uid;
-        rol = get.r;
+        rol = 1;
     }else{
         msj = event.data;
         usr = event.extra.fullname;
@@ -83,7 +83,7 @@ function appendDIV(event) {
     console.log(rol);
     console.log(event);
     row.innerHTML = "<td style='text-align:center;'>"+usr+"</td><td style='text-align:center;'>"+msj+"</td></tr></table>";
-    if( rol === 1 ){
+    if( intval(rol) === 1 ){
         chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
     }else{
         chatContainerPaciente.insertBefore(row, chatContainerPaciente.firstChild);
