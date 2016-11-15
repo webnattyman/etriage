@@ -66,10 +66,30 @@ document.getElementById('btn-leave-room').onclick = function() {
     }
 };
 
+function mostrarhora(){
+    var f       = new Date();
+    var hours   = f.getHours();
+    var minutes = f.getMinutes();
+    var seconds = f.getSeconds();
+    var dn      = "AM";
+    if ( hours > 12 ){
+        dn    = "PM";
+        hours = hours-12;
+    }
+    if ( hours == 0 )
+        hours = 12;
+    if ( minutes <= 9 )
+        minutes = "0"+minutes;
+    if ( seconds <= 9 )
+        seconds = "0"+seconds;
+    
+    return hours+":"+minutes+":"+seconds;
+} 
+
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
-    var row = document.createElement('tr');
     var msj, usr, rol;
+    var row = document.createElement('tr');
     if( typeof event === 'string' ){
         msj = event;
         usr = get.uid;
@@ -82,10 +102,13 @@ function appendDIV(event) {
     //haber
     console.log(rol);
     console.log(event);
-    row.innerHTML = "<td style='text-align:center;'>"+usr+"</td><td style='text-align:center;'>"+msj+"</td></tr></table>";
     if( rol === 1 ){
+        row.style.background = '#885bc6';
+        row.innerHTML = "<td style='text-align:center;'>"+usr+"("+mostrarhora()+")dice:</td><td style='text-align:center;'>"+msj+"</td></tr></table>";
         chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
     }else{
+        row.style.background = '#00a5b4';
+        row.innerHTML = "<td style='text-align:center;'>"+usr+"("+mostrarhora()+")dice:</td><td style='text-align:center;'>"+msj+"</td></tr></table>";
         chatContainerPaciente.insertBefore(row, chatContainerPaciente.firstChild);
     }
     row.tabIndex = 0;
