@@ -80,7 +80,7 @@ function appendDIV(event) {
     //haber
     rol = get.r;
     row.innerHTML = "<td style='text-align:center;'>"+usr+"</td><td style='text-align:center;'>"+msj+"</td></tr></table>";
-    if( rol === 1){
+    if( rol === "1" ){
         chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
     }else{
         chatContainerPaciente.insertBefore(row, chatContainerPaciente.firstChild);
