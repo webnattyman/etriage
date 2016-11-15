@@ -75,7 +75,10 @@ function mostrarhora(){
     if ( hours > 12 ){
         dn    = "PM";
         hours = hours-12;
+        if ( hours <= 9 )
+        hours = "0"+hours;
     }
+    
     if ( hours == 0 )
         hours = 12;
     if ( minutes <= 9 )
@@ -83,7 +86,7 @@ function mostrarhora(){
     if ( seconds <= 9 )
         seconds = "0"+seconds;
     
-    return hours+":"+minutes+":"+seconds;
+    return hours+":"+minutes+":"+seconds+" "+dn;
 } 
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
