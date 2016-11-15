@@ -73,12 +73,13 @@ function appendDIV(event) {
     if( typeof event === 'string' ){
         msj = event;
         usr = get.uid;
+        rol = get.r;
     }else{
         msj = event.data;
         usr = event.extra.fullname;
+        rol = event.extra.rol;
     }
     //haber
-    rol = get.r;
     console.log(rol);
     console.log(event);
     row.innerHTML = "<td style='text-align:center;'>"+usr+"</td><td style='text-align:center;'>"+msj+"</td></tr></table>";
