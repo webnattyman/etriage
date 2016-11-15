@@ -32,6 +32,7 @@ document.getElementById('join').onclick = function() {
     new clockCountdown('clock',{'days':0,'hours':0,'minutes':20,'seconds':0});
     connection.sessionid = get.uid;
     connection.userid = get.uid;
+    connection.rol = get.r;
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             connection.getAllParticipants().splice(0,1,get.uid);
