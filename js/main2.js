@@ -9,7 +9,7 @@ function getGET(){
       var tmp = GET[i].split('=');
       get[tmp[0]] = unescape(decodeURI(tmp[1]));
    }
-   return get;
+   return get; $("#").val()
 }
 var get = getGET();
 var chatContainerMedico = document.querySelector('.server');
@@ -106,10 +106,10 @@ function appendDIV(event) {
     console.log(rol);
     console.log(event);
     if( rol === 1 ){
-        row.innerHTML = "<td style='text-align:center;'>"+usr+"("+mostrarhora()+")dice:</td><td style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
+        row.innerHTML = "<td class='col-xs-6 col-sm-4 col-md-4' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-8 col-md-8' style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
         chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
     }else{
-        row.innerHTML = "<td style='text-align:center;'>"+usr+"("+mostrarhora()+")dice:</td><td style='text-align:center;background-color:#00a5b4;color:white;'>"+msj+"</td>";
+        row.innerHTML = "<td class='col-xs-6 col-sm-4 col-md-4' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-8 col-md-8' style='text-align:center;background-color:#00a5b4;color:white;'>"+msj+"</td>";
         chatContainerPaciente.insertBefore(row, chatContainerPaciente.firstChild);
     }
     row.tabIndex = 0;
