@@ -27,7 +27,8 @@ document.getElementById('sendtxt').onclick = function() {
 document.getElementById('join').onclick = function() {
     disableInputButtons();
     connection.extra = {
-        fullname: get.uid
+        fullname: get.uid,
+        rol: get.r
     };
     new clockCountdown('clock',{'days':0,'hours':0,'minutes':20,'seconds':0});
     connection.sessionid = get.uid;
@@ -67,7 +68,7 @@ document.getElementById('btn-leave-room').onclick = function() {
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
     var div = document.createElement('div');
-    var msj, usr;
+    var msj, usr, rol;
     if( typeof event === 'string' ){
         msj = event;
         usr = get.uid;
@@ -76,6 +77,7 @@ function appendDIV(event) {
         usr = event.extra.fullname;
     }
     //haber
+    rol = get.r;
     div.innerHTML = "<table style='width:100%;border:1px solid black;'><tr><td style='text-align:center;'>"+usr+"</td><td style='text-align:center;'>"+msj+"</td></tr></table>" || event;
     chatContainer.insertBefore(div, chatContainer.firstChild);
     div.tabIndex = 0;
@@ -91,7 +93,6 @@ connection.socketMessageEvent = 'Video Chat';
 connection.getAllParticipants().splice(0,1,get.uid);
 connection.sessionid = get.uid;
 connection.userid = get.uid;
-connection.rol = get.r;
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
