@@ -106,12 +106,10 @@ function appendDIV(event) {
     console.log(rol);
     console.log(event);
     if( rol === 1 ){
-        row.style.background = '#885bc6';
-        row.innerHTML = "<td style='text-align:center;'>"+usr+"("+mostrarhora()+")dice:</td><td style='text-align:center;'>"+msj+"</td></tr></table>";
+        row.innerHTML = "<td style='text-align:center;'>"+usr+"("+mostrarhora()+")dice:</td><td style='text-align:center;background-color:#885bc6;'>"+msj+"</td></tr></table>";
         chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
     }else{
-        row.style.background = '#00a5b4';
-        row.innerHTML = "<td style='text-align:center;'>"+usr+"("+mostrarhora()+")dice:</td><td style='text-align:center;'>"+msj+"</td></tr></table>";
+        row.innerHTML = "<td style='text-align:center;'>"+usr+"("+mostrarhora()+")dice:</td><td style='text-align:center;background-color:#00a5b4;'>"+msj+"</td></tr></table>";
         chatContainerPaciente.insertBefore(row, chatContainerPaciente.firstChild);
     }
     row.tabIndex = 0;
