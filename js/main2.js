@@ -91,6 +91,7 @@ connection.socketMessageEvent = 'Video Chat';
 connection.getAllParticipants().splice(0,1,get.uid);
 connection.sessionid = get.uid;
 connection.userid = get.uid;
+connection.rol = get.r;
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
