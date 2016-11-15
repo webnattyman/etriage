@@ -106,10 +106,10 @@ function appendDIV(event) {
     console.log(rol);
     console.log(event);
     if( rol === 1 ){
-        row.innerHTML = "<td class='col-xs-6 col-sm-4 col-md-4' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-8 col-md-8' style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
+        row.innerHTML = "<td class='col-xs-6 col-sm-5 col-md-5' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-7 col-md-7' style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
         chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
     }else{
-        row.innerHTML = "<td class='col-xs-6 col-sm-4 col-md-4' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-8 col-md-8' style='text-align:center;background-color:#00a5b4;color:white;'>"+msj+"</td>";
+        row.innerHTML = "<td class='col-xs-6 col-sm-5 col-md-5' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-7 col-md-7' style='text-align:center;background-color:#00a5b4;color:white;'>"+msj+"</td>";
         chatContainerPaciente.insertBefore(row, chatContainerPaciente.firstChild);
     }
     row.tabIndex = 0;
