@@ -12,7 +12,8 @@ function getGET(){
    return get;
 }
 var get = getGET();
-var chatContainer = document.querySelector('.chat-output');
+var chatContainerMedico = document.querySelector('.server');
+var chatContainerPaciente = document.querySelector('.client');
 var clockContainer = document.querySelector('.clock');
 
 //Enviando mensajes
@@ -67,7 +68,7 @@ document.getElementById('btn-leave-room').onclick = function() {
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
-    var div = document.createElement('div');
+    var row = document.createElement('tr');
     var msj, usr, rol;
     if( typeof event === 'string' ){
         msj = event;
@@ -78,10 +79,14 @@ function appendDIV(event) {
     }
     //haber
     rol = get.r;
-    div.innerHTML = "<table style='width:100%;border:1px solid black;'><tr><td style='text-align:center;'>"+usr+"</td><td style='text-align:center;'>"+msj+"</td></tr></table>" || event;
-    chatContainer.insertBefore(div, chatContainer.firstChild);
-    div.tabIndex = 0;
-    div.focus();
+    row.innerHTML = "<td style='text-align:center;'>"+usr+"</td><td style='text-align:center;'>"+msj+"</td></tr></table>";
+    if( rol === 1){
+        chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
+    }else{
+        chatContainerPaciente.insertBefore(row, chatContainerPaciente.firstChild);
+    }
+    row.tabIndex = 0;
+    row.focus();
 
     document.getElementById('input-text-chat').focus();
 }
