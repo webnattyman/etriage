@@ -35,12 +35,15 @@
             .make-center {
                 text-align: center;
                 padding: 5px 10px;
-                height: 200px;
-                overflow-y: auto;
             }
             
             .experiment{
                 padding-top: 10%;
+            }
+            
+            #txtdiv{
+                height: 200px;
+                overflow-y: auto;
             }
             
             #clock, #clock-2, #clock-3{
@@ -109,7 +112,7 @@
                 <input type="hidden" id="room-id" >
                 <button id="join">Comenzar</button>
                 <button id="btn-leave-room" disabled>Salir de la Sala</button>
-                <div id="clock" class="clock"></div>
+                <div id="clock" class="clock" style="display: none;"></div>
                 <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
             </div>
             <div id="videos-container"></div>
@@ -121,13 +124,14 @@
                     <table class="client table-striped col-xs-12 col-sm-6 col-md-6" style="border-collapse:separate;border-spacing:3px;"></table>
                 </div>
                 <br><br>
+            </div>
+            <div class="make-center">
+                <br><br>
                 <div class="row">
                     <input type="text" id="input-text-chat" placeholder="Enter Text Chat" disabled>
                     <button id="sendtxt" disabled>Enviar Mensaje</button>
                 </div>
-                <br><br>
             </div>
-            
         </section>
         <br/>
         <script src="https://cdn.webrtc-experiment.com:443/rmc3.min.js"></script>

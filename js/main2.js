@@ -31,7 +31,7 @@ document.getElementById('join').onclick = function() {
         fullname: get.uid,
         rol: get.r
     };
-    new clockCountdown('clock',{'days':0,'hours':0,'minutes':20,'seconds':0});
+    new clockCountdown('clock',{'hours':0,'minutes':20,'seconds':0});
     connection.sessionid = get.uid;
     connection.userid = get.uid;
     connection.rol = get.r;
@@ -156,8 +156,8 @@ connection.onstream = function(event) {
     setTimeout(function() {
         mediaElement.media.play();
     }, 5000);
-
     mediaElement.id = event.streamid;
+    clockContainer.style.display = "table-cell";
 };
 
 //Agrega funcion cuando termina de transmitir
