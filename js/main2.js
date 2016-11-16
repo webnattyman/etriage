@@ -148,8 +148,9 @@ connection.onstream = function(event) {
     var width = parseInt(connection.videosContainer.clientWidth / 2) - 20;
     var mediaElement = getMediaElement(event.mediaElement, {
         title: event.userid,
-        buttons: ['full-screen'],
+        buttons: ['full-screen', 'mute-audio'],
         width: width,
+        clase: 'col-xs-12 col-sm-6 col-md-6',
         showOnMouseEnter: false
     });
     connection.videosContainer.appendChild(mediaElement);
