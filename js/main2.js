@@ -15,6 +15,7 @@ var get = getGET();
 var chatContainerMedico = document.querySelector('.server');
 var chatContainerPaciente = document.querySelector('.client');
 var clockContainer = document.querySelector('.clock');
+var boxtxt = document.querySelector('.form');
 
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function() {
@@ -180,6 +181,7 @@ connection.filesContainer = document.getElementById('file-container');
 //Agrega funcion cuando abre la conexion.
 connection.onopen = function() {
     document.getElementById('txtdiv').style.display = 'block';
+    boxtxt.style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
