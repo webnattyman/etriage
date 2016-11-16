@@ -1,3 +1,4 @@
+var mysql = require('mysql2');
 var express = require('express');  
 var app = express(); 
 var server = require('http').Server(app);  
@@ -10,6 +11,43 @@ var messages = [{
     text: "Bienvenidos!",
     author: "Redmedix"
 }];
+ 
+var db_config = {
+    host: 'citasGeneral.db.10307171.hostedresource.com',
+    user: 'citasGeneral',
+    password: 'NMcitas@2013',
+    database: 'citasGeneral'
+};
+
+var db;
+
+function handleDisconnect() {
+    db = mysql.createConnection(db_config);
+    db.connect(function(err) {              
+        if(err) {
+            console.log('Error de conexion con mysql:', err);
+            setTimeout(handleDisconnect, 2000);
+        }
+    });
+                                          
+    db.on('error', function(err) {
+        console.log('db error', err);
+        if( err.code === 'PROTOCOL_CONNECTION_LOST' ) {
+            handleDisconnect();
+        } else {
+            throw err;
+        }
+    });
+}
+
+handleDisconnect(); 
+ 
+var sql = 'SELECT * FROM users';
+// simple query 
+db.query(sql, function (err, results, fields) {
+    console.log(results); // results contains rows returned by server 
+    console.log(fields); // fields contains extra meta data about results, if available 
+});
 
 app.use(express.static('.'));
 /*app.get('/', function(req, res){
