@@ -36,7 +36,7 @@ document.getElementById('join').onclick = function() {
         fullname: get.uid,
         rol: get.r
     };
-    new clockCountdown('clock',{'hours':0,'minutes':20,'seconds':0});
+    new clockCountdown('clock',getDiferenciaHora(get.hc, get.tp));
     connection.sessionid = get.uid;
     connection.userid = get.uid;
     connection.rol = get.r;
@@ -92,6 +92,52 @@ function mostrarhora(){
         seconds = "0"+seconds;
     
     return hours+":"+minutes+":"+seconds+" "+dn;
+}
+
+function getDiferenciaHora( hra_ini, duration ){
+    var f       = new Date();
+    var year    = f.getFullYear();
+    var month   = f.getMonth();
+    var day     = f.getDay();
+    var hours   = f.getHours();
+    var minutes = f.getMinutes();
+    var seconds = f.getSeconds();
+	var hra_cta = hra_ini.split(":");
+    var dn      = "AM";
+    if ( hours > 12 ){
+        dn    = "PM";
+        hours = hours-12;
+        if ( hours <= 9 )
+        hours = "0"+hours;
+    }
+	
+	if( duration > 60 ){
+		dr_hr += 1;
+		dr_min = duration % 60;
+	}else{
+		dr_hr = 0;
+		dr_min = duration;
+	}
+    
+	
+    if ( hours == 0 )
+        hours = 12;
+    if ( minutes <= 9 )
+        minutes = "0"+minutes;
+    if ( seconds <= 9 )
+        seconds = "0"+seconds;
+	
+	if( hours <= ( int( hra_cta[0] ) + dr_hr ) ){
+		if( minutes > ( int(hra_cta[1]) + dr_min )  ){
+			hrs_restantes = ( int( hra_cta[0] ) + dr_hr ) - hours;
+			min_restantes = 0;
+		}else{
+			hrs_restantes = 0;
+			min_restantes = ( hra_cta[1] + dr_min ) - minutes;
+		}
+	}
+    
+    return "{'hours':"+hrs_restantes+",'minutes':"+min_restantes+",'seconds':"+seconds+"}";
 } 
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
@@ -156,7 +202,7 @@ connection.onstream = function(event) {
         buttons: ['full-screen', 'mute-audio'],
         width: width,
         clase: 'col-xs-12 col-sm-6 col-md-6',
-        showOnMouseEnter: false
+        showOnMouseEnter: true
     });
     connection.videosContainer.appendChild(mediaElement);
 
@@ -199,7 +245,7 @@ connection.onExtraDataUpdated = function(event) {
 
 //Agrega funcion cuando un usuario cierra la conexion.
 connection.onclose = function() {
-    if( connection.getAllParticipants().length ) {
+    if( connection.getAllParticipants().length == 1 ) {
         document.querySelector('h1').innerHTML = 'Ha finalizado la comunicacion, recuerda que estabas en conexion con: ' + connection.getAllParticipants().join(', ');
     }else {
         document.querySelector('h1').innerHTML = 'La session termino, todos los participantes han abandonado!.';
