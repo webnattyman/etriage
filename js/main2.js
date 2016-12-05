@@ -28,7 +28,7 @@ document.getElementById('sendtxt').onclick = function() {
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
-	if( typeof get.uid == "undefined"){
+	if( typeof get.uid == "undefined" || get.uid == null ){
 		get.uid = prompt("Ingrese su nombre...", "");
 	}
 	if ( get.uid == null ) return;
