@@ -167,10 +167,10 @@ function getDiferenciaHora( hra_ini, duration ){
 	
 	if( hours <= ( parseInt( hra_cta[0] ) + dr_hr ) ){
 		if( minutes > ( parseInt(hra_cta[1]) + dr_min )  ){
-			hrs_restantes = 0;
-			min_restantes = 0;
+			hrs_restantes = 1;
+			min_restantes = 1;
 		}else{
-			hrs_restantes = 0;
+			hrs_restantes = 1;
 			min_restantes = ( parseInt(hra_cta[1]) + dr_min ) - parseInt(minutes);
 		}
 	}
