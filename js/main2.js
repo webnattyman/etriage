@@ -1,3 +1,5 @@
+var $clock = document.getElementById("clock");
+
 //Funcion que extrae los parametros pasados por url
 function getGET(){
    var loc = document.location.href;
@@ -37,7 +39,7 @@ document.getElementById('join').onclick = function() {
         rol: get.r
     };
 	var hrtotal = getDiferenciaHora(get.hc, get.tp);
-	var $clock = document.getElementById("clock");
+	
 	$clock.countdown(hrtotal, function(event) {
 		$(this).html(event.strftime('%H:%M:%S'));
 	});
