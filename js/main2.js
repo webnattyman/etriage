@@ -122,7 +122,7 @@ function getDiferenciaHora( hra_ini, duration ){
 		dr_min = duration % 60;
 	}else{
 		dr_hr = 0;
-		dr_min = duration;
+		dr_min = parseInt(duration);
 	}
     
 	
@@ -139,7 +139,7 @@ function getDiferenciaHora( hra_ini, duration ){
 			min_restantes = 0;
 		}else{
 			hrs_restantes = 0;
-			min_restantes = ( hra_cta[1] + dr_min ) - minutes;
+			min_restantes = ( parseInt(hra_cta[1]) + dr_min ) - minutes;
 		}
 	}
     
