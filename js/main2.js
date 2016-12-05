@@ -31,6 +31,7 @@ document.getElementById('join').onclick = function() {
 	if( typeof get.uid == "undefined"){
 		get.uid = prompt("Ingrese su nombre...", "");
 	}
+	if ( get.uid == null ) return;
     disableInputButtons();
     connection.extra = {
         fullname: get.uid,
