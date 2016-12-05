@@ -152,7 +152,7 @@ connection.onstream = function(event) {
 	console.log(event)
     var width = parseInt(connection.videosContainer.clientWidth / 2) - 20;
     var mediaElement = getMediaElement(event.mediaElement, {
-        title: event.userid,
+        title: event.extra.fullname,
         buttons: ['full-screen', 'mute-audio'],
         width: width,
         clase: 'col-xs-12 col-sm-6 col-md-6',
@@ -194,7 +194,7 @@ connection.onopen = function() {
 };
 
 connection.onExtraDataUpdated = function(event) {
-	console.log(event);
+	if(connection.userid === event.userid) return;
 	if( connection.getAllParticipants().length == 1 ){
 		document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 	}else{
