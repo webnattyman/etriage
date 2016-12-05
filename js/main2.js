@@ -20,7 +20,6 @@ var boxtxt = document.querySelector('.form');
 
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function() {
-    console.log(connection);
     appendDIV(document.getElementById('input-text-chat').value);
     connection.send(document.getElementById('input-text-chat').value);
     document.getElementById('input-text-chat').value = '';
@@ -195,11 +194,16 @@ connection.onopen = function() {
 };
 
 connection.onExtraDataUpdated = function(event) {
-    document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
+	if( document.querySelector('h1').innerHTML == 'Video Chat' ){
+		document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
+	}else{
+		document.querySelector('h1').innerHTML = ', '+event.extra.fullname;
+	}
 };
 
 //Agrega funcion cuando un usuario cierra la conexion.
 connection.onclose = function() {
+	console.log(connection.getAllParticipants().length);
     if(connection.getAllParticipants().length) {
         document.querySelector('h1').innerHTML = 'Ha finalizado la comunicacion, recuerda que estabas en conexion con: ' + connection.getAllParticipants().join(', ');
     }
