@@ -1,4 +1,4 @@
-var $clock = document.getElementById("clock");
+var $clock = $("#clock");
 
 //Funcion que extrae los parametros pasados por url
 function getGET(){
