@@ -38,7 +38,10 @@ document.getElementById('join').onclick = function() {
     };
 	var hrtotal = getDiferenciaHora(get.hc, get.tp);
 	console.log(hrtotal);
-    new clockCountdown('clock',hrtotal);
+	var $clock = $('#clock');
+	$clock.countdown(hrtotal, function(event) {
+		$(this).html(event.strftime('%H:%M:%S'));
+	});
     connection.sessionid = get.uid;
     connection.userid = get.uid;
     connection.rol = get.r;
@@ -96,6 +99,7 @@ function mostrarhora(){
     return hours+":"+minutes+":"+seconds+" "+dn;
 }
 
+
 function getDiferenciaHora( hra_ini, duration ){
     var f       = new Date();
     var year    = f.getFullYear();
@@ -138,9 +142,8 @@ function getDiferenciaHora( hra_ini, duration ){
 			min_restantes = ( hra_cta[1] + dr_min ) - minutes;
 		}
 	}
-	var resp = "{'hours':"+hrs_restantes+",'minutes':"+min_restantes+",'seconds':"+seconds+"}";
     
-    return resp
+    return new Date(new Date().valueOf() + 1 * hrs_restantes * min_restantes * seconds * 1000);
 } 
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
