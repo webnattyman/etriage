@@ -41,13 +41,12 @@ function handleDisconnect() {
 }
 
 handleDisconnect(); 
- 
-var sql = 'SELECT * FROM users';
-// simple query 
-db.query(sql, function (err, results, fields) {
+/* 
+var post = {id_hstcht: null, cita_hstcht: '', usr_hstcht:, txt_hstcht:};
+db.query('INSERT INTO historial_chat SET ?', post, function (err, results, fields) {
     console.log(results); // results contains rows returned by server 
     console.log(fields); // fields contains extra meta data about results, if available 
-});
+});*/
 
 app.use(express.static('.'));
 /*app.get('/', function(req, res){

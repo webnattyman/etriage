@@ -9,8 +9,9 @@ function getGET(){
       var tmp = GET[i].split('=');
       get[tmp[0]] = unescape(decodeURI(tmp[1]));
    }
-   return get; $("#").val()
+   return get;
 }
+
 var get = getGET();
 var chatContainerMedico = document.querySelector('.server');
 var chatContainerPaciente = document.querySelector('.client');
@@ -27,6 +28,9 @@ document.getElementById('sendtxt').onclick = function() {
 
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
+	if( typeof get.uid == "undefined"){
+		get.uid = prompt("Ingrese su nombre...", "");
+	}
     disableInputButtons();
     connection.extra = {
         fullname: get.uid,
@@ -145,6 +149,7 @@ connection.videosContainer = document.getElementById('videos-container');
 
 //Agrega un evento a la conexion cuando transmite.
 connection.onstream = function(event) {
+	console.log(event)
     var width = parseInt(connection.videosContainer.clientWidth / 2) - 20;
     var mediaElement = getMediaElement(event.mediaElement, {
         title: event.userid,
