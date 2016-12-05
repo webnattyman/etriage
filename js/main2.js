@@ -37,8 +37,7 @@ document.getElementById('join').onclick = function() {
         rol: get.r
     };
 	var hrtotal = getDiferenciaHora(get.hc, get.tp);
-	console.log(hrtotal);
-	var $clock = $('#clock');
+	var $clock = document.getElementById("clock");
 	$clock.countdown(hrtotal, function(event) {
 		$(this).html(event.strftime('%H:%M:%S'));
 	});
