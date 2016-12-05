@@ -195,7 +195,7 @@ connection.onopen = function() {
 
 connection.onExtraDataUpdated = function(event) {
 	console.log(document.querySelector('h1').innerHTML);
-	if( document.querySelector('h1').innerHTML == 'Video Chat' && connection.userid === event.userid ){
+	if( connection.getAllParticipants().length == 1 ){
 		document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 	}else{
 		document.querySelector('h1').innerHTML = ', '+event.extra.fullname;
@@ -204,7 +204,6 @@ connection.onExtraDataUpdated = function(event) {
 
 //Agrega funcion cuando un usuario cierra la conexion.
 connection.onclose = function() {
-	console.log(connection.getAllParticipants().length);
     if( connection.getAllParticipants().length == 1 ) {
         document.querySelector('h1').innerHTML = 'Ha finalizado la comunicacion, recuerda que estabas en conexion con: ' + connection.getAllParticipants().join(', ');
     }else {
