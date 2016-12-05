@@ -149,7 +149,7 @@ connection.videosContainer = document.getElementById('videos-container');
 
 //Agrega un evento a la conexion cuando transmite.
 connection.onstream = function(event) {
-	console.log(event)
+	document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
     var width = parseInt(connection.videosContainer.clientWidth / 2) - 20;
     var mediaElement = getMediaElement(event.mediaElement, {
         title: event.extra.fullname,
@@ -194,12 +194,7 @@ connection.onopen = function() {
 };
 
 connection.onExtraDataUpdated = function(event) {
-	if(connection.userid === event.userid) return;
-	if( connection.getAllParticipants().length == 1 ){
-		document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
-	}else{
-		document.querySelector('h1').innerHTML = ', '+event.extra.fullname;
-	}
+	document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 };
 
 //Agrega funcion cuando un usuario cierra la conexion.
