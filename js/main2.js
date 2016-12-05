@@ -194,7 +194,7 @@ connection.onopen = function() {
 };
 
 connection.onExtraDataUpdated = function(event) {
-	console.log(document.querySelector('h1').innerHTML);
+	console.log(event);
 	if( connection.getAllParticipants().length == 1 ){
 		document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 	}else{
