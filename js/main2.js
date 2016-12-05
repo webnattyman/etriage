@@ -194,6 +194,7 @@ connection.onopen = function() {
 };
 
 connection.onExtraDataUpdated = function(event) {
+	console.log(document.querySelector('h1').innerHTML);
 	if( document.querySelector('h1').innerHTML == 'Video Chat' ){
 		document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 	}else{
@@ -204,10 +205,9 @@ connection.onExtraDataUpdated = function(event) {
 //Agrega funcion cuando un usuario cierra la conexion.
 connection.onclose = function() {
 	console.log(connection.getAllParticipants().length);
-    if(connection.getAllParticipants().length) {
+    if( connection.getAllParticipants().length == 1 ) {
         document.querySelector('h1').innerHTML = 'Ha finalizado la comunicacion, recuerda que estabas en conexion con: ' + connection.getAllParticipants().join(', ');
-    }
-    else {
+    }else {
         document.querySelector('h1').innerHTML = 'La session termino, todos los participantes han abandonado!.';
     }
 };
