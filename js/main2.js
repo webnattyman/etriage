@@ -36,7 +36,9 @@ document.getElementById('join').onclick = function() {
         fullname: get.uid,
         rol: get.r
     };
-    new clockCountdown('clock',getDiferenciaHora(get.hc, get.tp));
+	var hrtotal = getDiferenciaHora(get.hc, get.tp);
+	console.log(hrtotal);
+    new clockCountdown('clock',hrtotal);
     connection.sessionid = get.uid;
     connection.userid = get.uid;
     connection.rol = get.r;
@@ -136,8 +138,9 @@ function getDiferenciaHora( hra_ini, duration ){
 			min_restantes = ( hra_cta[1] + dr_min ) - minutes;
 		}
 	}
+	var resp = "{'hours':"+hrs_restantes+",'minutes':"+min_restantes+",'seconds':"+seconds+"}";
     
-    return "{'hours':"+hrs_restantes+",'minutes':"+min_restantes+",'seconds':"+seconds+"}";
+    return resp
 } 
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
