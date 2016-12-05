@@ -15,7 +15,7 @@ function getGET(){
 var get = getGET();
 var chatContainerMedico = document.querySelector('.server');
 var chatContainerPaciente = document.querySelector('.client');
-var clockContainer = document.querySelector('.clock');
+var clockContainer = document.querySelector('#clock');
 var boxtxt = document.querySelector('.form');
 
 //Enviando mensajes
