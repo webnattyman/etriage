@@ -65,44 +65,33 @@
                 font-family: bigRedmedix;
             }
             
-            #clock, #clock-2, #clock-3{
-                padding: 0;
-                height: 70px;
-                position: relative;
-                top: 10px;
-                left: 187%;
-                color: #2a2807;
-                padding: 4px;
-                border: 2px solid #2a2807;
-                font-size: 15px;
-                width: 100%;
-                display: table-cell;
-                text-align: center;
-            }
+            #clockdiv{
+				font-family: sans-serif;
+				color: #fff;
+				display: inline-block;
+				font-weight: 100;
+				text-align: center;
+				font-size: 30px;
+			}
 
-            .clockCountdownNumber{
-                float:left;
-                background:URL('./js/numeros.png');
-                display:block;
-                width:34px;
-                height:50px;
-            }
+			#clockdiv > div{
+				padding: 10px;
+				border-radius: 3px;
+				background: #00BF96;
+				display: inline-block;
+			}
 
-            .clockCountdownSeparator_days,
-            .clockCountdownSeparator_hours,
-            .clockCountdownSeparator_minutes,
-            .clockCountdownSeparator_seconds
-            {
-                float:left;
-                display:block;
-                width:10px;
-                height:50px;
-            }
-            .clockCountdownFootItem{
-                width:80px;
-                float:left;
-                text-align:center;
-            }
+			#clockdiv div > span{
+				padding: 15px;
+				border-radius: 3px;
+				background: #00816A;
+				display: inline-block;
+			}
+
+			.smalltext{
+				padding-top: 5px;
+				font-size: 16px;
+			}
         </style>
     </head>  
     <body style="background-color: #f1f2f2;">  
@@ -129,7 +118,20 @@
                 <input type="hidden" id="room-id" >
                 <button id="join">Comenzar</button>
                 <button id="btn-leave-room" disabled>Salir de la Sala</button>
-                <div id="clock" class="lead" style="display: none;"></div>
+				<div id="clock" style="display: none;">
+					<div>
+						<span class="hours"></span>
+						<div class="smalltext">Hours</div>
+					</div>
+					<div>
+						<span class="minutes"></span>
+						<div class="smalltext">Minutes</div>
+					</div>
+					<div>
+						<span class="seconds"></span>
+						<div class="smalltext">Seconds</div>
+					</div>
+				</div>
                 <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
             </div>
             <div id="videos-container"></div>
