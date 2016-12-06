@@ -175,7 +175,7 @@ function getDiferenciaHora( hra_ini, duration ){
 		}
 	}
     
-    return new Date(year, month, day, hrs_restantes, min_restantes, parseInt(seconds), 1000);
+    return new Date(year, month, day, hrs_restantes, min_restantes, parseInt(seconds), 0);
 } 
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
