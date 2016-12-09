@@ -54,7 +54,7 @@ app.use(express.static('.'));
 });*/
 
 io.on('connection', function(socket) {
-    var socketId = io.nsps[namespace].adapter.rooms[sala];
+    var socketId = io.sockets.clients();
 	console.log(socketId);
     if( socketId == 1){
         socket.emit('crear', sala, socket.id);
