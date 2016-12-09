@@ -99,7 +99,7 @@ function mostrarhora(){
 }
 
 function getTimeRemaining(endtime) {
-	var t = Date.parse(new Date()) - Date.parse(endtime);
+	var t = Date.parse(endtime) - Date.parse(new Date());
 	console.log(Date.parse(endtime) + "  " + Date.parse(new Date()) );
 	console.log(t);
 	var seconds = Math.floor((t / 1000) % 60);
