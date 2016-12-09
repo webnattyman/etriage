@@ -33,7 +33,6 @@ document.getElementById('join').onclick = function() {
 		get.uid = prompt("Ingrese su nombre...", "");
 	}
 	if ( get.uid == null ) return;
-	connection.userid = get.uid;
     disableInputButtons();
     connection.extra = {
         fullname: get.uid,
@@ -314,7 +313,7 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
 
 
 connection.connectSocket( function() {
-    connection.socket.emit('message', 'hello');
+    //connection.socket.emit('message', 'hello');
 });
 
 
