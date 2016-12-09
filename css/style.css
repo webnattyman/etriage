@@ -26,10 +26,7 @@ body{
 }
 
 .blk_clk{
-	box-shadow: 0px 0px 8px 2px black;
-	background: linear-gradient(#463887 -83%,#17a8b8);
 	color: white;
-	margin: 0px 4px;
 	font-size: 200%;
 }
 
