@@ -239,6 +239,7 @@ connection.onstream = function(event) {
         clase: 'col-xs-12 col-sm-6 col-md-6',
         showOnMouseEnter: true
     });
+
     connection.videosContainer.appendChild(mediaElement);
 
     setTimeout(function() {
@@ -246,6 +247,10 @@ connection.onstream = function(event) {
     }, 5000);
     mediaElement.id = event.streamid;
     clockContainer.style.display = "block";
+	var newItem = document.createElement("h2");
+    var textnode = document.createTextNode(event.extra.fullname);
+    newItem.appendChild(textnode);
+	connection.videosContainer.insertBefore( newItem, connection.videosContainer.childNodes[0] );
 };
 
 //Agrega funcion cuando termina de transmitir
