@@ -39,7 +39,6 @@ document.getElementById('join').onclick = function() {
         rol: get.r
     };
 	var hrtotal = getDiferenciaHora(get.hc, get.tp);
-	console.log(hrtotal);
 	initializeClock('clock', hrtotal);
     connection.sessionid = get.uid;
     connection.userid = get.uid;
@@ -100,7 +99,6 @@ function mostrarhora(){
 
 function getTimeRemaining(endtime) {
 	var t = Date.parse(endtime) - Date.parse(new Date());
-	console.log(Date.parse(endtime) + "  " + Date.parse(new Date()) );
 	console.log(t);
 	var seconds = Math.floor((t / 1000) % 60);
 	var minutes = Math.floor((t / 1000 / 60) % 60);
@@ -177,9 +175,7 @@ function getDiferenciaHora( hra_ini, duration ){
 		}
 	}
 	
-	console.log(f);
     return f;
-    //return new Date( year +"-"+ month +"-"+ day +"T"+ hrs_restantes, min_restantes, parseInt(seconds), 0);
 } 
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
@@ -252,7 +248,7 @@ connection.onstream = function(event) {
         mediaElement.media.play();
     }, 5000);
     mediaElement.id = event.streamid;
-    clockContainer.style.display = "table-cell";
+    clockContainer.style.display = "block";
 };
 
 //Agrega funcion cuando termina de transmitir
