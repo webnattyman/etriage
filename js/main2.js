@@ -177,6 +177,8 @@ function getDiferenciaHora( hra_ini, duration ){
 		}
 	}
     
+	console.log(new Date(year, month, day, hrs_restantes, min_restantes, parseInt(seconds), 0));
+	
     return new Date(year, month, day, hrs_restantes, min_restantes, parseInt(seconds), 0);
 } 
 
