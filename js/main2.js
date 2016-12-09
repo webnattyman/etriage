@@ -135,7 +135,7 @@ function initializeClock(id, endtime) {
 }
 
 function getDiferenciaHora( hra_ini, duration ){
-    var f       = new Date();
+    var f       = new Date(hra_ini);
     var year    = f.getFullYear();
     var month   = f.getMonth();
     var day     = f.getDay();
@@ -176,10 +176,10 @@ function getDiferenciaHora( hra_ini, duration ){
 			min_restantes = ( parseInt(hra_cta[1]) + dr_min ) - parseInt(minutes);
 		}
 	}
-    
-	console.log(new Date(year, month, day, hrs_restantes, min_restantes, parseInt(seconds), 0));
 	
-    return new Date(year, month, day, hrs_restantes, min_restantes, parseInt(seconds), 0);
+	console.log(f);
+    
+    return new Date( year +"-"+ month +"-"+ day +"T"+ hrs_restantes, min_restantes, parseInt(seconds), 0);
 } 
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
