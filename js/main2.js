@@ -185,7 +185,7 @@ function appendDIV(event) {
     if( typeof event === 'string' ){
         msj = event;
         usr = get.uid;
-        rol = get.r;
+        rol = 1;
     }else{
         msj = event.data;
         usr = event.extra.fullname;
