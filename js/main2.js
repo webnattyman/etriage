@@ -203,12 +203,39 @@ function appendDIV(event) {
     document.getElementById('input-text-chat').focus();
 }
 
-var socket       = new WebSocket('ws://redmedix.herokuapp.com/');
+var socket       = new WebSocket('ws://redmedix.herokuapp.com:443/');
 socket.onopen    = function(e) {
 	console.log(e);
 };
 socket.onmessage = function() {};
 
+
+var SIGNALING_SERVER = 'https://redmedix.herokuapp.com:443/';
+connection.openSignalingChannel = function(config) {
+   var channel = config.channel || this.channel || 'default-namespace';
+   var sender = Math.round(Math.random() * 9999999999) + 9999999999;
+
+   io.connect(SIGNALING_SERVER).emit('new-channel', {
+      channel: channel,
+      sender : sender
+   });
+
+   var socket = io.connect(SIGNALING_SERVER + channel);
+   socket.channel = channel;
+
+   socket.on('connect', function () {
+      if (config.callback) config.callback(socket);
+   });
+
+   socket.send = function (message) {
+        socket.emit('message', {
+            sender: sender,
+            data  : message
+        });
+    };
+
+   socket.on('message', config.onmessage);
+};
 
 //Conexion de la session
 var connection = new RTCMultiConnection();
