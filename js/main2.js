@@ -33,6 +33,7 @@ document.getElementById('join').onclick = function() {
 		get.uid = prompt("Ingrese su nombre...", "");
 	}
 	if ( get.uid == null ) return;
+	connection.userid = get.uid;
     disableInputButtons();
     connection.extra = {
         fullname: get.uid,
