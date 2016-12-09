@@ -250,7 +250,7 @@ connection.onstream = function(event) {
 	var newItem = document.createElement("h2");
     var textnode = document.createTextNode(event.extra.fullname);
     newItem.appendChild(textnode);
-	connection.videosContainer.insertBefore( newItem, connection.videosContainer.childNodes[0] );
+	mediaElement.insertBefore( newItem, mediaElement.childNodes[0] );
 };
 
 //Agrega funcion cuando termina de transmitir
