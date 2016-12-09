@@ -54,7 +54,7 @@ app.use(express.static('.'));
 });*/
 
 io.on('connection', function(socket) {
-    var socketId = io.of('/').clients().server.eio.clients.Socket.server.Server;
+    var socketId = io.of('/').clients().server.eio.clients.Socket.Server;
 	console.log(socketId.clientsCount);
     if( socketId == 1){
         socket.emit('crear', sala, socket.id);
