@@ -55,7 +55,7 @@ app.use(express.static('.'));
 
 io.on('connection', function(socket) {
     var socketId = io.of('/').clients();
-	console.log(socketId.server);
+	console.log(socketId.server.eio.Server.clientsCount);
     if( socketId == 1){
         socket.emit('crear', sala, socket.id);
     }else if ( socketId == 2){
