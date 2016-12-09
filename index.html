@@ -65,23 +65,26 @@
                 font-family: bigRedmedix;
             }
             
-            #clockdiv{
+            #clock{
 				font-family: sans-serif;
 				color: #fff;
 				display: inline-block;
 				font-weight: 100;
 				text-align: center;
 				font-size: 30px;
+				width: 50%;
+				margin-top: 2%;
+				margin-bottom: 2%;
 			}
 
-			#clockdiv > div{
+			#clock > div{
 				padding: 10px;
 				border-radius: 3px;
 				background: #00BF96;
 				display: inline-block;
 			}
 
-			#clockdiv div > span{
+			#clock div > span{
 				padding: 15px;
 				border-radius: 3px;
 				background: #00816A;
@@ -118,16 +121,16 @@
                 <input type="hidden" id="room-id" >
                 <button id="join">Comenzar</button>
                 <button id="btn-leave-room" disabled>Salir de la Sala</button>
-				<div id="clock" style="display: none;">
-					<div class="col-lg-3 col-md-3 col-md-offset-1 col-xs-4">
+				<div id="clock" style="display: none;" class="row center-block">
+					<div class="col-lg-4 col-md-4 col-xs-4 blk_clk">
 						<span class="hours"></span>
 						<div class="smalltext">Horas</div>
 					</div>
-					<div class="col-lg-3 col-md-3 col-xs-4">
+					<div class="col-lg-4 col-md-4 col-xs-4 blk_clk">
 						<span class="minutes"></span>
 						<div class="smalltext">Minutos</div>
 					</div>
-					<div class="col-lg-3 col-md-3 col-md-offset-1 col-xs-4">
+					<div class="col-lg-4 col-md-4 col-xs-4 blk_clk">
 						<span class="seconds"></span>
 						<div class="smalltext">Segundos</div>
 					</div>
