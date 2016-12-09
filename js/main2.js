@@ -211,7 +211,7 @@ connection.socketMessageEvent = 'Video Chat';
 connection.getAllParticipants().splice(0,1,get.uid);
 connection.sessionid = get.uid;
 connection.userid = get.uid;
-var SIGNALING_SERVER = 'https://redmedix.herokuapp.com';
+var SIGNALING_SERVER = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.openSignalingChannel = function(config) {
    var channel = config.channel || this.channel || 'default-namespace';
    var sender = Math.round(Math.random() * 9999999999) + 9999999999;
