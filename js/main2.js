@@ -311,10 +311,10 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
     connection.join(useridAlreadyTaken);
 };
 
-
+/*
 connection.connectSocket( function() {
     //connection.socket.emit('message', 'hello');
-});
+});*/
 
 
 //Funcion que muestra los botones
