@@ -54,8 +54,8 @@ app.use(express.static('.'));
 });*/
 
 io.on('connection', function(socket) {
-    var socketId = io.of('/').clients();
-	console.log(socketId.server.eio.clients);
+    var socketId = io.of('/').clients().server.eio.clients;
+	console.log(socketId.length);
     if( socketId == 1){
         socket.emit('crear', sala, socket.id);
     }else if ( socketId == 2){
@@ -63,8 +63,8 @@ io.on('connection', function(socket) {
     }else{
         console.log('Sala llena!');
     }
-    console.log('Usuarios Conectados: ' + socketId);
-    socket.emit('connected', socketId);
+    console.log('Usuarios Conectados: ' + socketId.length);
+    socket.emit('connected', socketId.length);
     socket.emit('new-message', messages);
     socket.on('new-message', function(data) {
         messages.push(data);
