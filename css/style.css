@@ -20,7 +20,9 @@ body{
 
 
 .blk_points {
-    line-height: 60px;
+    line-height: 50px;
+	font-size: 270%;
+	margin-left: -8%;
 }
 
 .blk_clk{
