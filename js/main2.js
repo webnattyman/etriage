@@ -203,7 +203,7 @@ function appendDIV(event) {
     document.getElementById('input-text-chat').focus();
 }
 
-var socket       = new WebSocket('ws://redmedix.herokuapp.com:443/');
+var socket       = new WebSocket('wss://redmedix.herokuapp.com:443/');
 socket.onopen    = function(e) {
 	console.log(e);
 };
