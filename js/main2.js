@@ -203,14 +203,14 @@ function appendDIV(event) {
     document.getElementById('input-text-chat').focus();
 }
 
-var socket       = new WebSocket('wss://redmedix.herokuapp.com/');
+var socket       = new WebSocket('wss://redmedix.herokuapp.com');
 socket.onopen    = function(e) {
 	console.log(e);
 };
 socket.onmessage = function() {};
 
 
-var SIGNALING_SERVER = 'https://redmedix.herokuapp.com:/';
+var SIGNALING_SERVER = 'https://redmedix.herokuapp.com';
 connection.openSignalingChannel = function(config) {
    var channel = config.channel || this.channel || 'default-namespace';
    var sender = Math.round(Math.random() * 9999999999) + 9999999999;
