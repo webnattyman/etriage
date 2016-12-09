@@ -311,12 +311,12 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
     connection.join(useridAlreadyTaken);
 };
 
-/*
+
 connection.connectSocket( function() {
     alert('Successfully connected to socket.io server.');
-    connection.socket.emit('howdy', 'hello');
+    connection.socket.emit('new-message', 'hello');
 });
-*/
+
 
 //Funcion que muestra los botones
 function disableInputButtons() {
@@ -350,12 +350,6 @@ if(roomid && roomid.length) {
 }
 //****** FIN Paramentrizacion de la sala ***************
 
-connection.openSignalingChannel = function(callback) {
-    return io.connect().on('new-message', function(data) {  
-        console.log(data);
-        render(data);
-    });
-};
 
 
 function render (data) {  
