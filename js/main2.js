@@ -203,13 +203,21 @@ function appendDIV(event) {
     document.getElementById('input-text-chat').focus();
 }
 
-var socket       = new WebSocket('wss://redmedix.herokuapp.com');
+var socket       = new WebSocket('ws://redmedix.herokuapp.com');
 socket.onopen    = function(e) {
 	console.log(e);
 };
 socket.onmessage = function() {};
 
 
+
+//Conexion de la session
+var connection = new RTCMultiConnection();
+connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+connection.socketMessageEvent = 'Video Chat';
+connection.getAllParticipants().splice(0,1,get.uid);
+connection.sessionid = get.uid;
+connection.userid = get.uid;
 var SIGNALING_SERVER = 'https://redmedix.herokuapp.com';
 connection.openSignalingChannel = function(config) {
    var channel = config.channel || this.channel || 'default-namespace';
@@ -236,14 +244,6 @@ connection.openSignalingChannel = function(config) {
 
    socket.on('message', config.onmessage);
 };
-
-//Conexion de la session
-var connection = new RTCMultiConnection();
-connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
-connection.socketMessageEvent = 'Video Chat';
-connection.getAllParticipants().splice(0,1,get.uid);
-connection.sessionid = get.uid;
-connection.userid = get.uid;
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
