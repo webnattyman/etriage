@@ -178,8 +178,8 @@ function getDiferenciaHora( hra_ini, duration ){
 	}
 	
 	console.log(f);
-    
-    return new Date( year +"-"+ month +"-"+ day +"T"+ hrs_restantes, min_restantes, parseInt(seconds), 0);
+    return f;
+    //return new Date( year +"-"+ month +"-"+ day +"T"+ hrs_restantes, min_restantes, parseInt(seconds), 0);
 } 
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
