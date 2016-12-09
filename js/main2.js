@@ -211,32 +211,6 @@ connection.socketMessageEvent = 'Video Chat';
 connection.getAllParticipants().splice(0,1,get.uid);
 connection.sessionid = get.uid;
 connection.userid = get.uid;
-var SIGNALING_SERVER = 'https://rtcmulticonnection.herokuapp.com:443/';
-connection.openSignalingChannel = function(config) {
-   var channel = config.channel || this.channel || 'default-namespace';
-   var sender = Math.round(Math.random() * 9999999999) + 9999999999;
-
-   io.connect(SIGNALING_SERVER).emit('new-channel', {
-      channel: channel,
-      sender : sender
-   });
-
-   var socket = io.connect(SIGNALING_SERVER + channel);
-   socket.channel = channel;
-
-   socket.on('connect', function () {
-      if (config.callback) config.callback(socket);
-   });
-
-   socket.send = function (message) {
-        socket.emit('message', {
-            sender: sender,
-            data  : message
-        });
-    };
-
-   socket.on('message', config.onmessage);
-};
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
@@ -340,8 +314,7 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
 
 
 connection.connectSocket( function() {
-    alert('Successfully connected to socket.io server.');
-    connection.socket.emit('new-message', 'hello');
+    connection.socket.emit('message', 'hello');
 });
 
 
