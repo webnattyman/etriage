@@ -350,14 +350,14 @@ if(roomid && roomid.length) {
     localStorage.setItem(connection.socketMessageEvent, roomid);
 }
 //****** FIN Paramentrizacion de la sala ***************
-/*
+
 connection.openSignalingChannel = function(callback) {
     return io.connect().on('new-message', function(data) {  
         console.log(data);
         render(data);
     });
 };
-*/
+
 
 function render (data) {  
     var html = data.map(function(elem, index) {
