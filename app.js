@@ -67,9 +67,8 @@ io.on('connection', function(socket) {
     //console.log('Usuarios Conectados: ' + socketId.clientsCount);
     socket.emit('connected', "hola");
     socket.emit('new-message', messages);
-    socket.on('new-message', function(data) {
-        messages.push(data);
-        io.sockets.emit('new-message', messages);
+    socket.on('messages', function(data) {
+        console.log('Got message: ', data);
     });
     
     socket.on('message', function (message) {
