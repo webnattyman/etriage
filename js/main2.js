@@ -1,7 +1,7 @@
 var $clock = $("#clock");
 var socketio = io();
 
-socketio.emit('message', 'hola'); 
+socketio.emit('message', 'entro!'); 
 //Funcion que extrae los parametros pasados por url
 function getGET(){
    var loc = document.location.href;
