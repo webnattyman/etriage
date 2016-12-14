@@ -53,10 +53,14 @@ app.use(express.static('.'));
     res.sendFile(dir_url + '/index.html');
 });*/
 
+io.clients(function(error, clients){
+	if (error) throw error;
+	console.log(clients.length);
+});
+
 io.on('connection', function(socket) {
     //var socketId = io.of('/').clients().server.eio.clients.Socket.Server;
     var socketId = 1;
-	console.log(socket.manager.roomClients[socket.id]);
     if( socketId == 1){
         socket.emit('crear', sala, socket.id);
     }else if ( socketId == 2){
