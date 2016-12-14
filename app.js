@@ -56,10 +56,10 @@ app.use(express.static('.'));
 
 
 io.on('connection', function(socket) {
-    socket.client(function(error, clients){
+    /*socket.client(function(error, clients){
 		if (error) throw error;
-		var socketId = clients.length;
-	});
+	});*/
+	var socketId = 1;
     if( socketId == 1){
         socket.emit('crear', sala, socket.id);
     }else if ( socketId == 2){
