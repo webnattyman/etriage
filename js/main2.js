@@ -2,7 +2,6 @@ var $clock = $("#clock");
 var socketio = io();
 
 socketio.emit('message', 'entro!'); 
-socketio.emit('messages', 'el otro!'); 
 socketio.on('messages', function(data){
 	console.log(data);
 }); 
