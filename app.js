@@ -56,8 +56,8 @@ app.use(express.static('.'));
 
 
 io.on('connection', function(socket) {
-    io.clients(function(error, clients){
-	if (error) throw error;
+    io.of('/').clients(function(error, clients){
+		if (error) throw error;
 		var socketId = clients.length;
 	});
     if( socketId == 1){
