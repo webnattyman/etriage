@@ -11,12 +11,6 @@ socketio.on('messages', function(data){
 	console.log(data);
 }); 
 
-socketio.emit('ipaddr', function(){
-	$.getJSON('//jsonip.com/?callback=?', function(data) {
-		JSON.stringify(data, null, 2);
-	});
-});
-
 socketio.on('ipaddr', function (ipaddr) {
     console.log('Server IP address is: ' + ipaddr);
 });
