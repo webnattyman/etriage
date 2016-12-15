@@ -416,7 +416,7 @@ var FileProgressBarHandler = (function() {
 			}
 			var div = helper.div;
 			if (file.type.indexOf('image') != -1) {
-				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br /><img src="' + file.url + '" title="' + file.name + '" style="max-width: 80%;">';
+				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br />';
 			} else if (file.type.indexOf('video/') != -1) {
 				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br /><video src="' + file.url + '" title="' + file.name + '" style="max-width: 80%;" controls></video>';
 			} else if (file.type.indexOf('audio/') != -1) {
