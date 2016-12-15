@@ -223,6 +223,7 @@ var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
 connection.socketMessageEvent = 'Video Chat';
 connection.getAllParticipants().splice(0,1,get.uid);
+connection.enableFileSharing = true;
 connection.sessionid = get.uid;
 connection.userid = get.uid;
 connection.filesContainer = document.getElementById('files-container');
