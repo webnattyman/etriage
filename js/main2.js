@@ -6,6 +6,8 @@ socketio.on('messages', function(data){
 	console.log(data);
 }); 
 
+socketio.emit('ipaddr');
+
 socketio.on('ipaddr', function (ipaddr) {
     console.log('Server IP address is: ' + ipaddr);
 });
