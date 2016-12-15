@@ -178,6 +178,7 @@ function getDiferenciaHora( hra_ini, duration ){
 			min_restantes = ( parseInt(hra_cta[1]) + dr_min ) - parseInt(minutes);
 		}
 	}
+	f.setMinutes(f.getMinutes + duration);
 	
     return f;
 } 
