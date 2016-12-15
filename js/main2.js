@@ -1,12 +1,14 @@
 var $clock = $("#clock");
 var socketio = io();
 
+$.getJSON('//jsonip.com/?callback=?', function(data) {
+	var ipusr = data.ip;
+});
+
 socketio.emit('message', 'entro!'); 
 socketio.on('messages', function(data){
 	console.log(data);
-	$.getJSON('//jsonip.com/?callback=?', function(data) {
-		console.log(JSON.stringify(data, null, 2));
-	});
+	console.log(ipusr);
 }); 
 
 socketio.emit('ipaddr', function(){
