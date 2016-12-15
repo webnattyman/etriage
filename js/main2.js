@@ -225,6 +225,7 @@ connection.socketMessageEvent = 'Video Chat';
 connection.getAllParticipants().splice(0,1,get.uid);
 connection.sessionid = get.uid;
 connection.userid = get.uid;
+connection.filesContainer = document.getElementById('files-container');
 
 //Variables de configuracion con respecto a los tipos de datos que acepta.
 connection.session = {
@@ -285,12 +286,28 @@ connection.onmessage = function(event){
 connection.filesContainer = document.getElementById('file-container');
 
 //Agrega funcion cuando abre la conexion.
-connection.onopen = function() {
+connection.onopen = function(event) {
     document.getElementById('txtdiv').style.display = 'block';
     boxtxt.style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
+	
+	if (connection.isInitiator) {
+		if (connection.selectedFile) {
+			connection.send(connection.selectedFile, event.userid);
+		}
+		return;
+	}
+	document.querySelector('input[type=file]').disabled = true;
+	if (connection.isInitiatorConnected && connection.lastFile) {
+		connection.send(connection.lastFile, event.userid);
+	}
+	if (!connection.isInitiatorConnected) {
+		connection.initiatorId = event.userid;
+		connection.isInitiatorConnected = true;
+	}
+	
 };
 
 connection.onExtraDataUpdated = function(event) {
@@ -326,10 +343,119 @@ connection.onUserIdAlreadyTaken = function(useridAlreadyTaken, yourNewUserId) {
     connection.join(useridAlreadyTaken);
 };
 
-/*
-connection.connectSocket( function() {
-    //connection.socket.emit('message', 'hello');
-});*/
+var FileProgressBarHandler = (function() {
+	function handle(connection) {
+		var progressHelper = {};
+		// www.RTCMultiConnection.org/docs/onFileStart/
+		connection.onFileStart = function(file) {
+			if (connection.fileReceived[file.name]) return;
+			var div = document.createElement('div');
+			div.id = file.uuid;
+			div.title = file.name;
+			div.innerHTML = '<label>0%</label> <progress></progress>';
+			if (file.remoteUserId) {
+				div.innerHTML += ' (Sharing with:' + file.remoteUserId + ')';
+			}
+			connection.filesContainer.insertBefore(div, connection.filesContainer.firstChild);
+			if (!file.remoteUserId) {
+				progressHelper[file.uuid] = {
+					div: div,
+					progress: div.querySelector('progress'),
+					label: div.querySelector('label')
+				};
+				progressHelper[file.uuid].progress.max = file.maxChunks;
+				return;
+			}
+			if (!progressHelper[file.uuid]) {
+				progressHelper[file.uuid] = {};
+			}
+			progressHelper[file.uuid][file.remoteUserId] = {
+				div: div,
+				progress: div.querySelector('progress'),
+				label: div.querySelector('label')
+			};
+			progressHelper[file.uuid][file.remoteUserId].progress.max = file.maxChunks;
+		};
+		// www.RTCMultiConnection.org/docs/onFileProgress/
+		connection.onFileProgress = function(chunk) {
+			if (connection.fileReceived[chunk.name]) return;
+			var helper = progressHelper[chunk.uuid];
+			if (!helper) {
+				return;
+			}
+			if (chunk.remoteUserId) {
+				helper = progressHelper[chunk.uuid][chunk.remoteUserId];
+				if (!helper) {
+					return;
+				}
+			}
+			helper.progress.value = chunk.currentPosition || chunk.maxChunks || helper.progress.max;
+			updateLabel(helper.progress, helper.label);
+		};
+		// www.RTCMultiConnection.org/docs/onFileEnd/
+		connection.onFileEnd = function(file) {
+			if (connection.fileReceived[file.name]) return;
+			if (file.userid == connection.userid) {
+				connection.fileReceived[file.name] = file;
+			}
+			var helper = progressHelper[file.uuid];
+			if (!helper) {
+				return;
+			}
+			if (file.remoteUserId) {
+				helper = progressHelper[file.uuid][file.remoteUserId];
+				if (!helper) {
+					return;
+				}
+			}
+			var div = helper.div;
+			if (file.type.indexOf('image') != -1) {
+				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br /><img src="' + file.url + '" title="' + file.name + '" style="max-width: 80%;">';
+			} else if (file.type.indexOf('video/') != -1) {
+				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br /><video src="' + file.url + '" title="' + file.name + '" style="max-width: 80%;" controls></video>';
+			} else if (file.type.indexOf('audio/') != -1) {
+				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br /><audio src="' + file.url + '" title="' + file.name + '" style="max-width: 80%;" controls></audio>';
+			} else {
+				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br /><iframe src="' + file.url + '" title="' + file.name + '" style="width: 80%;border: 0;height: inherit;margin-top:1em;"></iframe>';
+			}
+			if (!file.slice) {
+				return;
+			}
+			if (file.slice && file.userid !== connection.userid) {
+				connection.getAllParticipants().forEach(function(paricipantId) {
+					if (paricipantId != file.userid) {
+						connection.send(file, paricipantId);
+					}
+				});
+				connection.lastFile = file;
+			}
+		};
+		function updateLabel(progress, label) {
+			if (progress.position === -1) {
+				return;
+			}
+			var position = +progress.position.toFixed(2).split('.')[1] || 100;
+			label.innerHTML = position + '%';
+		}
+	}
+	return {
+		handle: handle
+	};
+})();
+
+FileProgressBarHandler.handle(connection);
+
+document.querySelector('input[type=file]').onchange = function() {
+	var file = this.files[0];
+	if (!file) return;
+	file.uuid = connection.userid;
+	connection.selectedFile = file;
+	if (connection.isInitiator) {
+		if (connection.getAllParticipants().length > 0) {
+			connection.send(file);
+		}
+	}
+};
 
 
 //Funcion que muestra los botones
