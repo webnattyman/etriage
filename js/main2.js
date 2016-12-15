@@ -463,6 +463,14 @@ document.querySelector('input[type=file]').onchange = function() {
 	}
 };
 
+/*
+document.querySelector('input[type=file]').onclick = function() {
+	 var fileSelector = new FileSelector();
+	fileSelector.selectSingleFile(function(file) {
+		connection.send(file);
+	});
+};*/
+
 
 //Funcion que muestra los botones
 function disableInputButtons() {
