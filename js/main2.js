@@ -5,6 +5,10 @@ socketio.emit('message', 'entro!');
 socketio.on('messages', function(data){
 	console.log(data);
 }); 
+
+socketio.on('ipaddr', function (ipaddr) {
+    console.log('Server IP address is: ' + ipaddr);
+});
 //Funcion que extrae los parametros pasados por url
 function getGET(){
    var loc = document.location.href;
