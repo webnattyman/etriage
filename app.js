@@ -75,16 +75,9 @@ io.on('connection', function(socket) {
         console.log('Got message: ', data);
     });
 	
-	socket.on('ipaddr', function () {
-        var ifaces = os.networkInterfaces();
-        for (var dev in ifaces) {
-            ifaces[dev].forEach(function (details) {
-                if (details.family=='IPv4' && details.address != '127.0.0.1') {
-                    socket.emit('ipaddr', details.address);
-					console.log(details.address);
-                }
-          });
-        }
+	socket.on('ipaddr', function (data) {
+		socket.emit('ipaddr', data);
+		console.log(data);
     });
     
     socket.on('message', function (message) {

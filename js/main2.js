@@ -4,12 +4,13 @@ var socketio = io();
 socketio.emit('message', 'entro!'); 
 socketio.on('messages', function(data){
 	console.log(data);
-	$.getJSON('//jsonip.com/?callback=?', function(data) {
-		console.log(JSON.stringify(data, null, 2));
-	});
 }); 
 
-socketio.emit('ipaddr');
+socketio.emit('ipaddr', function(){
+	$.getJSON('//jsonip.com/?callback=?', function(data) {
+		JSON.stringify(data, null, 2);
+	});
+});
 
 socketio.on('ipaddr', function (ipaddr) {
     console.log('Server IP address is: ' + ipaddr);
