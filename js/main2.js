@@ -304,7 +304,8 @@ connection.onopen = function(event) {
 		}
 		return;
 	}
-	document.querySelector('input[type=file]').disabled = true;
+
+	
 	if (connection.isInitiatorConnected && connection.lastFile) {
 		connection.send(connection.lastFile, event.userid);
 	}
