@@ -81,6 +81,7 @@ io.on('connection', function(socket) {
             ifaces[dev].forEach(function (details) {
                 if (details.family=='IPv4' && details.address != '127.0.0.1') {
                     socket.emit('ipaddr', details.address);
+					console.log(details.address);
                 }
           });
         }
