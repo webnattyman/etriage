@@ -35,7 +35,8 @@ var clockContainer = document.querySelector('#clock');
 var boxtxt = document.querySelector('.form');
 
 //Enviando mensajes
-document.getElementById('sendtxt').onclick = function() {
+document.getElementById('sendtxt').onclick = function(e) {
+	console.log(e);
     appendDIV(document.getElementById('input-text-chat').value);
     connection.send(document.getElementById('input-text-chat').value);
     document.getElementById('input-text-chat').value = '';

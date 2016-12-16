@@ -74,7 +74,7 @@ io.on('connection', function(socket) {
     socket.on('messages', function(data) {
 		var file_chat = 'chat_'+data.cid+'.txt';
 		var linea = '('+data.hra+' : '+data.fullname+') => '+data.data;
-		fs.appendFileSync(file_chat, linea, 'utf8', callback);
+		fs.appendFileSync(file_chat, linea, encoding='utf8');
 		var post = {id_hstcht: null, cita_hstcht: parseInt(data.cid), txt_hstcht:base64_encode(file_chat)};
 		db.query('INSERT INTO historial_chat SET ?', post, function (err, results, fields) {
 			if (err) throw err;
