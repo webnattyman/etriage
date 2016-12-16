@@ -73,9 +73,9 @@ io.on('connection', function(socket) {
     socket.emit('messages', messages);
     socket.on('messages', function(data) {
 		var file_chat = 'chat_'+data.cid+'.txt';
-		var linea = '('+data.hra+' : '+data.fullname+') => '+data.data
-		fs.appendFile(file_chat, linea, 'utf8', callback);
-		var post = {id_hstcht: null, cita_hstcht: data.cid, txt_hstcht:base64_encode(file_chat)};
+		var linea = '('+data.hra+' : '+data.fullname+') => '+data.data;
+		fs.appendFileSync(file_chat, linea, 'utf8', callback);
+		var post = {id_hstcht: null, cita_hstcht: parseInt(data.cid), txt_hstcht:base64_encode(file_chat)};
 		db.query('INSERT INTO historial_chat SET ?', post, function (err, results, fields) {
 			if (err) throw err;
 		});
@@ -83,7 +83,7 @@ io.on('connection', function(socket) {
     });
 	
 	socket.on('ipaddr', function (data) {
-		socket.emit('ipaddr', data);
+		socket.emit('ipaddr', data.ip);
 		var fecha = getDay();
 		var post = {id: null, ip_usr: data.ip, fecha_log:fecha, nombre:data.name};
 		db.query('INSERT INTO log_chats SET ?', post, function (err, results, fields) {
