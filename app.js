@@ -78,7 +78,7 @@ io.on('connection', function(socket) {
 	socket.on('ipaddr', function (data) {
 		socket.emit('ipaddr', data);
 		var fecha = getDay();
-		var post = {id: null, ip_usr: data, fecha_log:fecha};
+		var post = {id: null, ip_usr: data.ip, fecha_log:fecha, nombre:data.name};
 		db.query('INSERT INTO log_chats SET ?', post, function (err, results, fields) {
 			console.log(results); // results contains rows returned by server 
 			console.log(fields); // fields contains extra meta data about results, if available 
