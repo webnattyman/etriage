@@ -72,12 +72,13 @@ io.on('connection', function(socket) {
     socket.emit('connected', "hola");
     socket.emit('messages', messages);
     socket.on('messages', function(data) {
-		/*fs.appendFile('message.txt', 'data to append', 'utf8', callback);
-		var post = {id_hstcht: null, cita_hstcht: '', txt_hstcht:};
+		var file_chat = 'chat_'+data.extra.cid+'.txt';
+		var linea = '('+data.extra.hra+' : '+data.extra.fullname+') => '+data.data
+		fs.appendFile(file_chat, linea, 'utf8', callback);
+		var post = {id_hstcht: null, cita_hstcht: data.extra.cid, txt_hstcht:base64_encode(file_chat)};
 		db.query('INSERT INTO historial_chat SET ?', post, function (err, results, fields) {
-			console.log(results); // results contains rows returned by server 
-			console.log(fields); // fields contains extra meta data about results, if available 
-		});*/
+			if (err) throw err;
+		});
         console.log('Got message: ', data);
     });
 	
@@ -86,8 +87,7 @@ io.on('connection', function(socket) {
 		var fecha = getDay();
 		var post = {id: null, ip_usr: data.ip, fecha_log:fecha, nombre:data.name};
 		db.query('INSERT INTO log_chats SET ?', post, function (err, results, fields) {
-			console.log(results); // results contains rows returned by server 
-			console.log(fields); // fields contains extra meta data about results, if available 
+			if (err) throw err;
 		});
 		console.log(data);
     });

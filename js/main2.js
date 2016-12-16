@@ -59,12 +59,13 @@ document.getElementById('join').onclick = function() {
 	users.ip = $userIP;
 	socketio.emit('ipaddr', users);
     disableInputButtons();
+	var hrtotal = getDiferenciaHora(get.hc, get.tp);
     connection.extra = {
         fullname: get.uid,
         rol: get.r,
-		cid: get.ct
+		cid: get.ct,
+		hra: hrtotal
     };
-	var hrtotal = getDiferenciaHora(get.hc, get.tp);
 	initializeClock('clock', hrtotal);
     connection.sessionid = get.uid;
     connection.userid = get.uid;
@@ -238,7 +239,6 @@ connection.socketMessageEvent = 'Video Chat';
 connection.getAllParticipants().splice(0,1,get.uid);
 connection.sessionid = get.uid;
 connection.userid = get.uid;
-connection.cid = get.ct;
 //connection.enableScalableBroadcast = true;
 connection.maxRelayLimitPerUser = 1;
 connection.fileReceived = {};
