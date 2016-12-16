@@ -2,8 +2,7 @@ var $clock = $("#clock");
 var socketio = io();
 
 $.getJSON('//jsonip.com/?callback=?', function(data) {
-	var $ipusr = data.ip;
-	socketio.emit('ipaddr', $ipusr);
+	socketio.emit('ipaddr', data.ip);
 });
 
 socketio.emit('message', 'entro!'); 
@@ -205,6 +204,7 @@ function appendDIV(event) {
         usr = event.extra.fullname;
         rol = event.extra.rol;
     }
+	socketio.emit('message', event);
     if( rol === 1 ){
         row.innerHTML = "<td class='col-xs-6 col-sm-5 col-md-5' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-7 col-md-7' style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
         chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
@@ -254,7 +254,7 @@ connection.onstream = function(event) {
     var width = parseInt(connection.videosContainer.clientWidth / 2) - 20;
     var mediaElement = getMediaElement(event.mediaElement, {
         title: event.extra.fullname,
-        buttons: ['full-screen', 'mute-audio'],
+        buttons: ['full-screen', 'mute-audio', 'mute-video'],
         width: width,
         clase: 'col-xs-12 col-sm-6 col-md-6',
         showOnMouseEnter: true
