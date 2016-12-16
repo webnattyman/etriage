@@ -40,6 +40,13 @@ document.getElementById('sendtxt').onclick = function() {
     document.getElementById('input-text-chat').value = '';
 };
 
+document.getElementById('file_snd').onclick = function() {
+	var fileSelector = new FileSelector();
+	fileSelector.selectSingleFile(function(file) {
+		connection.send(file);
+	});
+};
+
 //Ingresando a la sala del chat
 document.getElementById('join').onclick = function() {
 	if( typeof get.uid == "undefined" || get.uid == null ){
@@ -225,7 +232,7 @@ connection.socketMessageEvent = 'Video Chat';
 connection.getAllParticipants().splice(0,1,get.uid);
 connection.sessionid = get.uid;
 connection.userid = get.uid;
-connection.enableScalableBroadcast = true;
+//connection.enableScalableBroadcast = true;
 connection.maxRelayLimitPerUser = 1;
 connection.fileReceived = {};
 connection.enableFileSharing = true;
@@ -297,23 +304,6 @@ connection.onopen = function(event) {
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
-	
-	if (connection.isInitiator) {
-		if (connection.selectedFile) {
-			connection.send(connection.selectedFile, event.userid);
-		}
-		return;
-	}
-
-	
-	if (connection.isInitiatorConnected && connection.lastFile) {
-		connection.send(connection.lastFile, event.userid);
-	}
-	if (!connection.isInitiatorConnected) {
-		connection.initiatorId = event.userid;
-		connection.isInitiatorConnected = true;
-	}
-	
 };
 
 connection.onExtraDataUpdated = function(event) {
