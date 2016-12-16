@@ -71,6 +71,7 @@ io.on('connection', function(socket) {
     //console.log('Usuarios Conectados: ' + socketId.clientsCount);
     socket.emit('connected', "hola");
     socket.emit('messages', messages); 
+    
 	
 	socket.on('ipaddr', function (data) {
 		socket.emit('ipaddr', data.ip);
@@ -83,12 +84,12 @@ io.on('connection', function(socket) {
     });
     
     socket.on('message', function (message) {
-		var file_chat = 'chat_'+data.cid+'.txt';
-		var linea = '('+data.hra+' : '+data.fullname+') => '+data.data;
+		var file_chat = 'chat_'+message.cid+'.txt';
+		var linea = '('+message.hra+' : '+message.fullname+') => '+message.data;
 		fs.appendFileSync(file_chat, linea, encoding='utf8');
 		var resp = base64_encode(file_chat);
 		console.log(resp);
-		var post = {id_hstcht: null, cita_hstcht: parseInt(data.cid), txt_hstcht:resp};
+		var post = {id_hstcht: null, cita_hstcht: parseInt(message.cid), txt_hstcht:resp};
 		db.query('INSERT INTO historial_chat SET ?', post, function (err, results, fields) {
 			if (err) throw err;
 		});
