@@ -88,17 +88,17 @@ io.on('connection', function(socket) {
 		var linea = '('+message.hra+' : '+message.fullname+') => '+message.data;
 		fs.appendFileSync(file_chat, linea, encoding='utf8');
 		var resp = base64_encode(file_chat);
-		var getId = parseInt(message.cid);
+		var getId = {cita_hstcht:parseInt(message.cid)};
 		var postInsert = {id_hstcht: null, cita_hstcht: parseInt(message.cid), txt_hstcht:resp};
 		var postUpdate = {txt_hstcht:resp};
-		db.query('SELECT * FROM historial_chat WHERE cita_hstcht = ?', getId, function (err, results, fields) {
+		db.query('SELECT * FROM historial_chat WHERE ?', getId, function (err, results, fields) {
 			if (results){
-				db.query('UPDATE INTO historial_chat SET ? WHERE cita_hstcht = ?', [postUpdate, getId], function (err2, results, fields) {
-					if (err2) throw err2;
+				db.query('UPDATE INTO historial_chat SET ? WHERE ?', [postUpdate, getId], function (err2, results, fields) {
+					
 				});
 			}else{
 				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results, fields) {
-					if (err3) throw err3;
+					
 				});
 			}
 		});
