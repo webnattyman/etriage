@@ -98,7 +98,7 @@ function getDay(){
 	var year	= f.getFullYear();
 	var months 	= f.getMonth() + 1;
 	var days	= f.getDate();
-	var hours   = f.getHours();
+	var hours   = f.getUTCHours() - 5;
 	var minutes = f.getMinutes();
 	var seconds = f.getSeconds();
 	var dates = year+"-"+months+"-"+days+" "+hours+":"+minutes+":"+seconds;
