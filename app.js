@@ -77,9 +77,7 @@ io.on('connection', function(socket) {
 		socket.emit('ipaddr', data.ip);
 		var fecha = getDay();
 		var post = {id: null, ip_usr: data.ip, fecha_log:fecha, nombre:data.name};
-		db.query('INSERT INTO log_chats SET ?', post, function (err, results, fields) {
-			if (err) throw err;
-		});
+		db.query('INSERT INTO log_chats SET ?', post);
 		console.log(data);
     });
     
