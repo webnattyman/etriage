@@ -61,7 +61,8 @@ document.getElementById('join').onclick = function() {
     disableInputButtons();
     connection.extra = {
         fullname: get.uid,
-        rol: get.r
+        rol: get.r,
+		cid: get.ct
     };
 	var hrtotal = getDiferenciaHora(get.hc, get.tp);
 	initializeClock('clock', hrtotal);
