@@ -72,10 +72,10 @@ io.on('connection', function(socket) {
     socket.emit('connected', "hola");
     socket.emit('messages', messages);
     socket.on('messages', function(data) {
-		var file_chat = 'chat_'+data.extra.cid+'.txt';
-		var linea = '('+data.extra.hra+' : '+data.extra.fullname+') => '+data.data
+		var file_chat = 'chat_'+data.cid+'.txt';
+		var linea = '('+data.hra+' : '+data.fullname+') => '+data.data
 		fs.appendFile(file_chat, linea, 'utf8', callback);
-		var post = {id_hstcht: null, cita_hstcht: data.extra.cid, txt_hstcht:base64_encode(file_chat)};
+		var post = {id_hstcht: null, cita_hstcht: data.cid, txt_hstcht:base64_encode(file_chat)};
 		db.query('INSERT INTO historial_chat SET ?', post, function (err, results, fields) {
 			if (err) throw err;
 		});

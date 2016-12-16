@@ -206,19 +206,27 @@ function getDiferenciaHora( hra_ini, duration ){
 
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
-    var msj, usr, rol;
+    var msj, usr, rol, hra;
+	var obj = {};
     var row = document.createElement('tr');
     if( typeof event === 'string' ){
         msj = event;
         usr = get.uid;
         rol = 1;
+        hra = mostrarhora();
     }else{
         msj = event.data;
         usr = event.extra.fullname;
         rol = event.extra.rol;
+        hra = mostrarhora();
     }
-	event.extra.hra = mostrarhora();
-	socketio.emit('message', event);
+	obj.data = msj;
+	obj.fullname = usr;
+	obj.rol = rol;
+	obj.hra = hra;
+	obj.cid = get.ct;
+	
+	socketio.emit('message', obj);
     if( rol === 1 ){
         row.innerHTML = "<td class='col-xs-6 col-sm-5 col-md-5' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-7 col-md-7' style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
         chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
