@@ -63,9 +63,8 @@ document.getElementById('join').onclick = function() {
     connection.extra = {
         fullname: get.uid,
         rol: get.r,
-		cid: get.ct,
-		hra: hrtotal
-    };
+		cid: get.ct
+	};
 	initializeClock('clock', hrtotal);
     connection.sessionid = get.uid;
     connection.userid = get.uid;
@@ -218,6 +217,7 @@ function appendDIV(event) {
         usr = event.extra.fullname;
         rol = event.extra.rol;
     }
+	event.extra.hra = mostrarhora();
 	socketio.emit('message', event);
     if( rol === 1 ){
         row.innerHTML = "<td class='col-xs-6 col-sm-5 col-md-5' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-7 col-md-7' style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
