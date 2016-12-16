@@ -88,10 +88,9 @@ io.on('connection', function(socket) {
 		var linea = '('+message.hra+' : '+message.fullname+') => '+message.data;
 		fs.appendFileSync(file_chat, linea, encoding='utf8');
 		var resp = base64_encode(file_chat);
-		console.log(resp);
 		var post = {id_hstcht: null, cita_hstcht: parseInt(message.cid), txt_hstcht:resp};
 		db.query('INSERT INTO historial_chat SET ?', post, function (err, results, fields) {
-			if (err) throw err;
+			
 		});
         console.log('Got message: ', message);
         socket.broadcast.emit('message', message);
