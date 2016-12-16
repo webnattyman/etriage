@@ -1,9 +1,10 @@
 var $clock = $("#clock");
 var socketio = io();
 var users;
+var $userIP;
 
 $.getJSON('//jsonip.com/?callback=?', function(data) {
-	socketio.emit('ipaddr', data.ip);
+	$userIP = data.ip;
 });
 
 socketio.emit('message', 'entro!'); 
@@ -54,11 +55,9 @@ document.getElementById('join').onclick = function() {
 		get.uid = prompt("Ingrese su nombre...", "");
 	}
 	if ( get.uid == null ) return;
-	$.getJSON('//jsonip.com/?callback=?', function(data) {
-		users.name = get.uid;
-		users.ip = data.ip;
-		socketio.emit('ipaddr', users);
-	});
+	users.name = get.uid;
+	users.ip = $userIP;
+	socketio.emit('ipaddr', users);
     disableInputButtons();
     connection.extra = {
         fullname: get.uid,
