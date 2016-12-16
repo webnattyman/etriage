@@ -70,7 +70,7 @@ io.on('connection', function(socket) {
     }
     //console.log('Usuarios Conectados: ' + socketId.clientsCount);
     socket.emit('connected', "hola");
-    socket.emit('messages', messages);
+    socket.emit('messages', messages); 
     socket.on('messages', function(data) {
 		var file_chat = 'chat_'+data.cid+'.txt';
 		var linea = '('+data.hra+' : '+data.fullname+') => '+data.data;
