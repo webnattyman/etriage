@@ -77,7 +77,9 @@ io.on('connection', function(socket) {
 		socket.emit('ipaddr', data.ip);
 		var fecha = getDay();
 		var post = {id: null, ip_usr: data.ip, fecha_log:fecha, nombre:data.name};
-		db.query('INSERT INTO log_chats SET ?', post);
+		db.query('INSERT INTO log_chats SET ?', post, function (err, results, fields) {
+			if (err) throw err;
+		});
 		console.log(data);
     });
     
@@ -91,9 +93,13 @@ io.on('connection', function(socket) {
 		var postUpdate = {txt_hstcht:resp};
 		db.query('SELECT * FROM historial_chat WHERE cita_hstcht = ?', getId, function (err, results, fields) {
 			if (results){
-				db.query('UPDATE INTO historial_chat SET ? WHERE cita_hstcht = ?', [postUpdate, getId] );
+				db.query('UPDATE INTO historial_chat SET ? WHERE cita_hstcht = ?', [postUpdate, getId], function (err2, results, fields) {
+					if (err2) throw err2;
+				});
 			}else{
-				db.query('INSERT INTO historial_chat SET ?', postInsert);
+				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results, fields) {
+					if (err3) throw err3;
+				});
 			}
 		});
 		
