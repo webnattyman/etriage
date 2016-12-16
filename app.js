@@ -72,6 +72,12 @@ io.on('connection', function(socket) {
     socket.emit('connected', "hola");
     socket.emit('messages', messages);
     socket.on('messages', function(data) {
+		/*fs.appendFile('message.txt', 'data to append', 'utf8', callback);
+		var post = {id_hstcht: null, cita_hstcht: '', txt_hstcht:};
+		db.query('INSERT INTO historial_chat SET ?', post, function (err, results, fields) {
+			console.log(results); // results contains rows returned by server 
+			console.log(fields); // fields contains extra meta data about results, if available 
+		});*/
         console.log('Got message: ', data);
     });
 	
@@ -103,6 +109,22 @@ function getDay(){
 	var seconds = f.getSeconds();
 	var dates = year+"-"+months+"-"+days+" "+hours+":"+minutes+":"+seconds;
 	return dates;
+}
+
+function base64_encode(file) {
+    // read binary data
+    var bitmap = fs.readFileSync(file);
+    // convert binary data to base64 encoded string
+    return new Buffer(bitmap).toString('base64');
+}
+
+// function to create file from base64 encoded string
+function base64_decode(base64str, file) {
+    // create buffer object from base64 encoded string, it is important to tell the constructor that the string is base64 encoded
+    var bitmap = new Buffer(base64str, 'base64');
+    // write buffer to file
+    fs.writeFileSync(file, bitmap);
+    console.log('******** File created from base64 encoded string ********');
 }
 
 server.listen( process.env.PORT || 443, function() {  

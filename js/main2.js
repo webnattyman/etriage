@@ -237,6 +237,7 @@ connection.socketMessageEvent = 'Video Chat';
 connection.getAllParticipants().splice(0,1,get.uid);
 connection.sessionid = get.uid;
 connection.userid = get.uid;
+connection.cid = get.ct;
 //connection.enableScalableBroadcast = true;
 connection.maxRelayLimitPerUser = 1;
 connection.fileReceived = {};
@@ -476,7 +477,7 @@ function disableInputButtons() {
 
 //Funcion que abre los parametros del chat, despues de iniciar session.
 function showRoomURL(roomid) {
-    var roomQueryStringURL = "?roomid="+roomid+"&r=1&tp="+get.tp+"&hc="+get.hc;
+    var roomQueryStringURL = "?roomid="+roomid+"&r=1&tp="+get.tp+"&hc="+get.hc+"&ct="+get.ct;
     var html = '<h2>Estos son los datos de tu sala:</h2><br>';
     html += 'Enlace de la sala : <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
     var roomURLsDiv = document.getElementById('room-urls');
