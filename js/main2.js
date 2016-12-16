@@ -54,7 +54,7 @@ document.getElementById('join').onclick = function() {
 		get.uid = prompt("Ingrese su nombre...", "");
 	}
 	if ( get.uid == null ) return;
-	var users;
+	var users = {};
 	users.name = get.uid;
 	users.ip = $userIP;
 	socketio.emit('ipaddr', users);
