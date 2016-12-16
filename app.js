@@ -96,8 +96,8 @@ io.on('connection', function(socket) {
 function getDay(){
 	var f       = new Date();
 	var year	= f.getFullYear();
-	var months 	= f.getMonth();
-	var days	= f.getDay();
+	var months 	= f.getMonth() + 1;
+	var days	= f.getDate();
 	var hours   = f.getHours();
 	var minutes = f.getMinutes();
 	var seconds = f.getSeconds();
