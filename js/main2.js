@@ -1,6 +1,5 @@
 var $clock = $("#clock");
 var socketio = io();
-var users;
 var $userIP;
 
 $.getJSON('//jsonip.com/?callback=?', function(data) {
@@ -55,6 +54,7 @@ document.getElementById('join').onclick = function() {
 		get.uid = prompt("Ingrese su nombre...", "");
 	}
 	if ( get.uid == null ) return;
+	var users;
 	users.name = get.uid;
 	users.ip = $userIP;
 	socketio.emit('ipaddr', users);
