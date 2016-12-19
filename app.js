@@ -98,7 +98,7 @@ io.on('connection', function(socket) {
 				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results3, fields3) {});
 			}
 		});
-		var mosfile = base64_decode(resp, 'prueba.txt');
+		var mosfile = base64_decode(resp, 'chat_'+message.cid+'.txt');
 		console.log( mosfile );
         socket.broadcast.emit('message', message);
     });
