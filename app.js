@@ -91,16 +91,16 @@ io.on('connection', function(socket) {
 		var getId = {cita_hstcht:parseInt(message.cid)};
 		var postInsert = {id_hstcht: null, cita_hstcht: parseInt(message.cid), txt_hstcht:resp};
 		var postUpdate = {txt_hstcht:resp, cita_hstcht: parseInt(message.cid)};
-		db.query('SELECT * FROM historial_chat WHERE cita_hstcht = ?', getId, console.log);/*function (err, results, fields) {
-			console.log(db.query);
+		db.query('SELECT * FROM historial_chat WHERE cita_hstcht = ?', getId, function (err, results, fields) {
+			console.log(results);
 			if (results){
-				db.query('UPDATE INTO historial_chat SET txt_hstcht =:txt_hstcht WHERE cita_hstcht = :cita_hstcht', postUpdate, function (err2, results2, fields2) {});
+				db.query('UPDATE INTO historial_chat SET txt_hstcht = ? WHERE cita_hstcht = ?', postUpdate, function (err2, results2, fields2) {});
 			}else{
 				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results3, fields3) {});
 			}
 		});
 		var mosfile = base64_decode(resp, 'chat_'+message.cid+'.txt');
-		console.log( mosfile );*/
+		console.log( mosfile );
         socket.broadcast.emit('message', message);
     });
     
