@@ -90,10 +90,10 @@ io.on('connection', function(socket) {
 		var resp = base64_encode(file_chat);
 		var getId = {cita_hstcht:parseInt(message.cid)};
 		var postInsert = {id_hstcht: null, cita_hstcht: parseInt(message.cid), txt_hstcht:resp};
-		var postUpdate = {txt_hstcht:resp};
-		db.query('SELECT * FROM historial_chat WHERE ?', getId, function (err, results, fields) {
+		var postUpdate = {txt_hstcht:resp, cita_hstcht: parseInt(message.cid)};
+		db.query('SELECT * FROM historial_chat WHERE cita_hstcht = :cita_hstcht', getId, function (err, results, fields) {
 			if (results){
-				db.query('UPDATE INTO historial_chat SET txt_hstcht = :txt_hstcht WHERE ?', [postUpdate, getId], function (err2, results2, fields2) {});
+				db.query('UPDATE INTO historial_chat SET txt_hstcht = :txt_hstcht WHERE cita_hstcht = :cita_hstcht', postUpdate, function (err2, results2, fields2) {});
 				console.log(db.query.sql);
 			}else{
 				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results3, fields3) {});
