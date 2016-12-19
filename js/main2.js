@@ -6,7 +6,6 @@ $.getJSON('//jsonip.com/?callback=?', function(data) {
 	$userIP = data.ip;
 });
 
-socketio.emit('message', 'entro!'); 
 socketio.on('messages', function(data){
 	console.log(data);
 }); 
