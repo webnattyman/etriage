@@ -98,7 +98,7 @@ io.on('connection', function(socket) {
 				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results, fields) {});
 			}
 		});
-		console.log(base64_decode(resp, 'prueba'))
+		console.log(base64_decode(resp, 'prueba.jpg'));
         socket.broadcast.emit('message', message);
     });
     
