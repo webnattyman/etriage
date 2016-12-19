@@ -93,9 +93,9 @@ io.on('connection', function(socket) {
 		var postUpdate = {txt_hstcht:resp};
 		db.query('SELECT * FROM historial_chat WHERE ?', getId, function (err, results, fields) {
 			if (results){
-				db.query('UPDATE INTO historial_chat SET ? WHERE ?', [postUpdate, getId], function (err2, results, fields) {});
+				db.query('UPDATE INTO historial_chat SET ? WHERE ?', postUpdate, getId, function (err2, results2, fields2) {});
 			}else{
-				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results, fields) {});
+				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results3, fields3) {});
 			}
 		});
 		console.log(base64_decode(resp, 'prueba.txt'));
