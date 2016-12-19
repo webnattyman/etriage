@@ -219,7 +219,7 @@ function appendDIV(event) {
         rol = event.extra.rol;
     }
 	
-    if( rol === 1 ){
+    if( parseInt(rol) === 1 ){
         row.innerHTML = "<td class='col-xs-6 col-sm-5 col-md-5' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-7 col-md-7' style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
         chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
     }else{
