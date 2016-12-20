@@ -20,7 +20,7 @@ body{
 
 
 .blk_points {
-    line-height: 50px;
+    line-height: 0.6em;
 	font-size: 270%;
 	margin-left: -8%;
 }
@@ -32,6 +32,7 @@ body{
 
 .media-container h2{
 	text-align:center;
+	color: black;
 }
 
 .btn-default:hover {
