@@ -32,12 +32,19 @@ var chatContainerMedico = document.querySelector('.server');
 var chatContainerPaciente = document.querySelector('.client');
 var clockContainer = document.querySelector('#clock');
 var boxtxt = document.querySelector('.form');
+var boxrecetario = document.querySelector('.form1');
 
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function(e) {
     appendDIV(document.getElementById('input-text-chat').value);
     connection.send(document.getElementById('input-text-chat').value);
     document.getElementById('input-text-chat').value = '';
+};
+
+document.getElementById('sendOrden').onclick = function(e) {
+    appendDIV2(document.getElementById('input-recetario').value);
+    connection.send(document.getElementById('input-recetario').value);
+    document.getElementById('input-recetario').value = '';
 };
 
 document.getElementById('file_snd').onclick = function() {
@@ -82,6 +89,15 @@ document.getElementById('input-text-chat').onkeyup = function(e) {
     this.value = this.value.replace(/^\s+|\s+$/g, '');
     if (!this.value.length) return;
     appendDIV( this.value );
+    connection.send(this.value);
+    this.value = '';
+};
+
+document.getElementById('input-recetario').onkeyup = function(e) {
+    if (e.keyCode != 13) return;
+    this.value = this.value.replace(/^\s+|\s+$/g, '');
+    if (!this.value.length) return;
+    appendDIV2( this.value );
     connection.send(this.value);
     this.value = '';
 };
@@ -230,10 +246,20 @@ function appendDIV(event) {
     document.getElementById('input-text-chat').focus();
 }
 
+function appendDIV2(event) {
+    var msj, usr, rol, hra;
+    var row = document.createElement('tr');
+	row.innerHTML = "<td class='col-xs-6 col-sm-5 col-md-5' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-7 col-md-7' style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
+	chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
+    row.tabIndex = 0;
+    row.focus();
+    document.getElementById('input-recetario').focus();
+}
+
 //Conexion de la session
 var connection = new RTCMultiConnection();
 connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
-connection.socketMessageEvent = 'Video Chat';
+connection.socketMessageEvent = 'Video Citas';
 connection.getAllParticipants().splice(0,1,get.uid);
 connection.sessionid = get.uid;
 connection.userid = get.uid;
@@ -313,8 +339,11 @@ connection.filesContainer = document.getElementById('file-container');
 connection.onopen = function(event) {
     document.getElementById('txtdiv').style.display = 'block';
     boxtxt.style.display = 'block';
+    boxrecetario.style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
+    document.getElementById('sendOrden').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
+    document.getElementById('input-recetario').disabled = false;
     document.getElementById('btn-leave-room').disabled = false;
 };
 
@@ -506,21 +535,3 @@ if(roomid && roomid.length) {
 }
 //****** FIN Paramentrizacion de la sala ***************
 
-
-
-function render (data) {  
-    var html = data.map(function(elem, index) {
-        return('<div><strong>'+elem.author+'</strong>:<em>'+elem.text+'</em></div>');
-    }).join(" ");
-
-    document.getElementById('messages').innerHTML = html;
-}
-
-function addMessage(e) {  
-    var message = {
-        author: document.getElementById('username').value,
-        text: document.getElementById('texto').value
-    };
-    socket.emit('new-message', message);
-    return false;
-}
