@@ -30,6 +30,10 @@ body{
 	font-size: 200%;
 }
 
+h3{
+	color:black;
+}
+
 .media-container h2{
 	text-align:center;
 	color: black;
