@@ -85,7 +85,7 @@ io.on('connection', function(socket) {
     
     socket.on('message', function (message) {
 		var file_chat = 'chat_'+message.cid+'.txt';
-		var linea = '('+message.hra+' : '+message.fullname+') => '+message.data;
+		var linea = '('+message.hra+' : '+message.fullname+') => '+message.data+'</br>';
 		fs.appendFileSync(file_chat, linea, encoding='utf8');
 		var resp = base64_encode(file_chat);
 		var getId = {cita_hstcht:parseInt(message.cid)};
@@ -93,11 +93,11 @@ io.on('connection', function(socket) {
 		var postUpdate = {txt_hstcht:resp, cita_hstcht: parseInt(message.cid)};
 		db.query('SELECT * FROM historial_chat WHERE cita_hstcht = ?', getId, function (err, results, fields) {
 			if (fields.length > 0){
-				db.query('UPDATE historial_chat SET ? WHERE ?', postUpdate, function (err2, results2, fields2) {
-					console.log(fields2);
+				db.query('UPDATE historial_chat SET ? WHERE cita_hstcht = ?', postUpdate, function (err, results, fields) {
+					console.log(fields);
 				});
 			}else{
-				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results3, fields3) {});
+				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err, results, fields) {});
 			}
 		});
 		var mosfile = base64_decode(resp, 'chat_'+message.cid+'.txt');
