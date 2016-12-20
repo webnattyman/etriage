@@ -93,7 +93,7 @@ io.on('connection', function(socket) {
 		var postUpdate = {txt_hstcht:resp, cita_hstcht: parseInt(message.cid)};
 		db.query('SELECT * FROM historial_chat WHERE cita_hstcht = ?', getId, function (err, results, fields) {
 			if (fields.length > 0){
-				db.query('UPDATE INTO historial_chat SET ? WHERE ?', postUpdate, function (err2, results2, fields2) {});
+				db.query('UPDATE INTO historial_chat SET txt_hstcht = ? WHERE ?', postUpdate, function (err2, results2, fields2) {});
 			}else{
 				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results3, fields3) {});
 			}
@@ -129,8 +129,8 @@ function base64_decode(base64str, file) {
     // create buffer object from base64 encoded string, it is important to tell the constructor that the string is base64 encoded
     var bitmap = new Buffer(base64str, 'base64');
     // write buffer to file
-    fs.writeFileSync(file, bitmap);
     console.log('******** File created from base64 encoded string ********');
+    return file;
 }
 
 server.listen( process.env.PORT || 443, function() {  
