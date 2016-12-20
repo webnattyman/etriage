@@ -340,6 +340,7 @@ connection.filesContainer = document.getElementById('file-container');
 //Agrega funcion cuando abre la conexion.
 connection.onopen = function(event) {
     document.getElementById('txtdiv').style.display = 'block';
+    document.getElementById('ttvds').style.display = 'block';
     recetarioContainer.style.display = 'block';
     boxtxt.style.display = 'block';
     boxrecetario.style.display = 'block';
