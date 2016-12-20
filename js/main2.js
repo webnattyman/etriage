@@ -30,6 +30,8 @@ function getGET(){
 var get = getGET();
 var chatContainerMedico = document.querySelector('.server');
 var chatContainerPaciente = document.querySelector('.client');
+var videoContainer = document.querySelector('#videos-container');
+var recetarioContainer = document.querySelector('#recetario-container');
 var clockContainer = document.querySelector('#clock');
 var boxtxt = document.querySelector('.form');
 var boxrecetario = document.querySelector('.form1');
@@ -338,6 +340,8 @@ connection.filesContainer = document.getElementById('file-container');
 //Agrega funcion cuando abre la conexion.
 connection.onopen = function(event) {
     document.getElementById('txtdiv').style.display = 'block';
+    videoContainer.style.display = 'block';
+    recetarioContainer.style.display = 'block';
     boxtxt.style.display = 'block';
     boxrecetario.style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
