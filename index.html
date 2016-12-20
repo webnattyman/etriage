@@ -48,6 +48,7 @@
             }
             
             .form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+			
             .form input { 
                 border: 0; 
                 padding: 10px; 
@@ -56,8 +57,27 @@
                 color: black;
                 font-family: bigRedmedix;
             }
+			
             .form button { 
                 width: 9%; 
+                background: rgb(23, 168, 184); 
+                border: none; 
+                padding: 10px;
+                color: white;
+                font-family: bigRedmedix;
+            }
+			
+			.form1 input { 
+                border: 0; 
+                padding: 10px; 
+                width: 90%; 
+                margin-right: .5%;
+                color: black;
+                font-family: bigRedmedix;
+            }
+			
+            .form1 button { 
+                width: 10%; 
                 background: rgb(23, 168, 184); 
                 border: none; 
                 padding: 10px;
@@ -151,9 +171,13 @@
                 <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
             </div>
 			<div class="row">
-				<div id="videos-container" class="col-lg-8 col-md-8 col-xs-12 blk_clk"></div>
+				<div id="videos-container" class="col-lg-8 col-md-8 col-xs-12 blk_clk">
+					<h3 style="text-align:center;">Videos:</h3>
+				</div>
 				<div id="recetario-container" class="col-lg-4 col-md-4 col-xs-12 blk_clk">
-					<div id="messages-recetario"></div>
+					<div id="messages-recetario">
+						<h3 style="text-align:center;">Recetario:</h3>
+					</div>
 					<div class="form1" style="display:none;">
 						<input type="text" id="input-recetario" placeholder="Ingrese medicamentos..." disabled>
 						<button id="sendOrden" disabled>Enviar Mensaje</button>
@@ -162,8 +186,8 @@
 			</div>
             <div id="messages"></div>
             <div class="make-center" id="txtdiv" style="display:none;width:100%;">
-                <div id="file-container"></div>
                 <div class="chat-output container-fluid">
+					<h3 style="text-align:center;">Mensajes:</h3>
                     <table class="server table-striped col-xs-12 col-sm-6 col-md-6" style="border-collapse:separate;border-spacing:3px;font-family:smallRedmedix;"></table>
                     <table class="client table-striped col-xs-12 col-sm-6 col-md-6" style="border-collapse:separate;border-spacing:3px;font-family:smallRedmedix;"></table>
                 </div>
@@ -171,7 +195,9 @@
             </div>
             <div class="make-center">
                 <br></br>
-				<div id="files-container"></div>
+				<div id="files-container">
+					<h3 style="text-align:center;">Archivos Enviados:</h3>
+				</div>
             </div>
 			<div class="make-center">
                 <br></br>
