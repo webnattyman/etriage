@@ -93,7 +93,7 @@ io.on('connection', function(socket) {
 		var postUpdate = {txt_hstcht:resp, cita_hstcht: parseInt(message.cid)};
 		db.query('SELECT * FROM historial_chat WHERE cita_hstcht = ?', getId, function (err, results, fields) {
 			if (fields.length > 0){
-				db.query('UPDATE historial_chat SET txt_hstcht = ? WHERE cita_hstcht = ?', postUpdate, function (err2, results2, fields2) {});
+				db.query('UPDATE historial_chat SET ? WHERE ?', postUpdate, function (err2, results2, fields2) {});
 			}else{
 				db.query('INSERT INTO historial_chat SET ?', postInsert, function (err3, results3, fields3) {});
 			}
