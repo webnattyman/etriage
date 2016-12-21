@@ -32,6 +32,7 @@ var chatContainerMedico = document.querySelector('.server');
 var chatContainerPaciente = document.querySelector('.client');
 var videoContainer = document.querySelector('#videos-container');
 var recetarioContainer = document.querySelector('#recetario-container');
+var recetarioBox = document.querySelector('#messages-recetario');
 var clockContainer = document.querySelector('#clock');
 var boxtxt = document.querySelector('.form');
 var boxrecetario = document.querySelector('.form1');
@@ -250,9 +251,9 @@ function appendDIV(event) {
 
 function appendDIV2(event) {
     var msj, usr, rol, hra;
-    var row = document.createElement('tr');
-	row.innerHTML = "<td class='col-xs-6 col-sm-5 col-md-5' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-7 col-md-7' style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
-	chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
+    var row = document.createElement('li');
+	row.innerHTML = event;
+	recetarioBox.insertAfter(row, recetarioBox.firstChild);
     row.tabIndex = 0;
     row.focus();
     document.getElementById('input-recetario').focus();
