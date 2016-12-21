@@ -253,14 +253,14 @@ function appendDIV(event) {
 
 function appendDIV2(event) {
     var msj, usr, rol, hra;
-    var row = document.createElement('li');
+    var li = document.createElement('li');
 	if( parseInt(get.r) == 1 ){
-		row.innerHTML = '<div class="col-xs-9 col-sm-9 col-md-9">'+event+'</div>'+'<div class="col-xs-3 col-sm-3 col-md-3"><button class="btn">X</button></div>';
+		li.innerHTML = '<div class="col-xs-9 col-sm-9 col-md-9">'+event+'</div>'+'<div class="col-xs-3 col-sm-3 col-md-3"><button class="btn">X</button></div>';
 		document.getElementById('input-recetario').focus();
 	}else{
-		row.innerHTML = '<div class="col-xs-12 col-sm-12 col-md-12">'+event+'</div>';
+		li.innerHTML = '<div class="col-xs-12 col-sm-12 col-md-12">'+event+'</div>';
 	}
-	recetarioBox.insertBefore(row, recetarioBox.firstChild);
+	recetarioBox.insertBefore(li, recetarioBox.firstChild);
 }
 
 //Conexion de la session
