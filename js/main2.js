@@ -256,13 +256,11 @@ function appendDIV2(event) {
     var row = document.createElement('li');
 	if( parseInt(get.r) == 1 ){
 		row.innerHTML = '<div class="col-xs-9 col-sm-9 col-md-9">'+event+'</div>'+'<div class="col-xs-3 col-sm-3 col-md-3"><button class="btn">X</button></div>';
+		document.getElementById('input-recetario').focus();
 	}else{
 		row.innerHTML = '<div class="col-xs-12 col-sm-12 col-md-12">'+event+'</div>';
 	}
 	recetarioBox.insertAfter(row, recetarioBox.firstChild);
-    row.tabIndex = 0;
-    row.focus();
-    document.getElementById('input-recetario').focus();
 }
 
 //Conexion de la session
