@@ -57,18 +57,7 @@ app.use(express.static('.'));
 
 
 io.on('connection', function(socket) {
-    /*socket.client(function(error, clients){
-		if (error) throw error;
-	});*/
-	var socketId = 1;
-    if( socketId == 1){
-        socket.emit('crear', sala, socket.id);
-    }else if ( socketId == 2){
-        socket.emit('agregado', sala, socket.id);
-    }else{
-        console.log('Sala llena!');
-    }
-    //console.log('Usuarios Conectados: ' + socketId.clientsCount);
+	socket.join(sala);
     socket.emit('connected', "hola");
     socket.emit('messages', messages); 
     
@@ -88,7 +77,7 @@ io.on('connection', function(socket) {
 		db.query('INSERT INTO recetario_citas SET ?', post, function (err, result, fields) {
 			if (err) throw err;
 			data.rid = result.insertId;
-			socket.broadcast.emit('receta', data);
+			socket.emit('receta', data);
 		});
     });
     
