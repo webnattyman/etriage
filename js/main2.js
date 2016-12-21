@@ -55,6 +55,7 @@ document.getElementById('sendOrden').onclick = function(e) {
 	var datas = {};
 	datas.msj = document.getElementById('input-recetario').value;
 	datas.cid = get.ct;
+	appendDIV2(datas);
     socketio.emit('receta', datas );
     document.getElementById('input-recetario').value = '';
 };
@@ -258,14 +259,8 @@ function appendDIV2(event) {
     var msj, cita_id, rect_id;
     var li = document.createElement('li');
 	msj = event.msj;
-	cita_id = event.cid;
-	rect_id = event.rid;
-	if( parseInt(get.r) == 1 ){
-		li.innerHTML = '<div class="col-xs-9 col-sm-9 col-md-9">'+msj+'</div>'+'<div class="col-xs-3 col-sm-3 col-md-3"><button class="btn" onclick="eliminarReceta('+rect_id+')">X</button></div>';
-		document.getElementById('input-recetario').focus();
-	}else{
-		li.innerHTML = '<div class="col-xs-12 col-sm-12 col-md-12">'+msj+'</div>';
-	}
+	li.innerHTML = '<div class="col-xs-12 col-sm-12 col-md-12">'+msj+'</div>';
+	document.getElementById('input-recetario').focus();
 	recetarioBox.insertBefore(li, recetarioBox.firstChild);
 }
 
