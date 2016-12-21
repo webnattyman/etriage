@@ -40,9 +40,7 @@ function getGET(){
    return get;
 }
 
-document.querySelector('.btn').onclick = function(e){
-	
-};
+
 
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function(e) {
@@ -264,6 +262,7 @@ function appendDIV2(event) {
 	if( parseInt(get.r) == 1 ){
 		li.innerHTML = '<div class="col-xs-9 col-sm-9 col-md-9">'+msj+'</div>'+'<div class="col-xs-3 col-sm-3 col-md-3"><button class="btn" value="'+rect_id+'">X</button></div>';
 		document.getElementById('input-recetario').focus();
+		document.querySelector('.btn').onclick = eliminarReceta();
 	}else{
 		li.innerHTML = '<div class="col-xs-12 col-sm-12 col-md-12">'+msj+'</div>';
 	}
@@ -536,6 +535,11 @@ function showRoomURL(roomid) {
     var roomURLsDiv = document.getElementById('room-urls');
     roomURLsDiv.innerHTML = html;
     roomURLsDiv.style.display = 'block';
+}
+
+//
+function eliminarReceta(item) {
+    
 }
 
 //****** Paramentrizacion de la sala ***************
