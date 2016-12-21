@@ -51,6 +51,7 @@ document.getElementById('sendtxt').onclick = function(e) {
 
 //Enviando recetas
 document.getElementById('sendOrden').onclick = function(e) {
+	if ( document.getElementById('input-recetario').value == '') return;
 	var datas = {};
 	datas.msj = document.getElementById('input-recetario').value;
 	datas.cid = get.ct;

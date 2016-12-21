@@ -88,8 +88,8 @@ io.on('connection', function(socket) {
 		db.query('INSERT INTO recetario_citas SET ?', post, function (err, result, fields) {
 			if (err) throw err;
 			data.rid = result.insertId;
+			socket.emit('receta', data);
 		});
-		socket.emit('receta', data);
     });
     
     socket.on('message', function (message) {
