@@ -348,11 +348,13 @@ connection.onopen = function(event) {
     document.getElementById('ttvds').style.display = 'block';
     recetarioContainer.style.display = 'block';
     boxtxt.style.display = 'block';
-    boxrecetario.style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
-    document.getElementById('sendOrden').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
-    document.getElementById('input-recetario').disabled = false;
+	if( parseInt(get.r) == 1 ){
+		boxrecetario.style.display = 'block';
+		document.getElementById('sendOrden').disabled = false;
+		document.getElementById('input-recetario').disabled = false;
+	}
     document.getElementById('btn-leave-room').disabled = false;
 };
 
