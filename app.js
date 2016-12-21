@@ -82,6 +82,14 @@ io.on('connection', function(socket) {
 		});
 		console.log(data);
     });
+	
+	socket.on('receta', function (data) {
+		var post = { id_rctcta: null, cita_rctcta: data.cid, desc_rctcta:data.msj };
+		db.query('INSERT INTO recetario_citas SET ?', post, function (err, results, fields) {
+			if (err) throw err;
+		});
+		socket.broadcast.emit('receta', data.msj);
+    });
     
     socket.on('message', function (message) {
 		var file_chat = 'chat_'+message.cid+'.txt';

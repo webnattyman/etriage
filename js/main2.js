@@ -1,6 +1,15 @@
 var $clock = $("#clock");
 var socketio = io();
 var $userIP;
+var get = getGET();
+var chatContainerMedico = document.querySelector('.server');
+var chatContainerPaciente = document.querySelector('.client');
+var videoContainer = document.querySelector('#videos-container');
+var recetarioContainer = document.querySelector('#recetario-container');
+var recetarioBox = document.querySelector('#messages-recetario');
+var clockContainer = document.querySelector('#clock');
+var boxtxt = document.querySelector('.form');
+var boxrecetario = document.querySelector('.form1');
 
 $.getJSON('//jsonip.com/?callback=?', function(data) {
 	$userIP = data.ip;
@@ -8,6 +17,10 @@ $.getJSON('//jsonip.com/?callback=?', function(data) {
 
 socketio.on('messages', function(data){
 	console.log(data);
+}); 
+
+socketio.on('receta', function(data){
+	appendDIV2(data);
 }); 
 
 socketio.on('ipaddr', function (ipaddr) {
@@ -27,15 +40,6 @@ function getGET(){
    return get;
 }
 
-var get = getGET();
-var chatContainerMedico = document.querySelector('.server');
-var chatContainerPaciente = document.querySelector('.client');
-var videoContainer = document.querySelector('#videos-container');
-var recetarioContainer = document.querySelector('#recetario-container');
-var recetarioBox = document.querySelector('#messages-recetario');
-var clockContainer = document.querySelector('#clock');
-var boxtxt = document.querySelector('.form');
-var boxrecetario = document.querySelector('.form1');
 
 //Enviando mensajes
 document.getElementById('sendtxt').onclick = function(e) {
@@ -45,8 +49,11 @@ document.getElementById('sendtxt').onclick = function(e) {
 };
 
 document.getElementById('sendOrden').onclick = function(e) {
-    appendDIV2(document.getElementById('input-recetario').value);
-    connection.send(document.getElementById('input-recetario').value);
+	var datas = {};
+	datas.msj = document.getElementById('input-recetario').value;
+	datas.cid = get.ct;
+    appendDIV2( datas.msj );
+    socketio.emit('receta', datas );
     document.getElementById('input-recetario').value = '';
 };
 
@@ -97,12 +104,7 @@ document.getElementById('input-text-chat').onkeyup = function(e) {
 };
 
 document.getElementById('input-recetario').onkeyup = function(e) {
-    if (e.keyCode != 13) return;
-    this.value = this.value.replace(/^\s+|\s+$/g, '');
-    if (!this.value.length) return;
-    appendDIV2( this.value );
-    connection.send(this.value);
-    this.value = '';
+    if (e.keyCode == 13) return;
 };
 
 //Funcion que cierra la session
@@ -252,7 +254,11 @@ function appendDIV(event) {
 function appendDIV2(event) {
     var msj, usr, rol, hra;
     var row = document.createElement('li');
-	row.innerHTML = event;
+	if( parseInt(get.r) == 1 ){
+		row.innerHTML = '<div class="col-xs-9 col-sm-9 col-md-9">'+event+'</div>'+'<div class="col-xs-3 col-sm-3 col-md-3"><button class="btn">X</button></div>';
+	}else{
+		row.innerHTML = '<div class="col-xs-12 col-sm-12 col-md-12">'+event+'</div>';
+	}
 	recetarioBox.insertAfter(row, recetarioBox.firstChild);
     row.tabIndex = 0;
     row.focus();
