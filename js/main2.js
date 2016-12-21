@@ -260,9 +260,8 @@ function appendDIV2(event) {
 	cita_id = event.cid;
 	rect_id = event.rid;
 	if( parseInt(get.r) == 1 ){
-		li.innerHTML = '<div class="col-xs-9 col-sm-9 col-md-9">'+msj+'</div>'+'<div class="col-xs-3 col-sm-3 col-md-3"><button class="btn" value="'+rect_id+'">X</button></div>';
+		li.innerHTML = '<div class="col-xs-9 col-sm-9 col-md-9">'+msj+'</div>'+'<div class="col-xs-3 col-sm-3 col-md-3"><button class="btn" onclick="eliminarReceta('+rect_id+')">X</button></div>';
 		document.getElementById('input-recetario').focus();
-		document.querySelector('.btn').onclick = eliminarReceta();
 	}else{
 		li.innerHTML = '<div class="col-xs-12 col-sm-12 col-md-12">'+msj+'</div>';
 	}
