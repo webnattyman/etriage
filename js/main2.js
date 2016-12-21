@@ -260,7 +260,7 @@ function appendDIV2(event) {
 	}else{
 		row.innerHTML = '<div class="col-xs-12 col-sm-12 col-md-12">'+event+'</div>';
 	}
-	recetarioBox.insertAfter(row, recetarioBox.firstChild);
+	recetarioBox.insertBefore(row, recetarioBox.firstChild);
 }
 
 //Conexion de la session
