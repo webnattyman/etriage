@@ -85,10 +85,11 @@ io.on('connection', function(socket) {
 	
 	socket.on('receta', function (data) {
 		var post = { id_rctcta: null, cita_rctcta: data.cid, desc_rctcta:data.msj };
-		db.query('INSERT INTO recetario_citas SET ?', post, function (err, results, fields) {
+		db.query('INSERT INTO recetario_citas SET ?', post, function (err, result, fields) {
 			if (err) throw err;
+			data.rid = result.insertId;
 		});
-		socket.broadcast.emit('receta', data.msj);
+		socket.emit('receta', data);
     });
     
     socket.on('message', function (message) {
