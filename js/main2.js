@@ -261,7 +261,7 @@ function appendDIV2(event) {
 	msj = event.msj;
 	li.innerHTML = '<div>'+msj+'</div>';
 	document.getElementById('input-recetario').focus();
-	recetarioBox.insertBefore(li, recetarioBox.firstChild);
+	recetarioBox.append(li);
 }
 
 //Conexion de la session
