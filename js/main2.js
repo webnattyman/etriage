@@ -352,6 +352,7 @@ connection.onopen = function(event) {
     boxtxt.style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
+	document.getElementById('tt_files').style.display = 'block';
 	document.getElementById('files-container').style.display = 'block';
 	if( parseInt(get.r) == 1 ){
 		boxrecetario.style.display = 'block';
