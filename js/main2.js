@@ -348,6 +348,7 @@ connection.onopen = function(event) {
     boxtxt.style.display = 'block';
     document.getElementById('sendtxt').disabled = false;
     document.getElementById('input-text-chat').disabled = false;
+	document.getElementById('files-container').style.display = 'block';
 	if( parseInt(get.r) == 1 ){
 		boxrecetario.style.display = 'block';
 		document.getElementById('sendOrden').disabled = false;
@@ -456,13 +457,13 @@ var FileProgressBarHandler = (function() {
 			}
 			var div = helper.div;
 			if (file.type.indexOf('image') != -1) {
-				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br />';
+				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Descargar Archivo <strong style="color:red;">' + file.name + '</strong> </a><br />';
 			} else if (file.type.indexOf('video/') != -1) {
-				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br /><video src="' + file.url + '" title="' + file.name + '" style="max-width: 80%;" controls></video>';
+				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Descargar Archivo <strong style="color:red;">' + file.name + '</strong> </a><br /><video src="' + file.url + '" title="' + file.name + '" style="max-width: 80%;" controls></video>';
 			} else if (file.type.indexOf('audio/') != -1) {
-				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br /><audio src="' + file.url + '" title="' + file.name + '" style="max-width: 80%;" controls></audio>';
+				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Descargar Archivo <strong style="color:red;">' + file.name + '</strong> </a><br /><audio src="' + file.url + '" title="' + file.name + '" style="max-width: 80%;" controls></audio>';
 			} else {
-				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Download <strong style="color:red;">' + file.name + '</strong> </a><br /><iframe src="' + file.url + '" title="' + file.name + '" style="width: 80%;border: 0;height: inherit;margin-top:1em;"></iframe>';
+				div.innerHTML = '<a href="' + file.url + '" download="' + file.name + '">Descargar Archivo <strong style="color:red;">' + file.name + '</strong> </a><br /><iframe src="' + file.url + '" title="' + file.name + '" style="width: 80%;border: 0;height: inherit;margin-top:1em;"></iframe>';
 			}
 			if (!file.slice) {
 				return;
