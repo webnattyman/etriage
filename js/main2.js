@@ -340,9 +340,6 @@ connection.onmessage = function(event){
 };
     
 
-//Agrega el contenedor de archivos
-connection.filesContainer = document.getElementById('file-container');
-
 //Agrega funcion cuando abre la conexion.
 connection.onopen = function(event) {
     document.getElementById('txtdiv').style.display = 'block';
