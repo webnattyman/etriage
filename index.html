@@ -70,14 +70,14 @@
 			.form1 input { 
                 border: 0; 
                 padding: 10px; 
-                width: 65%; 
+                width: 100%; 
                 margin-right: .5%;
                 color: black;
                 font-family: bigRedmedix;
             }
 			
             .form1 button { 
-                width: 10%; 
+                width: 45%; 
                 background: rgb(23, 168, 184); 
                 border: none; 
                 padding: 10px;
@@ -94,6 +94,11 @@
 			#recetario-container{
 				width: 20%;
 				display:none;
+			}
+			
+			#messages-recetario{
+				border: 1px solid black;
+				color: black;
 			}
 			
             #clock{
@@ -179,8 +184,8 @@
 				</div>
 				<div id="recetario-container" class="col-lg-4 col-md-4 col-xs-12 blk_clk">
 					<h3 style="text-align:center;">Recetario:</h3>
-					<ul id="messages-recetario" style="border: 1px solid black;">
-					</ul>
+					<ol id="messages-recetario">
+					</ol>
 					<div class="form1" style="display:none;">
 						<input type="text" id="input-recetario" placeholder="Ingrese medicamentos..." disabled>
 						<button id="limpiar" disabled>Limpiar</button>
