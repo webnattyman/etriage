@@ -259,7 +259,7 @@ function appendDIV2(event) {
     var msj, cita_id, rect_id;
     var li = document.createElement('li');
 	msj = event.msj;
-	li.innerHTML = '<div class="col-xs-12 col-sm-12 col-md-12">'+msj+'</div>';
+	li.innerHTML = '<div>'+msj+'</div>';
 	document.getElementById('input-recetario').focus();
 	recetarioBox.insertBefore(li, recetarioBox.firstChild);
 }
