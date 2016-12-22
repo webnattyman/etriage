@@ -491,6 +491,7 @@ var FileProgressBarHandler = (function() {
 
 FileProgressBarHandler.handle(connection);
 
+/*
 document.querySelector('input[type=file]').onchange = function() {
 	var file = this.files[0];
 	if (!file) return;
@@ -501,7 +502,7 @@ document.querySelector('input[type=file]').onchange = function() {
 			connection.send(file);
 		}
 	}
-};
+};*/
 
 /*
 document.querySelector('input[type=file]').onclick = function() {
