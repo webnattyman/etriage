@@ -62,6 +62,10 @@ document.getElementById('sendOrden').onclick = function(e) {
 
 //Enviando archivos
 document.getElementById('file_snd').onclick = function() {
+	var file = this.files[0];
+	if (!file) return;
+	file.uuid = connection.userid;
+	connection.selectedFile = file;
 	var fileSelector = new FileSelector();
 	fileSelector.selectSingleFile(function(file) {
 		connection.send(file);
