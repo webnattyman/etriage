@@ -170,6 +170,12 @@
 						<div class="smalltext">Segundos</div>
 					</div>
 				</div>
+				<div class="make-center">
+					<input type="hidden" id="room-id" >
+					<button id="join">Comenzar</button>
+					<button id="btn-leave-room" disabled>Salir de la Sala</button>
+					<div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
+				</div>
                 <div class="collapse navbar-collapse" id="menu">
                     <ul class="nav navbar-nav navbar-right">
                     </ul>
@@ -177,15 +183,9 @@
             </div> 
         </nav>
         <section class="experiment">
-            <div class="make-center">
-                <input type="hidden" id="room-id" >
-                <button id="join">Comenzar</button>
-                <button id="btn-leave-room" disabled>Salir de la Sala</button>
-                <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
-            </div>
 			<div class="row">
 				<div id="recetario-container" class="col-lg-3 col-md-3 col-xs-12 blk_clk">
-					<h3 style="text-align:center;">FORMULA MEDICA:</h3>
+					<h3 style="text-align:center;margin-bottom: 0px;margin-top: 0px;line-height: 35px;background-color: #ccc;">FORMULA MEDICA:</h3>
 					<ol id="messages-recetario">
 					</ol>
 					<div class="form1" style="display:none;">
