@@ -263,7 +263,7 @@ function appendDIV2(event) {
     var msj, cita_id, rect_id;
     var li = document.createElement('li');
 	msj = event.msj;
-	li.innerHTML = '<div>'+msj+'</div>';
+	li.innerHTML = '<div style="word-wrap: break-word;">'+msj+'</div>';
 	document.getElementById('input-recetario').focus();
 	recetarioBox.append(li);
 }
@@ -296,7 +296,8 @@ connection.sdpConstraints.mandatory = {
 };
 
 //Crear el contenedor de video.
-connection.videosContainer = document.getElementById('videos-container');
+connection.videosContainerMedicos = document.getElementById('videos-container-medicos');
+connection.videosContainerPaciente = document.getElementById('videos-container-paciente');
 
 //Agrega un evento a la conexion cuando transmite.
 connection.onstream = function(event) {
@@ -306,11 +307,14 @@ connection.onstream = function(event) {
         title: event.extra.fullname,
         buttons: ['full-screen', 'mute-audio', 'mute-video'],
         width: width,
-        clase: 'col-xs-12 col-sm-6 col-md-6',
+        clase: 'col-xs-12 col-sm-12 col-md-12',
         showOnMouseEnter: true
     });
-
-    connection.videosContainer.appendChild(mediaElement);
+	if( event.extra.rol == 1 ){
+		connection.videosContainerMedicos.appendChild(mediaElement);
+	}else{
+		connection.videosContainerPaciente.appendChild(mediaElement);
+	}
 
     setTimeout(function() {
         mediaElement.media.play();
