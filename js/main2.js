@@ -301,8 +301,14 @@ connection.videosContainerPaciente = document.getElementById('videos-container-p
 
 //Agrega un evento a la conexion cuando transmite.
 connection.onstream = function(event) {
+	var width;
 	document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
-    var width = parseInt(connection.videosContainer.clientWidth / 2) - 20;
+	if( event.extra.rol == 1 ){
+		width = parseInt(connection.videosContainerMedicos.clientWidth / 2) - 20;
+	}else{
+		width = parseInt(connection.videosContainerPaciente.clientWidth / 2) - 20;
+	}
+    
     var mediaElement = getMediaElement(event.mediaElement, {
         title: event.extra.fullname,
         buttons: ['full-screen', 'mute-audio', 'mute-video', 'volume-slider'],
