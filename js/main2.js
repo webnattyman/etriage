@@ -534,8 +534,7 @@ function disableInputButtons() {
 //Funcion que abre los parametros del chat, despues de iniciar session.
 function showRoomURL(roomid) {
     var roomQueryStringURL = "?roomid="+roomid+"&r=1&tp="+get.tp+"&hc="+get.hc+"&ct="+get.ct;
-    var html;
-    html = 'Enlace de la sala : <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
+    var html = 'Enlace de la sala : <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
     var roomURLsDiv = document.getElementById('room-urls');
     roomURLsDiv.innerHTML = html;
     roomURLsDiv.style.display = 'block';
