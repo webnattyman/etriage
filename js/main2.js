@@ -246,10 +246,10 @@ function appendDIV(event) {
     }
 	
     if( rol === 1 ){
-        row.innerHTML = "<td class='col-xs-9 col-sm-9 col-md-9' style='text-align:left;'>"+msj+"</td><td class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;background-color:#885bc6;color:white;'>"+mostrarhora()+"</td>";
+        row.innerHTML = "<td class='col-xs-8 col-sm-8 col-md-8 col-md-offset-1' style='text-align:left;background-color:#885bc6;color:white;'>"+msj+"</td><td class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;'>"+mostrarhora()+"</td>";
         chatContainer.insertBefore(row, chatContainer.firstChild);
     }else{
-        row.innerHTML = "<td class='col-xs-9 col-sm-9 col-md-9' style='text-align:left;'>"+msj+"</td><td class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;background-color:#00a5b4;color:white;'>"+mostrarhora()+"</td>";
+        row.innerHTML = "<td class='col-xs-8 col-sm-8 col-md-8 col-md-offset-1' style='text-align:left;background-color:#00a5b4;color:white;'>"+msj+"</td><td class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;'>"+mostrarhora()+"</td>";
         chatContainer.insertBefore(row, chatContainer.firstChild);
     }
     row.tabIndex = 0;
