@@ -374,16 +374,11 @@ connection.onopen = function(event) {
 };
 
 connection.onExtraDataUpdated = function(event) {
-	document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 };
 
 //Agrega funcion cuando un usuario cierra la conexion.
 connection.onclose = function() {
-    if( connection.getAllParticipants().length == 1 ) {
-        document.querySelector('h1').innerHTML = 'Ha finalizado la comunicacion, recuerda que estabas en conexion con: ' + connection.getAllParticipants().join(', ');
-    }else {
-        document.querySelector('h1').innerHTML = 'La session termino, todos los participantes han abandonado!.';
-    }
+    
 };
 
 //Agrega funcion cuando la sesion entera es cerrada.
