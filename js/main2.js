@@ -2,8 +2,7 @@ var $clock = $("#clock");
 var socketio = io();
 var $userIP;
 var get = getGET();
-var chatContainerMedico = document.querySelector('.server');
-var chatContainerPaciente = document.querySelector('.client');
+var chatContainer = document.querySelector('.chat_box');
 var videoContainer = document.querySelector('#videos-container');
 var recetarioContainer = document.querySelector('#recetario-container');
 var recetarioBox = document.querySelector('#messages-recetario');
@@ -247,11 +246,11 @@ function appendDIV(event) {
     }
 	
     if( rol === 1 ){
-        row.innerHTML = "<td class='col-xs-6 col-sm-5 col-md-5' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-7 col-md-7' style='text-align:center;background-color:#885bc6;color:white;'>"+msj+"</td>";
-        chatContainerMedico.insertBefore(row, chatContainerMedico.firstChild);
+        row.innerHTML = "<td class='col-xs-9 col-sm-9 col-md-9' style='text-align:left;'>"+msj+"</td><td class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;background-color:#885bc6;color:white;'>"+mostrarhora()+"</td>";
+        chatContainer.insertBefore(row, chatContainer.firstChild);
     }else{
-        row.innerHTML = "<td class='col-xs-6 col-sm-5 col-md-5' style='text-align:center;'>"+usr+" ("+mostrarhora()+") dice:</td><td class='col-xs-6 col-sm-7 col-md-7' style='text-align:center;background-color:#00a5b4;color:white;'>"+msj+"</td>";
-        chatContainerPaciente.insertBefore(row, chatContainerPaciente.firstChild);
+        row.innerHTML = "<td class='col-xs-9 col-sm-9 col-md-9' style='text-align:left;'>"+msj+"</td><td class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;background-color:#00a5b4;color:white;'>"+mostrarhora()+"</td>";
+        chatContainer.insertBefore(row, chatContainer.firstChild);
     }
     row.tabIndex = 0;
     row.focus();

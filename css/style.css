@@ -966,7 +966,6 @@ select option:checked{
 }
 
 #menu{
-    background-color: rgb(241, 242, 242);
     width: 100%;
     margin: 0px auto;
     padding-top: 10px;
