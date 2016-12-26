@@ -319,10 +319,10 @@ connection.onstream = function(event) {
     });
 	if( event.extra.rol == 1 ){
 		connection.videosContainerMedicos.appendChild(mediaElement);
-		mediaElement.style="background-color:#885bc6;";
+		mediaElement.style="background-color:#885bc6;"
 	}else{
 		connection.videosContainerPaciente.appendChild(mediaElement);
-		mediaElement.style="background-color:#885bc6;";
+		mediaElement.style="background-color:#00a5b4;"
 	}
 
     setTimeout(function() {
@@ -330,7 +330,8 @@ connection.onstream = function(event) {
     }, 5000);
     mediaElement.id = event.streamid;
     clockContainer.style.display = "block";
-    var textnode = document.createTextNode(event.extra.fullname);
+var textnode = document.createTextNode(event.extra.fullname);}
+	var newItem = document.createElement("h2");
     newItem.appendChild(textnode);
 	mediaElement.insertBefore( newItem, mediaElement.childNodes[0] );
 };
