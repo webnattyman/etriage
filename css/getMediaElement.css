@@ -26,7 +26,7 @@ Demo          - www.WebRTC-Experiment.com/getMediaElement
 }
 
 .media-container {
-    width: 36%;
+    width: 100%;
     display: inline-block;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 4px;
