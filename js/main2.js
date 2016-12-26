@@ -305,7 +305,8 @@ connection.onstream = function(event) {
     var width = parseInt(connection.videosContainer.clientWidth / 2) - 20;
     var mediaElement = getMediaElement(event.mediaElement, {
         title: event.extra.fullname,
-        buttons: ['full-screen', 'mute-audio', 'mute-video'],
+        buttons: ['full-screen', 'mute-audio', 'mute-video', 'volume-slider'],
+		toggle: ['mute-audio', 'mute-video', 'record-audio', 'record-video'],
         width: width,
         clase: 'col-xs-12 col-sm-12 col-md-12',
         showOnMouseEnter: true
