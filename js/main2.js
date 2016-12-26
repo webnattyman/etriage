@@ -319,10 +319,10 @@ connection.onstream = function(event) {
     });
 	if( event.extra.rol == 1 ){
 		connection.videosContainerMedicos.appendChild(mediaElement);
-		mediaElement.style="background-color:#885bc6;";
+		mediaElement.style="background-color:#885bc6;color:white;";
 	}else{
 		connection.videosContainerPaciente.appendChild(mediaElement);
-		mediaElement.style="background-color:#00a5b4;";
+		mediaElement.style="background-color:#00a5b4;color:white;";
 	}
 
     setTimeout(function() {
