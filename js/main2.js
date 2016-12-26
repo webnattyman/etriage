@@ -301,7 +301,6 @@ connection.videosContainerPaciente = document.getElementById('videos-container-p
 //Agrega un evento a la conexion cuando transmite.
 connection.onstream = function(event) {
 	var width;
-	document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 	if( event.extra.rol == 1 ){
 		width = parseInt(connection.videosContainerMedicos.clientWidth) - 20;
 	}else{
