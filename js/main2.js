@@ -304,9 +304,9 @@ connection.onstream = function(event) {
 	var width;
 	document.querySelector('h1').innerHTML = 'Estas comunicado con: ' + event.extra.fullname;
 	if( event.extra.rol == 1 ){
-		width = parseInt(connection.videosContainerMedicos.clientWidth / 2) - 20;
+		width = parseInt(connection.videosContainerMedicos.clientWidth) - 20;
 	}else{
-		width = parseInt(connection.videosContainerPaciente.clientWidth / 2) - 20;
+		width = parseInt(connection.videosContainerPaciente.clientWidth) - 20;
 	}
     
     var mediaElement = getMediaElement(event.mediaElement, {
@@ -319,8 +319,10 @@ connection.onstream = function(event) {
     });
 	if( event.extra.rol == 1 ){
 		connection.videosContainerMedicos.appendChild(mediaElement);
+		mediaElement.style="background-color:#885bc6;";
 	}else{
 		connection.videosContainerPaciente.appendChild(mediaElement);
+		mediaElement.style="background-color:#885bc6;";
 	}
 
     setTimeout(function() {
@@ -328,7 +330,6 @@ connection.onstream = function(event) {
     }, 5000);
     mediaElement.id = event.streamid;
     clockContainer.style.display = "block";
-	var newItem = document.createElement("h2");
     var textnode = document.createTextNode(event.extra.fullname);
     newItem.appendChild(textnode);
 	mediaElement.insertBefore( newItem, mediaElement.childNodes[0] );
