@@ -234,7 +234,7 @@ function getDiferenciaHora( hra_ini, duration ){
 //Funcion para crear un elemento div, con los datos pasados por el usuario.
 function appendDIV(event) {
     var msj, usr, rol, hra;
-    var row = document.createElement('tr');
+    var row = document.createElement('div');
     if( typeof event === 'string' ){
         msj = event;
         usr = get.uid;
@@ -244,12 +244,12 @@ function appendDIV(event) {
         usr = event.extra.fullname;
         rol = event.extra.rol;
     }
-	
+	row.className = "row";
     if( rol === 1 ){
-        row.innerHTML = "<td class='col-xs-1 col-sm-1 col-md-1'>&nbsp;</td><td class='col-xs-8 col-sm-8 col-md-8' style='text-align:left;background-color:#885bc6;color:white;'>"+msj+"</td><td class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;'>"+mostrarhora()+"</td>";
+        row.innerHTML = "<div class='col-xs-1 col-sm-1 col-md-1'>&nbsp;</div><div class='col-xs-8 col-sm-8 col-md-8' style='text-align:left;background-color:#885bc6;color:white;'>"+msj+"</div><div class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;'>"+mostrarhora()+"</div>";
         chatContainer.insertBefore(row, chatContainer.firstChild);
     }else{
-        row.innerHTML = "<td class='col-xs-8 col-sm-8 col-md-8' style='text-align:left;background-color:#00a5b4;color:white;'>"+msj+"</td><td class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;'>"+mostrarhora()+"</td><td class='col-xs-1 col-sm-1 col-md-1'>&nbsp;</td>";
+        row.innerHTML = "<div class='col-xs-8 col-sm-8 col-md-8' style='text-align:left;background-color:#00a5b4;color:white;'>"+msj+"</div><div class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;'>"+mostrarhora()+"</div><div class='col-xs-1 col-sm-1 col-md-1'>&nbsp;</div>";
         chatContainer.insertBefore(row, chatContainer.firstChild);
     }
     row.tabIndex = 0;
