@@ -676,7 +676,7 @@ select option:checked{
 .menu_principal{
     background-image: url("../images/header2_bg.png");
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 80%;
     height: 140px;
     padding-top: 20px;
 }
@@ -3565,6 +3565,10 @@ button[title="Nothing selected"]:hover{
 /*CLASES DE RESPONSIVE DISPOSITIVOS*/
 
 @media screen and (min-width: 111px) and (max-width: 767px) {
+	.experiment {
+		padding-top: 32%;
+	}
+	
     #whoweare_divs{
         width:100%;
         margin:0 auto;
