@@ -3731,6 +3731,10 @@ button[title="Nothing selected"]:hover{
 }
 
 @media screen and (min-width: 764px) and (max-width: 1030px) {
+	.experiment{
+		padding-top: 10%;
+	}
+	
 	#clock{
 		color: #fff;
 		text-align: center;
