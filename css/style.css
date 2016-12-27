@@ -3731,6 +3731,16 @@ button[title="Nothing selected"]:hover{
 }
 
 @media screen and (min-width: 764px) and (max-width: 1030px) {
+	#clock{
+		color: #fff;
+		text-align: center;
+		font-size: 30px;
+		width: 25%;
+		margin-top: 0%;
+		margin-bottom: 3%;
+		padding-left: 0%;
+	}
+	
     #ct_nueva{
         background: url('../images/cn_off.png');
         background-size: 100%;
