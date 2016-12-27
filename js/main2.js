@@ -253,10 +253,10 @@ function appendDIV(event) {
     }
 	row.className = "row";
     if( rol === 1 ){
-        row.innerHTML = "<div class='col-xs-1 col-sm-1 col-md-1'>&nbsp;</div><div class='col-xs-8 col-sm-8 col-md-8' style='text-align:left;background-color:#885bc6;color:white;'>"+msj+"</div><div class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;'>"+mostrarhora()+"</div>";
+        row.innerHTML = "<div class='col-xs-1 col-sm-1 col-md-1'>&nbsp;</div><div class='col-xs-8 col-sm-8 col-md-8' style='text-align:left;background-color:#885bc6;color:white;'>"+msj+"</div><div class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;font-size:80%;'>"+mostrarhora()+"</div>";
         chatContainer.insertBefore(row, chatContainer.firstChild);
     }else{
-        row.innerHTML = "<div class='col-xs-8 col-sm-8 col-md-8' style='text-align:left;background-color:#00a5b4;color:white;'>"+msj+"</div><div class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;'>"+mostrarhora()+"</div><div class='col-xs-1 col-sm-1 col-md-1'>&nbsp;</div>";
+        row.innerHTML = "<div class='col-xs-8 col-sm-8 col-md-8' style='text-align:left;background-color:#00a5b4;color:white;'>"+msj+"</div><div class='col-xs-3 col-sm-3 col-md-3' style='text-align:right;font-size: 80%;'>"+mostrarhora()+"</div><div class='col-xs-1 col-sm-1 col-md-1'>&nbsp;</div>";
         chatContainer.insertBefore(row, chatContainer.firstChild);
     }
     row.tabIndex = 0;

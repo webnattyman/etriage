@@ -197,7 +197,6 @@
             <div id="messages"></div>
             <div class="make-center" id="txtdiv" style="display:none;width:100%;">
                 <div class="chat-output container-fluid">
-					<h3 style="text-align:center;">Mensajes:</h3>
                     <table class="chat_box table-striped col-xs-12 col-sm-12 col-md-12" style="border-collapse:separate;border-spacing:3px;font-family:smallRedmedix;"></table>
                 </div>
                 <br><br>
@@ -212,8 +211,11 @@
                 <br></br>
                 <div class="form" style="display:none;">
                     <input type="text" id="input-text-chat" placeholder="Ingrese su mensaje..." disabled>
-					<input type="file" id="file_snd">
-                    <button id="sendtxt" disabled>Enviar Mensaje</button>
+					<div class="input__row uploader">
+						<label for="file_snd"></label>
+						<input type="file" class="upload" id="file_snd">
+					</div>
+                    <button id="sendtxt" disabled>></button>
                 </div>
             </div>
         </section>

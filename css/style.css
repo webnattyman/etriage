@@ -6,6 +6,35 @@ body{
     display: none;
 }
 
+.upload {
+  display: none;
+}
+.uploader {
+  border: 1px solid #ccc;
+  width: 300px;
+  position: relative;
+  height: 30px;
+  display: flex;
+}
+.uploader .input-value{
+  width: 250px;
+  padding: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 25px;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+.uploader label {
+  cursor: pointer;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  background: #c3e3fc url('https://www.interactius.com/wp-content/uploads/2016/08/folder.png') no-repeat center;
+}
+
 @font-face
 {
  font-family: 'bigRedmedix';
