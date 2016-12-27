@@ -3695,6 +3695,10 @@ button[title="Nothing selected"]:hover{
     #menu {
         font-size: 70%;
     }
+	
+	.experiment{
+		padding-top: 10%;
+	}
 }
 
 @media screen and (min-width: 764px) and (max-width: 1030px) {
