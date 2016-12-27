@@ -48,6 +48,13 @@ document.getElementById('sendtxt').onclick = function(e) {
     document.getElementById('input-text-chat').value = '';
 };
 
+document.getElementById('cplnk').onclick = function(e) {
+    $("body").append("<input type='text' id='temp'>");
+	$("#temp").val(document.getElementById('room-url').value).select();
+	document.execCommand("copy");
+	$("#temp").remove();
+};
+
 //Enviando recetas
 document.getElementById('sendOrden').onclick = function(e) {
 	if ( document.getElementById('input-recetario').value == '') return;
@@ -385,6 +392,7 @@ connection.onclose = function() {
 connection.onEntireSessionClosed = function(event) {
     document.getElementById('sendtxt').disabled = true;
     document.getElementById('input-text-chat').disabled = true;
+    document.getElementById('cplnk').disabled = true;
     document.getElementById('btn-leave-room').disabled = true;
     document.getElementById('join').disabled = false;
     document.getElementById('room-id').disabled = false;
@@ -530,15 +538,16 @@ function disableInputButtons() {
     document.getElementById('join').disabled = true;
     document.getElementById('room-id').disabled = true;
     document.getElementById('btn-leave-room').disabled = false;
+    
 }
 
 //Funcion que abre los parametros del chat, despues de iniciar session.
 function showRoomURL(roomid) {
-    var roomQueryStringURL = "?roomid="+roomid+"&r=1&tp="+get.tp+"&hc="+get.hc+"&ct="+get.ct;
-    var html = 'Enlace de la sala : <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
-    var roomURLsDiv = document.getElementById('room-urls');
-    roomURLsDiv.innerHTML = html;
-    roomURLsDiv.style.display = 'block';
+    var roomQueryStringURL = "https://redmedix.herokuapp.com/?roomid="+roomid+"&r=1&tp="+get.tp+"&hc="+get.hc+"&ct="+get.ct;
+    //var html = 'Enlace de la sala : <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
+    var roomURLsDiv = document.getElementById('room-url');
+    roomURLsDiv.value = roomQueryStringURL;
+	document.getElementById('cplnk').disabled = false;
 }
 
 //
