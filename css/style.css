@@ -71,6 +71,7 @@ h3{
 .media-container h2{
 	text-align:center;
 	color: white;
+	font-size: 100%;
 }
 
 .btn-default:hover {
@@ -3593,6 +3594,18 @@ button[title="Nothing selected"]:hover{
 /*CLASES DE RESPONSIVE DISPOSITIVOS*/
 
 @media screen and (min-width: 1200px) {
+	
+	.form button { 
+		width: 3%;
+		background: rgb(23, 168, 184);
+		border: none;
+		padding: 10px;
+		color: white;
+		font-family: bigRedmedix;
+		margin-left: 1%;
+		border-radius: 82%;
+	}
+	
 	.experiment{
 		padding-top: 10%;
 	}
