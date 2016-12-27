@@ -966,13 +966,7 @@ select option:checked{
     border-radius: 4px;
 }
 
-#menu{
-    width: 100%;
-    margin: 0px auto;
-    padding-top: 10px;
-    font-family: "smallRedmedix";
-    font-size: 100%;
-}
+
 
 .btn_ing{
     background-image: url("../images/btn_ing.png");
@@ -3565,6 +3559,26 @@ button[title="Nothing selected"]:hover{
 /*CLASES DE RESPONSIVE DISPOSITIVOS*/
 
 @media screen and (min-width: 111px) and (max-width: 767px) {
+	
+	#menu{
+		width: 100%;
+		margin: 0px auto;
+		padding-top: 10px;
+		font-family: "smallRedmedix";
+		font-size: 100%;
+		background-color: gray;
+	}
+	
+	#clock {
+		color: #fff;
+		text-align: center;
+		font-size: 30px;
+		width: 85%;
+		margin-top: 0%;
+		margin-bottom: 3%;
+		padding-left: 0%;
+	}
+	
 	.experiment {
 		padding-top: 32%;
 	}
@@ -3693,8 +3707,23 @@ button[title="Nothing selected"]:hover{
 
 @media screen and (min-width: 953px) and (max-width: 1200px) {
     #menu {
+		width: 100%;
+		margin: 0px auto;
+		padding-top: 10px;
+		font-family: "smallRedmedix";
         font-size: 70%;
+		background-color: none;
     }
+	
+	#clock{
+		color: #fff;
+		text-align: center;
+		font-size: 30px;
+		width: 25%;
+		margin-top: 0%;
+		margin-bottom: 3%;
+		padding-left: 0%;
+	}
 	
 	.experiment{
 		padding-top: 10%;
