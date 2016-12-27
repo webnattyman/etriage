@@ -3558,6 +3558,11 @@ button[title="Nothing selected"]:hover{
 
 /*CLASES DE RESPONSIVE DISPOSITIVOS*/
 
+@media screen and (min-width: 1200px) {
+	.experiment{
+		padding-top: 10%;
+	}
+}
 @media screen and (min-width: 111px) and (max-width: 767px) {
 	
 	#menu{
@@ -4485,6 +4490,10 @@ button[title="Nothing selected"]:hover{
 }
 
 @media screen and (min-width: 552px) and (max-width: 764px) {
+	
+	.experiment{
+		padding-top: 10%;
+	}
     
     .btn_pac {
         background-image: url("../images/paciente_btn_out.png");
