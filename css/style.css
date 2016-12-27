@@ -3609,6 +3609,25 @@ button[title="Nothing selected"]:hover{
 }
 @media screen and (min-width: 111px) and (max-width: 767px) {
 	
+	.form button {
+		width: 13%;
+		background: rgb(23, 168, 184);
+		border: none;
+		padding: 10px;
+		color: white;
+		font-family: bigRedmedix;
+		margin-left: 1%;
+		border-radius: 82%;
+	}
+	
+	.uploader {
+		border: 1px solid #ccc;
+		width: 10%;
+		height: 40px;
+		display: inline-block;
+		vertical-align: bottom;
+	}
+	
 	#menu{
 		width: 100%;
 		margin: 0px auto;
@@ -3630,7 +3649,7 @@ button[title="Nothing selected"]:hover{
 	}
 	
 	.experiment {
-		padding-top: 32%;
+		padding-top: 40%;
 	}
 	
     #whoweare_divs{
@@ -3781,6 +3800,18 @@ button[title="Nothing selected"]:hover{
 }
 
 @media screen and (min-width: 764px) and (max-width: 1030px) {
+	
+	.form button { 
+		width: 3%;
+		background: rgb(23, 168, 184);
+		border: none;
+		padding: 10px;
+		color: white;
+		font-family: bigRedmedix;
+		margin-left: 1%;
+		border-radius: 82%;
+	}
+	
 	.experiment{
 		padding-top: 10%;
 	}
