@@ -323,12 +323,20 @@ connection.onstream = function(event) {
         clase: 'col-xs-12 col-sm-12 col-md-12',
         showOnMouseEnter: true
     });
-	if( event.extra.rol == 1 ){
-		connection.videosContainerMedicos.appendChild(mediaElement);
-		mediaElement.style="background-color:#885bc6;color:white;";
-	}else{
+	if( event.type === 'remote' ){
 		connection.videosContainerPaciente.appendChild(mediaElement);
-		mediaElement.style="background-color:#00a5b4;color:white;";
+		if (event.extra.rol == 1){
+			mediaElement.style="background-color:#885bc6;color:white;";
+		}else{
+			mediaElement.style="background-color:#00a5b4;color:white;";
+		}
+	}else{
+		connection.videosContainerMedicos.appendChild(mediaElement);
+		if (event.extra.rol == 1){
+			mediaElement.style="background-color:#885bc6;color:white;";
+		}else{
+			mediaElement.style="background-color:#00a5b4;color:white;";
+		}
 	}
 
     setTimeout(function() {
