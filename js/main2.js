@@ -323,7 +323,7 @@ connection.onstream = function(event) {
         clase: 'col-xs-12 col-sm-12 col-md-12',
         showOnMouseEnter: true
     });
-	if( event.type === 'remote' ){
+	if( event.type === 'local' ){
 		connection.videosContainerPaciente.appendChild(mediaElement);
 		if (event.extra.rol == 1){
 			mediaElement.style="background-color:#885bc6;color:white;";
