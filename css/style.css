@@ -30,6 +30,12 @@ body{
 	padding: 0;
 }
 
+#videos-container-servidor{
+	position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
 h3{
 	color:black;
 }

@@ -295,12 +295,13 @@ connection.sdpConstraints.mandatory = {
 };
 
 //Crear el contenedor de video.
-connection.videosContainerMedicos = document.getElementById('videos-container-medicos');
-connection.videosContainerPaciente = document.getElementById('videos-container-paciente');
+connection.videosContainerMedicos = document.getElementById('videos-container-cliente');
+connection.videosContainerPaciente = document.getElementById('videos-container-servidor');
 
 //Agrega un evento a la conexion cuando transmite.
 connection.onstream = function(event) {
 	var width;
+	console.log(event);
 	if( event.extra.rol == 1 ){
 		width = parseInt(connection.videosContainerMedicos.clientWidth) - 20;
 	}else{
