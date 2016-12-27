@@ -31,9 +31,10 @@ body{
 }
 
 #videos-container-servidor{
-	position: fixed;
+	position: absolute;
     bottom: 0;
     right: 0;
+	width: 20%;
 }
 
 h3{
