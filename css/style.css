@@ -70,6 +70,12 @@ body{
  src: url('MyriadPro-Regular.otf');
 }
 
+@font-face
+{
+ font-family: 'digital';
+ src: url('digital.otf');
+}
+
 
 .blk_points {
     line-height: 1.4em;
@@ -3648,6 +3654,7 @@ button[title="Nothing selected"]:hover{
 		color: #f2680a;
 		text-align: center;
 		font-size: 30px;
+		font-family: digital;
 		width: 25%;
 		margin-top: 0%;
 		margin-bottom: 3%;
@@ -3698,6 +3705,7 @@ button[title="Nothing selected"]:hover{
 		color: #f2680a;
 		text-align: center;
 		font-size: 30px;
+		font-family: digital;
 		width: 85%;
 		margin-top: 0%;
 		margin-bottom: 3%;
@@ -3841,9 +3849,10 @@ button[title="Nothing selected"]:hover{
     }
 	
 	#clock{
-		color: #fff;
+		color: #f2680a;
 		text-align: center;
 		font-size: 30px;
+		font-family: digital;
 		width: 25%;
 		margin-top: 0%;
 		margin-bottom: 3%;
@@ -3873,9 +3882,10 @@ button[title="Nothing selected"]:hover{
 	}
 	
 	#clock{
-		color: #fff;
+		color: #f2680a;
 		text-align: center;
 		font-size: 30px;
+		font-family: digital;
 		width: 25%;
 		margin-top: 0%;
 		margin-bottom: 3%;
