@@ -52,7 +52,7 @@ body{
 }
 
 .blk_clk{
-	color: white;
+	color: #f2680a;
     font-size: 100%;
 	padding: 0;
 }
@@ -3670,7 +3670,7 @@ button[title="Nothing selected"]:hover{
 	}
 	
 	#clock {
-		color: #fff;
+		color: #f2680a;
 		text-align: center;
 		font-size: 30px;
 		width: 85%;
