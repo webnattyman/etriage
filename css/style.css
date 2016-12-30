@@ -25,12 +25,26 @@ body{
   font-family: sans-serif;
   font-size: 16px;
 }
+
 .uploader label {
 	cursor: pointer;
 	margin: 0;
 	width: 100%;
 	height: 100%;
-	background: #c3e3fc url('https://www.interactius.com/wp-content/uploads/2016/08/folder.png') no-repeat center;
+	background: #c3e3fc url('../images/clip_off.png') no-repeat center;
+}
+
+#sendtxt{
+	background: #c3e3fc url('../images/enter_btn.png') no-repeat center;
+	background-position: 2px 2px;
+}
+
+.uploader label :hover{
+	cursor: pointer;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	background: #c3e3fc url('../images/clip_on.png') no-repeat center;
 }
 
 @font-face
