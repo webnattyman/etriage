@@ -3595,6 +3595,15 @@ button[title="Nothing selected"]:hover{
 
 @media screen and (min-width: 1200px) {
 	
+	.form input {
+		border: 0;
+		padding: 10px;
+		width: 80%;
+		margin-right: .5%;
+		color: black;
+		font-family: bigRedmedix;
+	}
+	
 	.form button { 
 		width: 3%;
 		background: rgb(23, 168, 184);
@@ -3621,6 +3630,15 @@ button[title="Nothing selected"]:hover{
 	}
 }
 @media screen and (min-width: 111px) and (max-width: 767px) {
+	
+	.form input {
+		border: 0;
+		padding: 10px;
+		width: 70%;
+		margin-right: .5%;
+		color: black;
+		font-family: bigRedmedix;
+	}
 	
 	.form button {
 		width: 13%;
