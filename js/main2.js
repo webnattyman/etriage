@@ -10,7 +10,8 @@ var clockContainer = document.querySelector('#clock');
 var boxtxt = document.querySelector('.form');
 var boxrecetario = document.querySelector('.form1');
 
-$.getJSON('//jsonip.com/?callback=?', function(data) {
+$.getJSON('//wtfismyip.com/json', function(data) {
+	console.log(data);
 	$userIP = data.ip;
 });
 
