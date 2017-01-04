@@ -11,8 +11,8 @@ var boxtxt = document.querySelector('.form');
 var boxrecetario = document.querySelector('.form1');
 
 $.getJSON('//wtfismyip.com/json', function(data) {
-	console.log(data);
-	$userIP = data.ip;
+	//console.log(data);
+	$userIP = data.YourFuckingIPAddress;
 });
 
 socketio.on('messages', function(data){
