@@ -127,7 +127,7 @@ document.getElementById('btn-leave-room').onclick = function() {
     this.disabled = true;
     if(connection.isInitiator) {
         connection.closeEntireSession(function() {
-            document.querySelector('h1').innerHTML = 'La session termino, todos los participantes han abandonado!.';
+            location.reload();
         });
     }
     else {
