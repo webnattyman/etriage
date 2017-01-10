@@ -103,7 +103,6 @@ document.getElementById('join').onclick = function() {
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
         if(!isRoomExists) {
             connection.getAllParticipants().splice(0,1,get.uid);
-			document.getElementById('cplnk').disabled = false;
 			if( parseInt(get.r) == 1 ){
 				showRoomURL(roomid);
 			}
@@ -559,7 +558,7 @@ function showRoomURL(roomid) {
     //var html = 'Enlace de la sala : <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
     var roomURLsDiv = document.getElementById('room-url');
     roomURLsDiv.value = roomQueryStringURL;
-	
+	document.getElementById('cplnk').disabled = false;
 }
 
 //
