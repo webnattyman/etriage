@@ -101,12 +101,10 @@ document.getElementById('join').onclick = function() {
     connection.userid = get.uid;
     connection.rol = get.r;
     connection.openOrJoin(document.getElementById('room-id').value, function(isRoomExists, roomid) {
-        if(!isRoomExists) {
-            connection.getAllParticipants().splice(0,1,get.uid);
-			if( parseInt(get.r) == 1 ){
-				showRoomURL(roomid);
-			}
-        }
+		connection.getAllParticipants().splice(0,1,get.uid);
+		if( parseInt(get.r) == 1 ){
+			showRoomURL(roomid);
+		}
     });
 };
 
